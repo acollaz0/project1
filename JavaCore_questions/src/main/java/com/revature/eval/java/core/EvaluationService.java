@@ -253,14 +253,16 @@ public class EvaluationService {
 		// TODO Write an implementation for this method declaration
 		
 				String num = string.replaceAll("[()\\s-]+", "");
+				String numNoDots = num.replaceAll("\\.", "");
 				
-				if (num.length()==11 && num.charAt(0)=='1') {
-					String cleanNum = num.substring(1, num.length());
+				if (numNoDots.matches("^[0-9]+$") && numNoDots.length()==11 && numNoDots.charAt(0)=='1') {
+					String cleanNum = numNoDots.substring(1, numNoDots.length());
 					return cleanNum;
-				} else if (num.length()==10) {
-					return num;
+				} else if (numNoDots.length()==10 && numNoDots.matches("^[0-9]+$")) {
+					return numNoDots;
+				} else {
+					throw new IllegalArgumentException("Illegal argument");
 				}
-				return null;
 	}
 
 	/**
