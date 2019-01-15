@@ -1,6 +1,7 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -344,34 +345,34 @@ public class EvaluationService {
 	 * binary search is a dichotomic divide and conquer search algorithm.
 	 * 
 	 */
-	static class BinarySearch<T> implements Comparable<T> {
-		private List<T> sortedList;
-
-		public int indexOf(T t) {
-			// TODO Write an implementation for this method declaration
-			return 0;
-		}
-
-		public BinarySearch(List<T> sortedList) {
-			super();
-			this.sortedList = sortedList;
-		}
-
-		public List<T> getSortedList() {
-			return sortedList;
-		}
-
-		public void setSortedList(List<T> sortedList) {
-			this.sortedList = sortedList;
-		}
-
-		@Override
-		public int compareTo(T arg0) {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-
-	}
+//	static class BinarySearch<T> implements Comparable<T> {
+//		private List<T> sortedList;
+//
+//		public int indexOf(T t) {
+//			// TODO Write an implementation for this method declaration
+//			return 0;
+//		}
+//
+//		public BinarySearch(List<T> sortedList) {
+//			super();
+//			this.sortedList = sortedList;
+//		}
+//
+//		public List<T> getSortedList() {
+//			return sortedList;
+//		}
+//
+//		public void setSortedList(List<T> sortedList) {
+//			this.sortedList = sortedList;
+//		}
+//
+//		@Override
+//		public int compareTo(T arg0) {
+//			// TODO Auto-generated method stub
+//			return 0;
+//		}
+//
+//	}
 
 	/**
 	 * 8. Implement a program that translates from English to Pig Latin.
@@ -391,8 +392,50 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String toPigLatin(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+			// TODO Write an implementation for this method declaration
+
+			// create array to hold pig-latinized words
+			ArrayList<String> plwords = new ArrayList<String>();
+			
+			// create array to hold words of input string
+			String [] arr = string.split(" ");
+			
+			// iterate over each word in arr
+			for (int i=0; i<arr.length; i++) {
+				// loop through each letter in word
+				for (int j=0; j<arr[i].length(); j++) {
+					// if the letter is a vowel
+					if (arr[i].charAt(j) == 'A' ||
+							arr[i].charAt(j) == 'E' ||
+							arr[i].charAt(j) == 'I' ||
+							arr[i].charAt(j) == 'O' ||
+							arr[i].charAt(j) == 'U') {
+						// pig latinize string
+						String comp1 = arr[i].substring(j, arr[i].length()-1);
+						// add first component to plword
+						String plword = comp1;
+						// create and add second component
+						String comp2 = arr[i].substring(0, j-1);
+						plword+=(comp2+"ay");
+						// add plword to array
+						plwords.add(plword);
+					}
+				}
+			}
+			
+			// turn plwords into string
+			// create new string builder
+			StringBuilder plfinal = new StringBuilder();
+			// add each plword to new string builder
+			for (String plword : plwords) {
+				plfinal.append(" ");
+			    plfinal.append(plword);
+			}
+			
+			// return final string builder as string, removing first space
+			return plfinal.toString().substring(1);
+			
+		
 	}
 
 	/**
