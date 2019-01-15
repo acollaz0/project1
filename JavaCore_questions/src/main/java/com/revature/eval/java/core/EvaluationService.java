@@ -89,18 +89,22 @@ public class EvaluationService {
 		}
 
 		public boolean isEquilateral() {
-			// TODO Write an implementation for this method declaration
+			if((sideOne == sideTwo) && (sideTwo == sideThree))
+				return true;
+			
 			return false;
 		}
 
 		public boolean isIsosceles() {
-			// TODO Write an implementation for this method declaration
+			if((sideOne == sideTwo)||(sideOne == sideThree)||(sideTwo == sideThree))
+				return true;
 			return false;
 		}
 
 		public boolean isScalene() {
-			// TODO Write an implementation for this method declaration
-			return false;
+			if((sideOne == sideTwo)||(sideOne == sideThree)||(sideTwo == sideThree))
+				return false;
+			return true;
 		}
 
 	}
@@ -122,7 +126,15 @@ public class EvaluationService {
 	 */
 	public int getScrabbleScore(String string) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		int total = 0;
+		string.toUpperCase();
+		char[] chars = string.toCharArray();
+		int[] letterscore = {1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 1, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};
+		for (int i = 0; i < chars.length; i ++) {
+			int index = chars[i] - 65;
+			total = total + letterscore[index];
+		}
+		return total;
 	}
 
 	/**
@@ -157,8 +169,21 @@ public class EvaluationService {
 	 * NANP-countries, only 1 is considered a valid country code.
 	 */
 	public String cleanPhoneNumber(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		String cleanNum = "";
+		String buffer;
+		for (int i = 0; i < string.length(); i++) {
+			buffer = "";
+			buffer = buffer + string.charAt(i);
+			if(buffer.matches("[0-9]")) {
+				if (cleanNum == "") {
+					if (buffer.equals("1"))
+						continue;
+					else
+						cleanNum = cleanNum + buffer;
+				}
+			}
+		}
+		return cleanNum;
 	}
 
 	/**
