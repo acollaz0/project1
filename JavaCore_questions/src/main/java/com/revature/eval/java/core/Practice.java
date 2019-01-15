@@ -57,16 +57,49 @@ public class Practice {
 
 		public boolean isEquilateral() {
 			// TODO Write an implementation for this method declaration
+			
+			// extract all side lengths into variables
+			double sideOne = getSideOne();
+			double sideTwo = getSideTwo();
+			double sideThree = getSideThree();
+			
+			// if all side lengths are equal, return true
+			if (sideOne == sideTwo && sideTwo == sideThree) {
+				return true;
+			}
+			
+			// else return false
 			return false;
 		}
 
 		public boolean isIsosceles() {
 			// TODO Write an implementation for this method declaration
+			
+			// extract all side lengths into variables
+			double sideOne = getSideOne();
+			double sideTwo = getSideTwo();
+			double sideThree = getSideThree();
+						
+			// if at least two sides are equal, return true
+			if (isEquilateral() || ((sideTwo == sideThree) && (sideTwo == sideOne)) || 
+					((sideOne == sideTwo) && (sideOne == sideThree)) ||
+					((sideThree == sideOne) && (sideThree == sideTwo))) {
+				return true;
+			}
+						
+			// else return false
 			return false;
 		}
 
 		public boolean isScalene() {
 			// TODO Write an implementation for this method declaration
+			
+			// if not isosceles of equilateral, then return true
+			if (!isEquilateral() && !isIsosceles()) {
+				return true;
+			}
+			
+			// else return false
 			return false;
 		}
 
