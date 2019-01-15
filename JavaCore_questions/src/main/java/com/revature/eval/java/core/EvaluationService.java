@@ -30,8 +30,19 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String acronym(String phrase) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		// split phrase into separate words
+		String[] split = phrase.split("\\s+");
+				
+		// extract first char of each word into variable
+		char first = split[0].charAt(0);
+		char second = split[1].charAt(0);
+		char third = split[2].charAt(0);
+				
+		// join each char to make acronym
+		String acronym = "" + first + second + third;			
+		
+		// return acronym
+		return acronym;
 	}
 
 	/**
