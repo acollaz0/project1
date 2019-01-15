@@ -31,18 +31,18 @@ public class EvaluationService {
 	 */
 	public String acronym(String phrase) {
 		// split phrase into separate words
-		String[] split = phrase.split("\\s+");
+		String[] split = phrase.split("[-\\s]");
+		
+		// create acronym string variable
+		String acronym = new String();
 				
 		// extract first char of each word into variable
-		char first = split[0].charAt(0);
-		char second = split[1].charAt(0);
-		char third = split[2].charAt(0);
-				
-		// join each char to make acronym
-		String acronym = "" + first + second + third;			
+		for (int i=0; i<split.length; i++) {
+			acronym = acronym + split[i].charAt(0);
+		}			
 		
 		// return acronym
-		return acronym;
+		return acronym.toUpperCase();
 	}
 
 	/**

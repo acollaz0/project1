@@ -3,31 +3,72 @@ package com.revature.eval.java.core;
 public class Practice {
 
 	public static void main(String[] args) {
-		System.out.println(acronym("Aasd Sasdf Hasdf"));
+		System.out.println(("Aasd Sasdf Hasdf"));
 	}
 	
 	/**
-	 * 2. Convert a phrase to its acronym. Techies love their TLA (Three Letter
-	 * Acronyms)! Help generate some jargon by writing a program that converts a
-	 * long name like Portable Network Graphics to its acronym (PNG).
-	 * 
-	 * @param phrase
-	 * @return
+	 * 3. Determine if a triangle is equilateral, isosceles, or scalene. An
+	 * equilateral triangle has all three sides the same length. An isosceles
+	 * triangle has at least two sides the same length. (It is sometimes specified
+	 * as having exactly two sides the same length, but for the purposes of this
+	 * exercise we'll say at least two.) A scalene triangle has all sides of
+	 * different lengths.
+	 *
 	 */
-	public static String acronym(String phrase) {
-		// TODO Write an implementation for this method declaration
-		
-		// split phrase into separate words
-		String[] split = phrase.split("\\s+");
-		
-		// extract first char of each word into variable
-		char first = split[0].charAt(0);
-		char second = split[1].charAt(0);
-		char third = split[2].charAt(0);
-		
-		// join each char to make acronym
-		String acronym = "" + first + second + third;
-		
-		return acronym;
+	static class Triangle {
+		private double sideOne;
+		private double sideTwo;
+		private double sideThree;
+
+		public Triangle() {
+			super();
+		}
+
+		public Triangle(double sideOne, double sideTwo, double sideThree) {
+			this();
+			this.sideOne = sideOne;
+			this.sideTwo = sideTwo;
+			this.sideThree = sideThree;
+		}
+
+		public double getSideOne() {
+			return sideOne;
+		}
+
+		public void setSideOne(double sideOne) {
+			this.sideOne = sideOne;
+		}
+
+		public double getSideTwo() {
+			return sideTwo;
+		}
+
+		public void setSideTwo(double sideTwo) {
+			this.sideTwo = sideTwo;
+		}
+
+		public double getSideThree() {
+			return sideThree;
+		}
+
+		public void setSideThree(double sideThree) {
+			this.sideThree = sideThree;
+		}
+
+		public boolean isEquilateral() {
+			// TODO Write an implementation for this method declaration
+			return false;
+		}
+
+		public boolean isIsosceles() {
+			// TODO Write an implementation for this method declaration
+			return false;
+		}
+
+		public boolean isScalene() {
+			// TODO Write an implementation for this method declaration
+			return false;
+		}
+
 	}
 }
