@@ -251,7 +251,16 @@ public class EvaluationService {
 	 */
 	public String cleanPhoneNumber(String string) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		
+				String num = string.replaceAll("[()\\s-]+", "");
+				
+				if (num.length()==11 && num.charAt(0)=='1') {
+					String cleanNum = num.substring(1, num.length());
+					return cleanNum;
+				} else if (num.length()==10) {
+					return num;
+				}
+				return null;
 	}
 
 	/**
