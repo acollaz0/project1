@@ -1,6 +1,7 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,7 +31,7 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String acronym(String phrase) {
-		// TODO Write an implementation for this method declaration
+		
 		String[] parts = phrase.split(" |-");
 		String acronym = "";
 		for (int i = 0; i < parts.length; i++) {
@@ -125,15 +126,16 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int getScrabbleScore(String string) {
-		// TODO Write an implementation for this method declaration
+		
 		int total = 0;
-		string.toUpperCase();
+		string = string.toUpperCase();
 		char[] chars = string.toCharArray();
-		int[] letterscore = {1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 1, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};
+		int[] letterscore = {1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};
 		for (int i = 0; i < chars.length; i ++) {
 			int index = chars[i] - 65;
 			total = total + letterscore[index];
 		}
+
 		return total;
 	}
 
@@ -168,22 +170,24 @@ public class EvaluationService {
 	 * Note: As this exercise only deals with telephone numbers used in
 	 * NANP-countries, only 1 is considered a valid country code.
 	 */
-	public String cleanPhoneNumber(String string) {
+	public String cleanPhoneNumber(String string) throws IllegalArgumentException  {
 		String cleanNum = "";
-		String buffer;
 		for (int i = 0; i < string.length(); i++) {
-			buffer = "";
+			String buffer = "";
 			buffer = buffer + string.charAt(i);
 			if(buffer.matches("[0-9]")) {
-				if (cleanNum == "") {
-					if (buffer.equals("1"))
-						continue;
-					else
-						cleanNum = cleanNum + buffer;
-				}
+				cleanNum = cleanNum + buffer;
 			}
 		}
-		return cleanNum;
+		if((cleanNum.length() == 11) && (cleanNum.charAt(0) == '1')) {
+			cleanNum = cleanNum.substring(1);
+			return cleanNum;
+		}
+		else if(cleanNum.length() == 10)
+			return cleanNum;
+		else {
+			throw new IllegalArgumentException("invalid phone number");
+		}	
 	}
 
 	/**
@@ -196,8 +200,21 @@ public class EvaluationService {
 	 * @return
 	 */
 	public Map<String, Integer> wordCount(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		
+		Map<String, Integer> pmap = new HashMap<String, Integer>();
+		String[] words = string.split("[\n|,| ]+");
+		for(int i = 0; i < words.length; i++) {
+			int wordCount =  0;
+			if(!pmap.containsKey(words[i])) {
+				wordCount++;
+				pmap.put(words[i], wordCount);
+			}
+			else {
+				wordCount = pmap.get(words[i]) + 1;
+				pmap.put(words[i], wordCount);
+			}
+		}
+		return pmap;
 	}
 
 	/**

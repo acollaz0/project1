@@ -18,12 +18,12 @@ public class MathFun {
 			int result = x/y;
 			//same thing as
 			
-			//exceptions are just objects. useing the throw keyword 
+			//exceptions are just objects. using the throw keyword 
 			//will send that object through the application until it is caught
 			
 			//worst case scenario it is never caught and hits the JVM
-			//throw new ArithmeticException();
-			throw new FileNotFoundException();
+			throw new ArithmeticException();
+			//throw new FileNotFoundException();
 			//only one catch block will ever execute
 		}catch(Exception ae) {
 			System.out.println("You divided by 0!!!!");
