@@ -403,6 +403,9 @@ public class EvaluationService {
 		// get each word from input string by splitting at whitespaces
 		words = string.split(" ");
 		
+		//
+		System.out.println(words.length);
+		
 		// define array of vowels
 		String [] vowels = {"a", "e", "i", "o", "u"};
 		
@@ -430,6 +433,9 @@ public class EvaluationService {
 						// add to arraylist of pig latin words
 						piglatinwords.add(pl);
 						
+						// end loop
+						i = word.length();
+						
 						
 					} else {
 						
@@ -444,6 +450,9 @@ public class EvaluationService {
 						
 						// add to arraylist of pig latin words
 						piglatinwords.add(pl);
+						
+						// end loop
+						i = word.length();
 						
 					}
 				}
@@ -470,8 +479,7 @@ public class EvaluationService {
 		
 		// now we want to return the sb as a string, without the first space
 		return sb.toString().substring(1);
-			
-		
+				
 	}
 
 	/**
@@ -496,18 +504,21 @@ public class EvaluationService {
 		Integer inp = input;
 		// convert Integer to string
 		String str = inp.toString();
+
 		
 		// create int to track sum
 		int sum = 0;
 		
 		// loop through each number in str
-		// add exp value to sum
 		for (int i=0; i<str.length(); i++) {
-			sum+=Math.pow((int)str.charAt(i), str.length());
+			// add exp value to sum
+			// subtract '0' from char to convert to int
+			sum+=Math.pow(str.charAt(i)-'0', str.length());
 		}
 		
 		// return whether or not sum equals input
 		return sum==input;
+	
 	}
 	/**
 	 * 10. Compute the prime factors of a given natural number.
