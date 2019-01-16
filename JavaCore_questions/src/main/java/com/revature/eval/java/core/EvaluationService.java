@@ -299,8 +299,28 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String toPigLatin(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		
+		String buffer = "";
+		String platin = "";
+		String [] phrase = string.split(" ");
+		for (int j = 0; j < phrase.length; j++) {
+			buffer = "";
+			for (int i = 0; i < phrase[j].length(); i++) {
+				if(phrase[j].substring(i, i+1).matches("[a|e|i|o|u]")) {
+					platin = platin + phrase[j].substring(i) + buffer + "ay ";
+					break;
+				}
+				else {
+					if(phrase[j].substring(i, i+2).matches("qu")) {
+						platin = phrase[j].substring(2)+"quay ";
+						break;
+					}
+						
+					buffer = buffer + phrase[j].charAt(i);
+				}
+			}
+		}
+		return platin.trim();
 	}
 
 	/**
@@ -319,8 +339,14 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isArmstrongNumber(int input) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		String len = Integer.toString(input);
+		int power = len.length();
+		int armstrong = 0;
+		for(int i = 0; i < len.length(); i++) {
+			armstrong = armstrong + (int)Math.pow(Double.parseDouble(len.substring(i, i+1)), power);
+		}
+		
+		return (armstrong == input);
 	}
 
 	/**
