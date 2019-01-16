@@ -366,35 +366,35 @@ public class EvaluationServiceTest {
 		assertTrue(evaluationService.isArmstrongNumber(input));
 	}
 
-//	/*******************************************************************
-//	 * Question 10
-//	 ******************************************************************/
-//
-//	@Test
-//	public void testPrimeNumber() {
-//		assertEquals(Collections.singletonList(2L), evaluationService.calculatePrimeFactorsOf(2L));
-//	}
-//
-//	@Test
-//	public void testSquareOfAPrime() {
-//		assertEquals(Arrays.asList(3L, 3L), evaluationService.calculatePrimeFactorsOf(9L));
-//	}
-//
-//	@Test
-//	public void testCubeOfAPrime() {
-//		assertEquals(Arrays.asList(2L, 2L, 2L), evaluationService.calculatePrimeFactorsOf(8L));
-//	}
-//
-//	@Test
-//	public void testProductOfPrimesAndNonPrimes() {
-//		assertEquals(Arrays.asList(2L, 2L, 3L), evaluationService.calculatePrimeFactorsOf(12L));
-//	}
-//
-//	@Test
-//	public void testProductOfPrimes() {
-//		assertEquals(Arrays.asList(5L, 17L, 23L, 461L), evaluationService.calculatePrimeFactorsOf(901255L));
-//	}
-//
+	/*******************************************************************
+	 * Question 10
+	 ******************************************************************/
+
+	@Test
+	public void testPrimeNumber() {
+		assertEquals(Collections.singletonList(2L), evaluationService.calculatePrimeFactorsOf(2L));
+	}
+
+	@Test
+	public void testSquareOfAPrime() {
+		assertEquals(Arrays.asList(3L, 3L), evaluationService.calculatePrimeFactorsOf(9L));
+	}
+
+	@Test
+	public void testCubeOfAPrime() {
+		assertEquals(Arrays.asList(2L, 2L, 2L), evaluationService.calculatePrimeFactorsOf(8L));
+	}
+
+	@Test
+	public void testProductOfPrimesAndNonPrimes() {
+		assertEquals(Arrays.asList(2L, 2L, 3L), evaluationService.calculatePrimeFactorsOf(12L));
+	}
+
+	@Test
+	public void testProductOfPrimes() {
+		assertEquals(Arrays.asList(5L, 17L, 23L, 461L), evaluationService.calculatePrimeFactorsOf(901255L));
+	}
+
 //	/*******************************************************************
 //	 * Question 11
 //	 ******************************************************************/

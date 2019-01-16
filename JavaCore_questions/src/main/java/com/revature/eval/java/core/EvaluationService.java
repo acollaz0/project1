@@ -532,7 +532,22 @@ public class EvaluationService {
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
 		// TODO Write an implementation for this method declaration
-		return null;
+
+		// create array list to hold prime factors
+		List<Long> primes = new ArrayList<Long>();
+		
+		// loop through all numbers (gt 2) up to half of input l
+		for (long i = 2; i<=l; i++) {
+			// if the input is divisible by i
+			while (l%i==0) {
+				// add i to the list
+				primes.add(i);
+				// divide l by found factor
+				l /= i;
+			}
+		}
+		
+		return primes;
 	}
 
 	/**

@@ -3,6 +3,7 @@ package com.revature.eval.java.core;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Practice {
@@ -11,46 +12,37 @@ public class Practice {
 		System.out.println(("___________ \n Practice \n"
 				+ "___________"));
 		
-		System.out.println(isArmstrongNumber(5));
+		System.out.println();
 		
 	}
 	
 	/**
-	 * 9. An Armstrong number is a number that is the sum of its own digits each
-	 * raised to the power of the number of digits.
+	 * 10. Compute the prime factors of a given natural number.
 	 * 
-	 * For example:
+	 * A prime number is only evenly divisible by itself and 1.
 	 * 
-	 * 9 is an Armstrong number, because 9 = 9^1 = 9 10 is not an Armstrong number,
-	 * because 10 != 1^2 + 0^2 = 2 153 is an Armstrong number, because: 153 = 1^3 +
-	 * 5^3 + 3^3 = 1 + 125 + 27 = 153 154 is not an Armstrong number, because: 154
-	 * != 1^3 + 5^3 + 4^3 = 1 + 125 + 64 = 190 Write some code to determine whether
-	 * a number is an Armstrong number.
+	 * Note that 1 is not a prime number.
 	 * 
-	 * @param input
+	 * @param l
 	 * @return
 	 */
-	public static boolean isArmstrongNumber(int input) {
+	public List<Long> calculatePrimeFactorsOf(long l) {
 		// TODO Write an implementation for this method declaration
-		
-		// convert input to Integer object
-		Integer inp = input;
-		// convert Integer to string
-		String str = inp.toString();
 
+		// create array list to hold prime factors
+		List<Long> primes = new ArrayList<Long>();
 		
-		// create int to track sum
-		int sum = 0;
-		
-		// loop through each number in str
-		for (int i=0; i<str.length(); i++) {
-			// add exp value to sum
-			// subtract '0' from char to convert to int
-			sum+=Math.pow(str.charAt(i)-'0', str.length());
+		// loop through all numbers (gt 2) up to half of input l
+		for (long i = 2; i<=l; i++) {
+			// if the input is divisible by i
+			while (l%i==0) {
+				// add i to the list
+				primes.add(i);
+				// divide l by found factor
+				l /= i;
+			}
 		}
 		
-		// return whether or not sum equals input
-		return sum==input;
-	
+		return primes;
 	}
 }
