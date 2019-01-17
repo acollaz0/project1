@@ -1,6 +1,7 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -360,8 +361,24 @@ public class EvaluationService {
 	 * @return
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		
+		List<Long> factors = new ArrayList<Long>();
+		
+		while (l % 2 == 0) {
+			factors.add((long) 2);
+			l = l/2;
+		}
+		
+		for (long i = 3; i <= Math.sqrt(l); i+=2) {
+			while (l % i == 0) {
+				factors.add(i);
+				l = l / i;
+			}
+		}
+		if (l > 2)
+			factors.add(l);
+		
+		return factors;
 	}
 
 	/**
@@ -399,8 +416,27 @@ public class EvaluationService {
 		}
 
 		public String rotate(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+			String cipher = "";
+			int index = 0;
+			int rot = 0;
+			for(int i = 0; i < string.length(); i++) {
+				if(string.substring(i, i+1).matches("[a-z]")) {
+					index = string.charAt(i) - 97;
+					rot = (index + key) % 26;
+					cipher = cipher + Character.toString((char)(rot+97));
+					
+				}
+				else if(string.substring(i, i+1).matches("[A-Z]")) {
+					index = string.charAt(i) - 65;
+					rot = (index + key) % 26;
+					cipher = cipher + Character.toString((char)(rot+65));
+				}
+				else
+					cipher = cipher + string.charAt(i);
+				
+			}
+			
+			return cipher;
 		}
 
 	}
