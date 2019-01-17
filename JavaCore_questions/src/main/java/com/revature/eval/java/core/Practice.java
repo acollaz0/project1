@@ -11,168 +11,73 @@ public class Practice {
 	public static void main(String[] args) {
 		System.out.println(("___________ \n Practice \n"
 				+ "___________"));
-		AtbashCipher ac = new AtbashCipher();
-		System.out.println(ac.encode("Testing,1 2 3, testing."));
-		
+		System.out.println(isValidIsbn("3-598-21507-X"));
+		System.out.println(30+45+72+56+12+5+20+0+14+10);
+		// 30+45+72+56+12+5+20+0+14+10
 		
 	}
 	
 	/**
-	 * 13 & 14. Create an implementation of the atbash cipher, an ancient encryption
-	 * system created in the Middle East.
+	 * 15. The ISBN-10 verification process is used to validate book identification
+	 * numbers. These normally contain dashes and look like: 3-598-21508-8
 	 * 
-	 * The Atbash cipher is a simple substitution cipher that relies on transposing
-	 * all the letters in the alphabet such that the resulting alphabet is
-	 * backwards. The first letter is replaced with the last letter, the second with
-	 * the second-last, and so on.
+	 * ISBN The ISBN-10 format is 9 digits (0 to 9) plus one check character (either
+	 * a digit or an X only). In the case the check character is an X, this
+	 * represents the value '10'. These may be communicated with or without hyphens,
+	 * and can be checked for their validity by the following formula:
 	 * 
-	 * An Atbash cipher for the Latin alphabet would be as follows:
+	 * (x1 * 10 + x2 * 9 + x3 * 8 + x4 * 7 + x5 * 6 + x6 * 5 + x7 * 4 + x8 * 3 + x9
+	 * * 2 + x10 * 1) mod 11 == 0 If the result is 0, then it is a valid ISBN-10,
+	 * otherwise it is invalid.
 	 * 
-	 * Plain: abcdefghijklmnopqrstuvwxyz Cipher: zyxwvutsrqponmlkjihgfedcba It is a
-	 * very weak cipher because it only has one possible key, and it is a simple
-	 * monoalphabetic substitution cipher. However, this may not have been an issue
-	 * in the cipher's time.
+	 * Example Let's take the ISBN-10 3-598-21508-8. We plug it in to the formula,
+	 * and get:
 	 * 
-	 * Ciphertext is written out in groups of fixed length, the traditional group
-	 * size being 5 letters, and punctuation is excluded. This is to make it harder
-	 * to guess things based on word boundaries.
+	 * (3 * 10 + 5 * 9 + 9 * 8 + 8 * 7 + 2 * 6 + 1 * 5 + 5 * 4 + 0 * 3 + 8 * 2 + 8 *
+	 * 1) mod 11 == 0 Since the result is 0, this proves that our ISBN is valid.
 	 * 
-	 * Examples Encoding test gives gvhg Decoding gvhg gives test Decoding gsvjf
-	 * rxpyi ldmul cqfnk hlevi gsvoz abwlt gives thequickbrownfoxjumpsoverthelazydog
-	 *
+	 * @param string
+	 * @return
 	 */
-	static class AtbashCipher {
+	public static boolean isValidIsbn(String string) {
+		
+		// we have a string with dashes
+		
+		// lets get rid of the dashes
+		string = string.replaceAll("-", "");
+		
+		// make int sum 
+		int sum = 0;
+		
+		// now let's loop backwards through string
+		for (int i=string.length()-1; i>=0; i--) {
+			// if the char is neither a number nor an 'X'
+			if ((string.charAt(i)<48 || string.charAt(i)>57) && string.charAt(i) != 'X') {
+				return false;
+				// else if it's a number
+			} else if ((string.charAt(i)>=48 && string.charAt(i)<=57) || string.charAt(i)=='X'){
+				// if char is 'X'
+				if (string.charAt(i)=='X') {
+					// add ten to the sum
+					sum+=10;
+				} else {
+				// add appropriate product to sum
+				// convert char to int
+				int charint = string.charAt(i) - '0';
 
-		/**
-		 * Question 13
-		 * 
-		 * @param string
-		 * @return
-		 */
-		public static String encode(String string) {
-
-			// returns alphabetically-reversed string, all lowercase
-			
-			// want to start by ridding string of all non alpha chars
-			string = string.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
-			
-			// use an alphabet char array
-			char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-			
-			// start a stringbuilder
-			StringBuilder sb = new StringBuilder();
-			
-			// now we want to reverse each character
-			// we'll loop over the string
-			for (int i=0; i<string.length(); i++) {
-				// reverse character by checking index in alphabet and 
-				// changing to character at inverse index
-				// loop through char array 
-				for (int j=0; j<alphabet.length; j++) {
-					// when we find the char
-					if (string.charAt(i)==alphabet[j]) {
-						// then we want to get the reverse of that char
-						// reverse = char at opposite index
-						
-						sb.append(alphabet[alphabet.length-1-j]);
-					}
-				}
+				// multiply int by appropriate multiplier
+				int product = charint*(string.length()-i);
 				
+				// add product to sum
+				sum+=product;
+				}
 			}
-			
-			// convert stringbuilder to string
-			String str = sb.toString();
-			
-			// split string up to break into 5-char words
-			String[] fivesarr = str.split("");
-			
-			// convert to arraylist
-			ArrayList<String> fives = new ArrayList<>(Arrays.asList(fivesarr));
-			
-			
-			// if we have more than 5 characters
-						if (fives.size()>5) {
-							// loop over string, adding space after every five-letter sequence
-							for (int k=6; k<fives.size(); k++) {
-								// if k is divisible by 5
-								if (k%6==0) {
-									// add a space to array
-									fives.add(k-1, " ");
-								}
-								
-							}
-						}
-			
-			StringBuilder sb2 = new StringBuilder();
-			
-			for (String s: fives) {
-				sb2.append(s);
-			}
-			
-			String rstr = sb2.toString();
-			
-			return rstr;
-			
-			
-			
-			
-			
-			
 			
 		}
-
-		public static String decode(String string) {
-			// returns alphabetically-reversed string, all lowercase
-			
-			// want to start by ridding string of all non alpha chars
-			string = string.replaceAll("\\s+","").toLowerCase();
-			
-			// use an alphabet char array
-			char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-			
-			// start a stringbuilder
-			StringBuilder sb = new StringBuilder();
-			
-			// now we want to reverse each character
-			// we'll loop over the string
-			for (int i=0; i<string.length(); i++) {
-				// reverse character by checking index in alphabet and 
-				// changing to character at inverse index
-				// loop through char array 
-				for (int j=0; j<alphabet.length; j++) {
-					// if char is a number
-					if (string.charAt(i)>48 && string.charAt(i)<57) {
-						// add number to sb
-						sb.append(string.charAt(i));
-						// break loop
-						j=alphabet.length;
-					}
-					// when we find the char
-					else if (string.charAt(i)==alphabet[j]) {
-						// then we want to get the reverse of that char
-						// reverse = char at opposite index
-						
-						sb.append(alphabet[alphabet.length-1-j]);
-						
-						// break loop
-						j=alphabet.length;
-					}
-				}
-				
-			}
-			
-			// convert sb to string
-			String rstr = sb.toString();
-			// and return it
-			return rstr;
-			
-			
-			
-			
-			
-						
-						
-		}
+		
+		System.out.println(sum);
+		return ((sum%11)==0);
+		
 	}
 }
 				

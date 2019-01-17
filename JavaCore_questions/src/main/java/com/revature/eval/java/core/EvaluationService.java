@@ -849,21 +849,19 @@ public class EvaluationService {
 				}
 			}
 			
+			// create new string builder
 			StringBuilder sb2 = new StringBuilder();
 			
+			// loop through array list to build sb
 			for (String s: fives) {
 				sb2.append(s);
 			}
 			
+			// convert sb to string
 			String rstr = sb2.toString();
 			
+			// return string
 			return rstr;
-			
-			
-			
-			
-			
-			
 			
 		}
 
@@ -916,14 +914,7 @@ public class EvaluationService {
 			// convert sb to string
 			String rstr = sb.toString();
 			// and return it
-			return rstr;
-			
-			
-			
-			
-			
-						
-						
+			return rstr;			
 		}
 	}
 	
@@ -949,9 +940,45 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public boolean isValidIsbn(String string) {
-		// TODO Write an implementation for this method declaration
-		return false;
+public static boolean isValidIsbn(String string) {
+		
+		// we have a string with dashes
+		
+		// lets get rid of the dashes
+		string = string.replaceAll("-", "");
+		
+		// make int sum 
+		int sum = 0;
+		
+		// now let's loop backwards through string
+		for (int i=string.length()-1; i>=0; i--) {
+			// if the char is neither a number nor an 'X'
+			if ((string.charAt(i)<48 || string.charAt(i)>57) && string.charAt(i) != 'X') {
+				return false;
+				// else if it's a number
+			} else if ((string.charAt(i)>=48 && string.charAt(i)<=57) || string.charAt(i)=='X'){
+				// if char is 'X'
+				if (string.charAt(i)=='X') {
+					// add ten to the sum
+					sum+=10;
+				} else {
+				// add appropriate product to sum
+				// convert char to int
+				int charint = string.charAt(i) - '0';
+
+				// multiply int by appropriate multiplier
+				int product = charint*(string.length()-i);
+				
+				// add product to sum
+				sum+=product;
+				}
+			}
+			
+		}
+		
+		System.out.println(sum);
+		return ((sum%11)==0);
+		
 	}
 
 	/**
