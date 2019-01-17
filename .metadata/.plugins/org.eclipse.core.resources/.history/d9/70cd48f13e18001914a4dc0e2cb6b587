@@ -1,0 +1,16 @@
+package scope;
+
+public class Practice {
+
+	public static void main(String[] args) {
+		
+		// For static variable, don't need to make instance of Box class
+		//"static" refers to the fact that the variable's memory location never changes
+		System.out.println(Box.staticnum);
+		
+		Box box1 = new Box();
+		System.out.println(box1.instancenum);
+		
+	}
+
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AllTests" project="JavaCore_questions" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="com.revature.eval.java.core.AllTests" time="0.0">
+    <testcase name="testSumOfMultiplesOf4and6UpToFifteen" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
+    <testcase name="testSumOfMultiplesOf5and25UpToFiftyOne" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
+    <testcase name="testSumOfMultiplesOf5and6and8UpToOneHundredFifty" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
+    <testcase name="testSumOfMultiplesOfOneUpToOneHundred" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
+    <testcase name="testSumOfMultiplesOf43and47UpToTenThousand" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
+  </testsuite>
+</testrun>

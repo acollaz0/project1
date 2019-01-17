@@ -1,0 +1,11 @@
+package objectfun;
+
+public class Student {
+	String name;
+	int age;
+	
+	public String toString() {
+		return this.name + this.age;
+	}
+	
+}

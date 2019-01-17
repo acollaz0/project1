@@ -1,0 +1,10 @@
+package awful;
+
+public class MoreAwful {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

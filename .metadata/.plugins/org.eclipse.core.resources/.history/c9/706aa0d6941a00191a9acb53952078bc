@@ -1,0 +1,15 @@
+package basics;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class Basics {
+
+	@Test
+	public void blank() {
+		//fail("Not yet implemented");
+		//Any time a test doesn't fail, it is considered passed
+	}
+
+}

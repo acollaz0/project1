@@ -1,0 +1,9 @@
+package factory;
+
+public class Orderer {
+
+	public static void main(String[] args) {
+
+	}
+
+}

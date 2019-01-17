@@ -1,0 +1,21 @@
+package readwriter;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class ReadWriter {
+
+	public static void main(String[] args) {
+		
+		
+		
+	}
+	
+	public void writer() throws IOException {
+		BufferedWriter bw = new BufferedWriter( new FileWriter("../JavaDay2/src/main/resources/io.txt"));
+		bw.write("Yo");
+		bw.close();
+	}
+
+}

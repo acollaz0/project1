@@ -1,0 +1,14 @@
+package abstractfun;
+
+public class Animal {
+	
+	String species;
+	public void eat() {
+		
+	}
+	
+	public void makeSound() {
+		
+	}
+
+}

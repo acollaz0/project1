@@ -1,0 +1,25 @@
+package basics;
+
+import static org.junit.Assert.*;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+public class Basics {
+
+	@Test
+	public void blank() {
+		//fail("Not yet implemented");
+		//Any time a test doesn't fail, it is considered passed
+	}
+	
+	@Test
+	public void method() {
+		//the first assertion passes, but the second one fails
+		//assert doesn't stop the test
+		//Every assert has to work for a test to pass
+		Assert.assertTrue(true);
+		Assert.assertTrue(false);
+	}
+
+}

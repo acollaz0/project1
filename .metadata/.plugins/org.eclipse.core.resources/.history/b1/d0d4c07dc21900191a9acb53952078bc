@@ -1,0 +1,15 @@
+package abstractfun;
+
+//Putting abstract on a class only means you can't instantiate the class, nothing else.
+public abstract class Animal {
+	
+	String species;
+	public void eat() {
+		System.out.println("The animal is eating something.");
+	}
+	
+	public void makeSound() {
+		System.out.println("The animal is making a sound.");
+	}
+
+}

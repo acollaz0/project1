@@ -1,0 +1,5 @@
+package lambdaworld;
+
+public interface Calculable {
+
+}

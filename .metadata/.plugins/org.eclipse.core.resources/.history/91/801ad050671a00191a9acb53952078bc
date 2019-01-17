@@ -1,0 +1,7 @@
+package threadfun;
+
+public class Resource {
+	
+	static Integer number = 0;
+
+}

@@ -1,0 +1,15 @@
+package checkedexceptions;
+
+import java.io.File;
+
+public class Reader {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		File f = new File("sea:tom/big");
+		System.out.println(f.exists());
+		
+	}
+
+}

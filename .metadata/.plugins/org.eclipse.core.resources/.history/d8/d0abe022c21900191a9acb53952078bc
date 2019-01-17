@@ -1,0 +1,17 @@
+package abstractfun;
+
+public class Jungle {
+
+	public static void main(String[] args) {
+		
+		Animal a = new Animal();
+		Lion l = new Lion();
+		Animal leo = new Lion();
+		
+		a.makeSound();
+		l.makeSound();
+		leo.makeSound();
+
+	}
+
+}

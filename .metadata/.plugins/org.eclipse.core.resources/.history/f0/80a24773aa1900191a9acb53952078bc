@@ -1,0 +1,62 @@
+package com.revature.eval.java.core;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+
+
+public class AllTests {
+	private static final WorkArea evaluationService = new WorkArea();
+	
+	@Rule
+	public ExpectedException expectedException = ExpectedException.none();
+	
+	/*******************************************************************
+	 * Question 9
+	 ******************************************************************/
+	@Test
+	public void singleDigitsAreArmstrongNumbers() {
+		int input = 5;
+
+		assertTrue(evaluationService.isArmstrongNumber(input));
+	}
+
+	@Test
+	public void noTwoDigitArmstrongNumbers() {
+		int input = 10;
+
+		assertFalse(evaluationService.isArmstrongNumber(input));
+	}
+
+	@Test
+	public void threeDigitNumberIsArmstrongNumber() {
+		int input = 153;
+
+		assertTrue(evaluationService.isArmstrongNumber(input));
+	}
+
+	@Test
+	public void threeDigitNumberIsNotArmstrongNumber() {
+		int input = 100;
+
+		assertFalse(evaluationService.isArmstrongNumber(input));
+	}
+
+	@Test
+	public void fourDigitNumberIsArmstrongNumber() {
+		int input = 9474;
+
+		assertTrue(evaluationService.isArmstrongNumber(input));
+	}
+	
+}

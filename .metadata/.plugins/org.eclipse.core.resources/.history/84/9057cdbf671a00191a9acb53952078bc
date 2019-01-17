@@ -1,0 +1,18 @@
+package threadfun;
+
+public class App {
+	
+	//The runnable functional interface is just a method that allows us to give instructions/code
+	//for a single thread to execute
+	
+	Runnable task1 = () -> {
+		Resource.change(1, 2000);
+		System.out.println(Resource.number);
+	};
+	
+	Runnable task2 = () -> {
+		Resource.change(2, 500);
+		System.out.println(Resource.number);
+	};
+
+}

@@ -1,0 +1,10 @@
+package overriding;
+
+public class Playspace {
+	
+	public static void main(String[] args) {
+		Parent p = new Parent();
+		p.work();
+		
+	}
+}

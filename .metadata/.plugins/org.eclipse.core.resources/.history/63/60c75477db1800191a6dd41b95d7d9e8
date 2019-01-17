@@ -1,0 +1,26 @@
+package exceptionfun;
+
+public class MathFun {
+	
+	//Exceptions occur when code executes in an unexpected or unhappy(?) path
+	//Happy path refers to programs working correctly with correct input
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		int x = 5;
+		int y = 0;
+		
+		try {
+			int result = x/y;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+
+}

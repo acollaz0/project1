@@ -1,0 +1,19 @@
+package constructors;
+
+public class Dwelling {
+	
+	int area;
+
+	public Dwelling(int area) {
+		System.out.println("Setting area to " + area);
+		this.area = area;
+	}
+
+	public Dwelling() {
+		System.out.println("Setting area to default of 100");
+		this.area=100;
+	}
+	
+	
+
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AllTests" project="JavaCore_questions" tests="10" started="10" failures="0" errors="0" ignored="0">
+  <testsuite name="com.revature.eval.java.core.AllTests" time="0.001">
+    <testcase name="testEncodeYes" classname="com.revature.eval.java.core.AllTests" time="0.001"/>
+    <testcase name="testEncodeMindBlowingly" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
+    <testcase name="testEncodeAllTheLetters" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
+    <testcase name="testEncodeOmgInCapital" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
+    <testcase name="testDecodeNumbers" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
+    <testcase name="testDecodeExercism" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
+    <testcase name="testEncodeDeepThought" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
+    <testcase name="testDecodeAllTheLetters" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
+    <testcase name="testEncodeNumbers" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
+    <testcase name="testDecodeASentence" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
+  </testsuite>
+</testrun>

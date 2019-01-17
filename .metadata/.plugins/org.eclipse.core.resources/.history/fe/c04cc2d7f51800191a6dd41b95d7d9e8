@@ -1,0 +1,17 @@
+package constructors;
+
+public class House extends Dwelling {
+	
+	int walls;
+	
+	public House(int walls) {
+		System.out.println("Building House with " + walls + " walls.");
+		this.walls = walls;
+	}
+
+	@Override
+	public String toString() {
+		return "House [walls=" + walls + "]";
+	}
+
+}

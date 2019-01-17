@@ -1,0 +1,17 @@
+package factory;
+
+public class CakeFactory {
+	//A class designed to return the appropriate class that implements Cake interface
+	
+	
+	
+	public static Cake getCake(int amount) {
+		
+		if (amount > 40) {
+			return new WeddingCake();
+		}
+		
+		return new Cupcake();
+	}
+
+}

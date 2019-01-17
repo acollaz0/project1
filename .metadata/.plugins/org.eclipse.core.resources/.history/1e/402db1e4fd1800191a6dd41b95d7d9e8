@@ -1,0 +1,9 @@
+package readwriter;
+
+public class ReadWriter {
+
+	public static void main(String[] args) {
+
+	}
+
+}

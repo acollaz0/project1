@@ -1,0 +1,11 @@
+package constructors;
+
+public class ConstructionZone {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Dwelling d = new Dwelling();
+		System.out.println(d);
+	}
+
+}

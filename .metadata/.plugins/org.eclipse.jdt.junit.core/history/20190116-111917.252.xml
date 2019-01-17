@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AllTests" project="JavaCore_questions" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="com.revature.eval.java.core.AllTests" time="0.003">
+    <testcase name="testProductOfPrimes" classname="com.revature.eval.java.core.AllTests" time="0.002"/>
+    <testcase name="testCubeOfAPrime" classname="com.revature.eval.java.core.AllTests" time="0.001"/>
+    <testcase name="testProductOfPrimesAndNonPrimes" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
+    <testcase name="testPrimeNumber" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
+    <testcase name="testSquareOfAPrime" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
+  </testsuite>
+</testrun>

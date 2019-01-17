@@ -1,0 +1,15 @@
+package collectionfun;
+
+public class Playground {
+
+	public static void main(String[] args) {
+		
+		//default constructor will be provided for a class if there are no constructors
+		//the default constructor is no arguments.
+		
+		Person p = new Person("Jimbo",47,60);
+		
+		
+	}
+
+}

@@ -1,0 +1,14 @@
+package welcome;
+
+public class HelloWorld {
+	
+	public static void main(String[] args) {
+		
+		System.out.println("Hello World");
+		//Whenever you use the "new" keyword, you allocate new memory for an object. Always need to use new
+		//in order to make new object.
+		Car car = new Car();
+		car.driveFast();
+	}
+	
+}

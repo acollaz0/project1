@@ -1,0 +1,20 @@
+package awful;
+
+public class MoreAwful {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			awfulestMethod();
+		} catch (Throwable t) {
+			// TODO Auto-generated catch block
+			System.out.println("Bad coder");
+		}
+	}
+	
+	public static void awfulestMethod() {
+		lkjdfieosoiejflkjf
+		nuvewaouvcni;padsfn
+	}
+
+}

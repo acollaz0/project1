@@ -1,0 +1,9 @@
+INDEX VERSION 1.131+C:\Users\tbnil\Documents\stsSpace\.metadata\.plugins\org.eclipse.jdt.core
+2380175872.index
+1344208020.index
+2190754381.index
+3311113473.index
+2526086800.index
+4120081115.index
+2424646841.index
+2601526595.index

@@ -1,0 +1,10 @@
+package encapsulation;
+
+public class Car {
+	
+	String model;
+	int mpg;
+	
+	
+
+}
