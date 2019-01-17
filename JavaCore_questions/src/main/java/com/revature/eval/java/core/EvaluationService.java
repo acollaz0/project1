@@ -995,8 +995,44 @@ public static boolean isValidIsbn(String string) {
 	 * @return
 	 */
 	public boolean isPangram(String string) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		// we have a string 
+		
+		// we want to check to see if it contains every letter of the alphabet
+		
+		// we'll need to check the string's chars with the alphabet
+		
+		// so we'll create an alphabet array
+		char[] alphabet = ("abcdefghijklmnopqrstuvwxyz").toCharArray();
+		
+		// then we'll create an arraylist of characters
+		ArrayList<Character> alphabetlist = new ArrayList<Character>();
+		
+		// add letters to alphabetlist
+		for (int i=0; i<alphabet.length; i++) {
+			alphabetlist.add(alphabet[i]);
+		}
+		
+		// now we'll loop through the string to see if it contains every letter
+		// loop through each char in string
+		for (int j=0; j<string.length(); j++) {
+			// loop through each char in alphabetlist
+			for (int k=0; k<alphabetlist.size(); k++) {
+				// if char is in alphabetlist
+				if (string.charAt(j)==alphabetlist.get(k)) {
+					// remove char from alphabet list
+					alphabetlist.remove(k);
+				}
+			}
+			
+		}
+		
+		// after checking each letter
+		// if we haven't removed every letter from alphabetlist
+		if (alphabetlist.size()>0) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	/**

@@ -11,73 +11,67 @@ public class Practice {
 	public static void main(String[] args) {
 		System.out.println(("___________ \n Practice \n"
 				+ "___________"));
-		System.out.println(isValidIsbn("3-598-21507-X"));
-		System.out.println(30+45+72+56+12+5+20+0+14+10);
+		System.out.println(isPangram("abcdefghijklmnopqrstuvwxyz"));
 		// 30+45+72+56+12+5+20+0+14+10
 		
 	}
 	
 	/**
-	 * 15. The ISBN-10 verification process is used to validate book identification
-	 * numbers. These normally contain dashes and look like: 3-598-21508-8
+	 * 16. Determine if a sentence is a pangram. A pangram (Greek: παν γράμμα, pan
+	 * gramma, "every letter") is a sentence using every letter of the alphabet at
+	 * least once. The best known English pangram is:
 	 * 
-	 * ISBN The ISBN-10 format is 9 digits (0 to 9) plus one check character (either
-	 * a digit or an X only). In the case the check character is an X, this
-	 * represents the value '10'. These may be communicated with or without hyphens,
-	 * and can be checked for their validity by the following formula:
+	 * The quick brown fox jumps over the lazy dog.
 	 * 
-	 * (x1 * 10 + x2 * 9 + x3 * 8 + x4 * 7 + x5 * 6 + x6 * 5 + x7 * 4 + x8 * 3 + x9
-	 * * 2 + x10 * 1) mod 11 == 0 If the result is 0, then it is a valid ISBN-10,
-	 * otherwise it is invalid.
-	 * 
-	 * Example Let's take the ISBN-10 3-598-21508-8. We plug it in to the formula,
-	 * and get:
-	 * 
-	 * (3 * 10 + 5 * 9 + 9 * 8 + 8 * 7 + 2 * 6 + 1 * 5 + 5 * 4 + 0 * 3 + 8 * 2 + 8 *
-	 * 1) mod 11 == 0 Since the result is 0, this proves that our ISBN is valid.
+	 * The alphabet used consists of ASCII letters a to z, inclusive, and is case
+	 * insensitive. Input will not contain non-ASCII symbols.
 	 * 
 	 * @param string
 	 * @return
 	 */
-	public static boolean isValidIsbn(String string) {
-		
-		// we have a string with dashes
-		
-		// lets get rid of the dashes
-		string = string.replaceAll("-", "");
-		
-		// make int sum 
-		int sum = 0;
-		
-		// now let's loop backwards through string
-		for (int i=string.length()-1; i>=0; i--) {
-			// if the char is neither a number nor an 'X'
-			if ((string.charAt(i)<48 || string.charAt(i)>57) && string.charAt(i) != 'X') {
-				return false;
-				// else if it's a number
-			} else if ((string.charAt(i)>=48 && string.charAt(i)<=57) || string.charAt(i)=='X'){
-				// if char is 'X'
-				if (string.charAt(i)=='X') {
-					// add ten to the sum
-					sum+=10;
-				} else {
-				// add appropriate product to sum
-				// convert char to int
-				int charint = string.charAt(i) - '0';
+	public static boolean isPangram(String string) {
 
-				// multiply int by appropriate multiplier
-				int product = charint*(string.length()-i);
-				
-				// add product to sum
-				sum+=product;
+
+		// we have a string 
+		
+		// we want to check to see if it contains every letter of the alphabet
+		
+		// we'll need to check the string's chars with the alphabet
+		
+		// so we'll create an alphabet array
+		char[] alphabet = ("abcdefghijklmnopqrstuvwxyz").toCharArray();
+		
+		// then we'll create an arraylist of characters
+		ArrayList<Character> alphabetlist = new ArrayList<Character>();
+		
+		// add letters to alphabetlist
+		for (int i=0; i<alphabet.length; i++) {
+			alphabetlist.add(alphabet[i]);
+		}
+		
+		// now we'll loop through the string to see if it contains every letter
+		// loop through each char in string
+		for (int j=0; j<string.length(); j++) {
+			// loop through each char in alphabetlist
+			for (int k=0; k<alphabetlist.size(); k++) {
+				// if char is in alphabetlist
+				if (string.charAt(j)==alphabetlist.get(k)) {
+					// remove char from alphabet list
+					alphabetlist.remove(k);
 				}
 			}
 			
 		}
 		
-		System.out.println(sum);
-		return ((sum%11)==0);
+		// after checking each letter
+		// if we haven't removed every letter from alphabetlist
+		if (alphabetlist.size()>0) {
+			return false;
+		} else {
+			return true;
+		}
 		
 	}
+
 }
 				

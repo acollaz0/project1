@@ -547,34 +547,34 @@ public class EvaluationServiceTest {
 		assertFalse(evaluationService.isValidIsbn("3-598-2K507-0"));
 	}
 
-//	/*******************************************************************
-//	 * Question 16
-//	 ******************************************************************/
-//	@Test
-//	public void emptySentenceIsNotPangram() {
-//		assertFalse(evaluationService.isPangram(""));
-//	}
-//
-//	@Test
-//	public void recognizesPerfectLowerCasePangram() {
-//		assertTrue(evaluationService.isPangram("abcdefghijklmnopqrstuvwxyz"));
-//	}
-//
-//	@Test
-//	public void pangramWithOnlyLowerCaseLettersIsRecognizedAsPangram() {
-//		assertTrue(evaluationService.isPangram("the quick brown fox jumps over the lazy dog"));
-//	}
-//
-//	@Test
-//	public void phraseMissingCharacterXIsNotPangram() {
-//		assertFalse(evaluationService.isPangram("a quick movement of the enemy will jeopardize five gunboats"));
-//	}
-//
-//	@Test
-//	public void phraseMissingAnotherCharacterIsNotPangram() {
-//		assertFalse(evaluationService.isPangram("five boxing wizards jump quickly at it"));
-//	}
-//
+	/*******************************************************************
+	 * Question 16
+	 ******************************************************************/
+	@Test
+	public void emptySentenceIsNotPangram() {
+		assertFalse(evaluationService.isPangram(""));
+	}
+
+	@Test
+	public void recognizesPerfectLowerCasePangram() {
+		assertTrue(evaluationService.isPangram("abcdefghijklmnopqrstuvwxyz"));
+	}
+
+	@Test
+	public void pangramWithOnlyLowerCaseLettersIsRecognizedAsPangram() {
+		assertTrue(evaluationService.isPangram("the quick brown fox jumps over the lazy dog"));
+	}
+
+	@Test
+	public void phraseMissingCharacterXIsNotPangram() {
+		assertFalse(evaluationService.isPangram("a quick movement of the enemy will jeopardize five gunboats"));
+	}
+
+	@Test
+	public void phraseMissingAnotherCharacterIsNotPangram() {
+		assertFalse(evaluationService.isPangram("five boxing wizards jump quickly at it"));
+	}
+
 //	/*******************************************************************
 //	 * Question 17
 //	 ******************************************************************/
