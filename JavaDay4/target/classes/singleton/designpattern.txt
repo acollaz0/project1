@@ -1,0 +1,9 @@
+Design Pattern is a software approach/technique
+for solving a certain type of problem
+
+Patterns will have distinctive features but can be implemented
+slightly differently
+
+Promote extensibility low maintenance, code more readable (its a convention)
+
+Singleton - solution where you only ever want one instance of a class
