@@ -1,0 +1,6 @@
+2018-08-19 20:58:27 INFO  MyLogger:12 - We log info when it is just non vital information
+2018-08-19 21:00:44 INFO  MyLogger:12 - information messages
+2018-08-19 21:00:44 WARN  MyLogger:13 - warning messages
+2018-08-19 21:00:44 ERROR MyLogger:14 - error messages
+2018-08-19 21:00:44 DEBUG MyLogger:15 - debug messages
+2018-08-19 21:00:44 FATAL MyLogger:16 - fatal messages
