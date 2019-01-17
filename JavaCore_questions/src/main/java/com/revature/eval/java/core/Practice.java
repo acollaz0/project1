@@ -12,8 +12,9 @@ public class Practice {
 		System.out.println(("___________ \n Practice \n"
 				+ "___________"));
 		
-		RotationalCipher rc = new RotationalCipher(2);
-		System.out.println(rc.rotate("abc"));
+		RotationalCipher rc = new RotationalCipher(6);
+		System.out.println(rc.rotate("Testing 1 2 3 testing"));
+		
 		
 	}
 	
@@ -66,6 +67,8 @@ public class Practice {
 			
 			// so let's start by creating an alphabet array
 			char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();	
+			// and an uppercase alphabet array
+			char[] capalphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 			
 			// ok, now we have an alphabet array
 			// what do we want to do now
@@ -74,33 +77,76 @@ public class Practice {
 			// let's add the key to each char in the string
 			
 			// let's iterate over the string
-			// we'll add changed letters to a string builder
+			// we'll add rotated letters to a string builder
 			// let's create the sb first
 			StringBuilder sb = new StringBuilder();
+			
 			// now we'll loop over the input string and add rotated letters 
 			// to the sb
-			
-			
+
 			for (int i=0; i<string.length(); i++) {
 				// get the char from the input string
 				// and add its rotated value to the sb
-				char c = string.charAt(i);
-				// get index of char in alphabet
-				// iterate over alphabet 
-				for (int j=0; j<alphabet.length; j++) {
-					// if element at index is c
-					if (alphabet[j]==c) {
-						// rotate char
-						c = alphabet[j+key];
-						// add rotated char to sb
-						sb.append(c);
+
+				// if the char is non-alphabetical
+				if (string.charAt(i) > 123 || string.charAt(i) < 65) {
+					// add it without rotating it
+					sb.append(string.charAt(i));
+					// else if the char is a capitalized letter
+				} else if (string.charAt(i) >= 65 && string.charAt(i) <= 90){
+					// get the letter
+					char c = string.charAt(i);
+					// get index of char in capalphabet
+					// iterate over capalphabet 
+					for (int j=0; j<capalphabet.length; j++) {
+						// if element at index is c
+						if (capalphabet[j]==c) {
+							// if j + key is greater than or equal to capalphabet.length
+							// then we need to subtract capalphabet's length from it
+							// to start again at 0, ('a')
+							if (j+key>=capalphabet.length) {
+								// subtract alphabet length from j
+								j-=capalphabet.length;
+							}
+							// rotate char
+							c = capalphabet[j+key];
+							// add rotated char to sb
+							sb.append(c);
+							// end loop
+							j = capalphabet.length;
+						}
+					}
+					// else if it's a lowercase letter
+				} else if (string.charAt(i) >= 97 && string.charAt(i) <= 122) {
+					// get the letter
+					char c2 = string.charAt(i);
+					// get index of char in alphabet
+					// iterate over alphabet 
+					for (int k=0; k<alphabet.length; k++) {
+						// if element at index is c
+						if (alphabet[k]==c2) {
+							// if j + key is greater than or equal to alphabet.length
+							// then we need to subtract alphabet's length from it
+							// to start again at 0, ('a')
+							if (k+key>=alphabet.length) {
+								// subtract alphabet length from j
+								k-=alphabet.length;
+							}
+							// rotate char
+							c2 = alphabet[k+key];
+							// add rotated char to sb
+							sb.append(c2);
+							// end loop
+							k = alphabet.length;
+						}
 					}
 				}
 			}
-			
-			
-			return sb.toString();
+			// create string to return
+			String returnstr = sb.toString();
+			System.out.println(returnstr);
+			return returnstr;
 		}
-
 	}
 }
+				

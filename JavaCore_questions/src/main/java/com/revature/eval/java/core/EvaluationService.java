@@ -583,13 +583,104 @@ public class EvaluationService {
 			super();
 			this.key = key;
 		}
+					
 
 		public String rotate(String string) {
 			// TODO Write an implementation for this method declaration
-			return null;
-		}
+			
+			// ok, we want to take the input string
+			// and 'shift' each character to the 'right'
+			// by the key
+			
+			// so we need to iterate over each char
+			// and set its value to 'its value + key'
+			
+			// its value will be grabbed from an array of the alphabet
+			
+			// so let's start by creating an alphabet array
+			char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();	
+			// and an uppercase alphabet array
+			char[] upperalphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+			
+			// ok, now we have an alphabet array
+			// what do we want to do now
+			
+			// well, we've got a string
+			// let's add the key to each char in the string
+			
+			// let's iterate over the string
+			// we'll add rotated letters to a string builder
+			// let's create the sb first
+			StringBuilder sb = new StringBuilder();
+			
+			// now we'll loop over the input string and add rotated letters 
+			// to the sb
 
+			for (int i=0; i<string.length(); i++) {
+				// get the char from the input string
+				// and add its rotated value to the sb
+
+				// if the char is non-alphabetical
+				if (string.charAt(i) > 'z' || string.charAt(i) < 'A') {
+					// add it without rotating it
+					sb.append(string.charAt(i));
+					// else if the char is a capitalized letter
+				} else if (string.charAt(i) >= 65 && string.charAt(i) <= 90){
+					// get the letter
+					char c = string.charAt(i);
+					// get index of char in upperalphabet
+					// iterate over upperalphabet 
+					for (int j=0; j<upperalphabet.length; j++) {
+						// if element at index is c
+						if (upperalphabet[j]==c) {
+							// if j + key is greater than or equal to upperalphabet.length
+							// then we need to subtract upperalphabet's length from it
+							// to start again at 0, ('a')
+							if (j+key>=upperalphabet.length) {
+								// subtract alphabet length from j
+								j-=upperalphabet.length;
+							}
+							// rotate char
+							c = upperalphabet[j+key];
+							// add rotated char to sb
+							sb.append(c);
+							// end loop
+							j = upperalphabet.length;
+						}
+					}
+					// else if it's a lowercase letter
+				} else if (string.charAt(i) >= 97 && string.charAt(i) <= 122) {
+					// get the letter
+					char c2 = string.charAt(i);
+					// get index of char in alphabet
+					// iterate over alphabet 
+					for (int k=0; k<alphabet.length; k++) {
+						// if element at index is c
+						if (alphabet[k]==c2) {
+							// if j + key is greater than or equal to alphabet.length
+							// then we need to subtract alphabet's length from it
+							// to start again at 0, ('a')
+							if (k+key>=alphabet.length) {
+								// subtract alphabet length from j
+								k-=alphabet.length;
+							}
+							// rotate char
+							c2 = alphabet[k+key];
+							// add rotated char to sb
+							sb.append(c2);
+							// end loop
+							k = alphabet.length;
+						}
+					}
+				}
+			}
+			// create string to return
+			String returnstr = sb.toString();
+			return returnstr;
+		}
 	}
+
+
 
 	/**
 	 * 12. Given a number n, determine what the nth prime is.
