@@ -12,141 +12,82 @@ public class Practice {
 		System.out.println(("___________ \n Practice \n"
 				+ "___________"));
 		
-		RotationalCipher rc = new RotationalCipher(6);
-		System.out.println(rc.rotate("Testing 1 2 3 testing"));
+		System.out.println(calculateNthPrime(10001));
 		
 		
 	}
 	
 	/**
-	 * 11. Create an implementation of the rotational cipher, also sometimes called
-	 * the Caesar cipher.
+	 * 12. Given a number n, determine what the nth prime is.
 	 * 
-	 * The Caesar cipher is a simple shift cipher that relies on transposing all the
-	 * letters in the alphabet using an integer key between 0 and 26. Using a key of
-	 * 0 or 26 will always yield the same output due to modular arithmetic. The
-	 * letter is shifted for as many values as the value of the key.
+	 * By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see
+	 * that the 6th prime is 13.
 	 * 
-	 * The general notation for rotational ciphers is ROT + <key>. The most commonly
-	 * used rotational cipher is ROT13.
+	 * If your language provides methods in the standard library to deal with prime
+	 * numbers, pretend they don't exist and implement them yourself.
 	 * 
-	 * A ROT13 on the Latin alphabet would be as follows:
-	 * 
-	 * Plain: abcdefghijklmnopqrstuvwxyz Cipher: nopqrstuvwxyzabcdefghijklm It is
-	 * stronger than the Atbash cipher because it has 27 possible keys, and 25
-	 * usable keys.
-	 * 
-	 * Ciphertext is written out in the same formatting as the input including
-	 * spaces and punctuation.
-	 * 
-	 * Examples: ROT5 omg gives trl ROT0 c gives c ROT26 Cool gives Cool ROT13 The
-	 * quick brown fox jumps over the lazy dog. gives Gur dhvpx oebja sbk whzcf bire
-	 * gur ynml qbt. ROT13 Gur dhvpx oebja sbk whzcf bire gur ynml qbt. gives The
-	 * quick brown fox jumps over the lazy dog.
+	 * @param i
+	 * @return
 	 */
-	static class RotationalCipher {
-		private int key;
+	public static int calculateNthPrime(int i) {
 
-		public RotationalCipher(int key) {
-			super();
-			this.key = key;
+		// we have a number, i
+		
+		// we want to add to a list of numbers until the list has a length of i
+		
+		// we only want to add prime numbers to the list
+		
+		// a number is a prime number if it is only divisible by itself and 1
+		
+		// we'll only check to see if it's divisible by numbers >= 2 and <= itself/2
+		// because a number can't be divisible by more than half of itself, other than by 1
+		// because dividing by more than half would give you a number less than 2
+		// so either 1 or 0
+		// we know every number is divisible by 1 and can't be divided by 0
+		
+		// if input is < 1, throw exception
+		if (i<1) {
+			throw new IllegalArgumentException();
 		}
+		// if input is 1 or 2, we'll just return the output (2 or 3)
+		if (i==1) {
+			return 2;
+		} else if (i==2) {
+			return 3;
+		} else if (i==3) {
+			return 5;
+		} else if (i>3) {
+			// create a list of primes
+			ArrayList<Integer> primes = new ArrayList<Integer>();
+			// iterate through all numbers until you've got i prime numbers
+			for (int holder = 6; holder<1000000; holder++) {
+				// create int to track num of factors
+				int factors = 0;
+				// loop through all numbers until we have i primes
+				for (int pointer = 2; pointer<holder/2; pointer++) {
+					// if holder is divisible by pointer
+					if (holder%pointer==0) {
+						// then add one to factors 
+						factors++;
+					} 
 					
-
-		public String rotate(String string) {
-			// TODO Write an implementation for this method declaration
-			
-			// ok, we want to take the input string
-			// and 'shift' each character to the 'right'
-			// by the key
-			
-			// so we need to iterate over each char
-			// and set its value to 'its value + key'
-			
-			// its value will be grabbed from an array of the alphabet
-			
-			// so let's start by creating an alphabet array
-			char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();	
-			// and an uppercase alphabet array
-			char[] capalphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-			
-			// ok, now we have an alphabet array
-			// what do we want to do now
-			
-			// well, we've got a string
-			// let's add the key to each char in the string
-			
-			// let's iterate over the string
-			// we'll add rotated letters to a string builder
-			// let's create the sb first
-			StringBuilder sb = new StringBuilder();
-			
-			// now we'll loop over the input string and add rotated letters 
-			// to the sb
-
-			for (int i=0; i<string.length(); i++) {
-				// get the char from the input string
-				// and add its rotated value to the sb
-
-				// if the char is non-alphabetical
-				if (string.charAt(i) > 123 || string.charAt(i) < 65) {
-					// add it without rotating it
-					sb.append(string.charAt(i));
-					// else if the char is a capitalized letter
-				} else if (string.charAt(i) >= 65 && string.charAt(i) <= 90){
-					// get the letter
-					char c = string.charAt(i);
-					// get index of char in capalphabet
-					// iterate over capalphabet 
-					for (int j=0; j<capalphabet.length; j++) {
-						// if element at index is c
-						if (capalphabet[j]==c) {
-							// if j + key is greater than or equal to capalphabet.length
-							// then we need to subtract capalphabet's length from it
-							// to start again at 0, ('a')
-							if (j+key>=capalphabet.length) {
-								// subtract alphabet length from j
-								j-=capalphabet.length;
-							}
-							// rotate char
-							c = capalphabet[j+key];
-							// add rotated char to sb
-							sb.append(c);
-							// end loop
-							j = capalphabet.length;
-						}
-					}
-					// else if it's a lowercase letter
-				} else if (string.charAt(i) >= 97 && string.charAt(i) <= 122) {
-					// get the letter
-					char c2 = string.charAt(i);
-					// get index of char in alphabet
-					// iterate over alphabet 
-					for (int k=0; k<alphabet.length; k++) {
-						// if element at index is c
-						if (alphabet[k]==c2) {
-							// if j + key is greater than or equal to alphabet.length
-							// then we need to subtract alphabet's length from it
-							// to start again at 0, ('a')
-							if (k+key>=alphabet.length) {
-								// subtract alphabet length from j
-								k-=alphabet.length;
-							}
-							// rotate char
-							c2 = alphabet[k+key];
-							// add rotated char to sb
-							sb.append(c2);
-							// end loop
-							k = alphabet.length;
-						}
-					}
+				}
+				// after checking for all factors of number
+				// if number has no factors, it's prime
+				if (factors==0) {
+					primes.add(holder);
+				}
+				// if size of primes == i
+				if (primes.size()==i-3) {
+					// return last element in i
+					int returnedprime = primes.get(primes.size()-1);
+					return returnedprime;
 				}
 			}
-			// create string to return
-			String returnstr = sb.toString();
-			System.out.println(returnstr);
-			return returnstr;
+			
 		}
+		return -1;
+		
 	}
 }
 				

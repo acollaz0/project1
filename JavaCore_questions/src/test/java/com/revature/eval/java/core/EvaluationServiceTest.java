@@ -430,35 +430,35 @@ public class EvaluationServiceTest {
 				rotationalCipher.rotate("Gur dhvpx oebja sbk whzcf bire gur ynml qbt."));
 	}
 
-//	/*******************************************************************
-//	 * Question 12
-//	 ******************************************************************/
-//	@Test
-//	public void testFirstPrime() {
-//		assertThat(evaluationService.calculateNthPrime(1), is(2));
-//	}
-//
-//	@Test
-//	public void testSecondPrime() {
-//		assertThat(evaluationService.calculateNthPrime(2), is(3));
-//	}
-//
-//	@Test
-//	public void testSixthPrime() {
-//		assertThat(evaluationService.calculateNthPrime(6), is(13));
-//	}
-//
-//	@Test
-//	public void testBigPrime() {
-//		assertThat(evaluationService.calculateNthPrime(10001), is(104743));
-//	}
-//
-//	@Test
-//	public void testUndefinedPrime() {
-//		expectedException.expect(IllegalArgumentException.class);
-//		evaluationService.calculateNthPrime(0);
-//	}
-//
+	/*******************************************************************
+	 * Question 12
+	 ******************************************************************/
+	@Test
+	public void testFirstPrime() {
+		assertThat(evaluationService.calculateNthPrime(1), is(2));
+	}
+
+	@Test
+	public void testSecondPrime() {
+		assertThat(evaluationService.calculateNthPrime(2), is(3));
+	}
+
+	@Test
+	public void testSixthPrime() {
+		assertThat(evaluationService.calculateNthPrime(6), is(13));
+	}
+
+	@Test
+	public void testBigPrime() {
+		assertThat(evaluationService.calculateNthPrime(10001), is(104743));
+	}
+
+	@Test
+	public void testUndefinedPrime() {
+		expectedException.expect(IllegalArgumentException.class);
+		evaluationService.calculateNthPrime(0);
+	}
+
 //	/*******************************************************************
 //	 * Question 13
 //	 ******************************************************************/
