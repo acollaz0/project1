@@ -788,8 +788,83 @@ public class EvaluationService {
 		 * @return
 		 */
 		public static String encode(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+
+			// returns alphabetically-reversed string, all lowercase
+			
+			// want to start by ridding string of all non alpha chars
+			string = string.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
+			
+			// use an alphabet char array
+			char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+			
+			// start a stringbuilder
+			StringBuilder sb = new StringBuilder();
+			
+			// now we want to reverse each character
+			// we'll loop over the string
+			for (int i=0; i<string.length(); i++) {
+				// reverse character by checking index in alphabet and 
+				// changing to character at inverse index
+				// loop through char array 
+				for (int j=0; j<alphabet.length; j++) {
+					// if char is a number
+					if (string.charAt(i)>48 && string.charAt(i)<57) {
+						// add number to sb
+						sb.append(string.charAt(i));
+						// break loop
+						j=alphabet.length;
+					}
+					// when we find the char
+					else if (string.charAt(i)==alphabet[j]) {
+						// then we want to get the reverse of that char
+						// reverse = char at opposite index
+						
+						sb.append(alphabet[alphabet.length-1-j]);
+						
+						// break loop
+						j=alphabet.length;
+					}
+				}
+				
+			}
+			
+			// convert stringbuilder to string
+			String str = sb.toString();
+			
+			// split string up to break into 5-char words
+			String[] fivesarr = str.split("");
+			
+			// convert to arraylist
+			ArrayList<String> fives = new ArrayList<>(Arrays.asList(fivesarr));
+			
+			// if we have more than 5 characters
+			if (fives.size()>5) {
+				// loop over string, adding space after every five-letter sequence (every 6th char)
+				for (int k=6; k<fives.size(); k++) {
+					// if k is divisible by 6
+					if (k%6==0) {
+						// add a space to array
+						fives.add(k-1, " ");
+					}
+				}
+			}
+			
+			StringBuilder sb2 = new StringBuilder();
+			
+			for (String s: fives) {
+				sb2.append(s);
+			}
+			
+			String rstr = sb2.toString();
+			
+			return rstr;
+			
+			
+			
+			
+			
+			
+			
 		}
 
 		/**
@@ -799,11 +874,59 @@ public class EvaluationService {
 		 * @return
 		 */
 		public static String decode(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+			// returns alphabetically-reversed string, all lowercase
+			
+			// want to start by ridding string of all non alpha chars
+			string = string.replaceAll("\\s+","").toLowerCase();
+			
+			// use an alphabet char array
+			char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+			
+			// start a stringbuilder
+			StringBuilder sb = new StringBuilder();
+			
+			// now we want to reverse each character
+			// we'll loop over the string
+			for (int i=0; i<string.length(); i++) {
+				// reverse character by checking index in alphabet and 
+				// changing to character at inverse index
+				// loop through char array 
+				for (int j=0; j<alphabet.length; j++) {
+					// if char is a number
+					if (string.charAt(i)>48 && string.charAt(i)<57) {
+						// add number to sb
+						sb.append(string.charAt(i));
+						// break loop
+						j=alphabet.length;
+					}
+					// when we find the char
+					else if (string.charAt(i)==alphabet[j]) {
+						// then we want to get the reverse of that char
+						// reverse = char at opposite index
+						
+						sb.append(alphabet[alphabet.length-1-j]);
+						
+						// break loop
+						j=alphabet.length;
+					}
+				}
+				
+			}
+			
+			// convert sb to string
+			String rstr = sb.toString();
+			// and return it
+			return rstr;
+			
+			
+			
+			
+			
+						
+						
 		}
 	}
-
+	
 	/**
 	 * 15. The ISBN-10 verification process is used to validate book identification
 	 * numbers. These normally contain dashes and look like: 3-598-21508-8
