@@ -17,60 +17,70 @@ public class Practice {
 	public static void main(String[] args) {
 		System.out.println(("___________ \n Practice \n"
 				+ "___________"));
-		System.out.println();		
+		System.out.println(solveWordProblem("What is 1 plus 1?"));		
 		
 		
 	}
 	
 	/**
-	 * 18. Given a number, find the sum of all the unique multiples of particular
-	 * numbers up to but not including that number.
+	 * 20. Parse and evaluate simple math word problems returning the answer as an
+	 * integer.
 	 * 
-	 * If we list all the natural numbers below 20 that are multiples of 3 or 5, we
-	 * get 3, 5, 6, 9, 10, 12, 15, and 18.
+	 * Add two numbers together.
 	 * 
-	 * The sum of these multiples is 78.
+	 * What is 5 plus 13?
 	 * 
-	 * @param i
-	 * @param set
+	 * 18
+	 * 
+	 * Now, perform the other three operations.
+	 * 
+	 * What is 7 minus 5?
+	 * 
+	 * 2
+	 * 
+	 * What is 6 multiplied by 4?
+	 * 
+	 * 24
+	 * 
+	 * What is 25 divided by 5?
+	 * 
+	 * 5
+	 * 
+	 * @param string
 	 * @return
 	 */
-	public static int getSumOfMultiples(int i, int[] set) {
-		
-		// so for 20, [3, 5]
-		// we've got i, x and y
-		
-		// we first want to capture every time x and y go into i
-		// so x: 3, 6, 9, 12, 15, 18
-		// y: 5, 10, 15
-		// then we just add them up
-		
-		// we'll loop through twice
-		
-		// first time using x
-		int x = set[0];
-		
-		int sum = 0;
-		
-		for (int j=x; j<i; j+=j) {
-			if (j<i) {
-				// add j to sum
-				sum+=j;	
-			}
-		}
-		
-		// then using y
-		int y = set[1];
-		
-		for (int k=y; k<i; k+=k) {
-			if (k<i) {
-				// add j to sum
-				sum+=k;	
-			}
-		}
-		
-		return sum;
-	}
+	public static int solveWordProblem(String string) {
+		// so we get a string of six words
+				// we care about the third, fourth and sixth ones
+				// so let's store those
+				String[] parts = string.split(" ");
+				
+				Integer x = Integer.parseInt(parts[2]);
+				String op = parts[3];
+				Integer y = 1;
+				if (parts.length==5) {
+					String[] ys = parts[4].split("\\?");
+					String yy = ys[0];
+					y = Integer.parseInt(yy);
+				} else {
+					String[] ys = parts[5].split("//?");
+					String yy = ys[0];
+					y = Integer.parseInt(yy);
+				}
+				System.out.println(String.format("x: %s, y: %s, op: %s", x, y, op));
 
+				// now perform operation depending on operator, op
+				if (op.equals("plus")) {
+					return x+y;
+				} else if (op.equals("minus")) {
+					return x-y;
+				} else if (op.equals("multiplied")) {
+					return x*y;
+				} else {
+					return x/y;
+				}
+	}
+		
+		
 }
 				
