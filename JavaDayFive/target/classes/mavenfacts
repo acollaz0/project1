@@ -1,0 +1,15 @@
+Maven is a tool for build automation and build management
+We have to import packages all the time to have out applications
+Java has a lot of packages already built into it collections
+The native Java packages get to be cool and use java.anything.anything
+
+the oldschool way to add new packages in java code to an application was to 
+download a .jar file and manually build it into your class path when
+designing an application. This is tedious and prone to error.
+
+Maven will do build automation updates for packages for us
+The heart of Maven is the pom.xml
+
+pom.xml (Project Object Model) A configration file for your java Application.
+It will contain things such as the name of the project. The packages used in the project
+what version of Java to compile as. If you want the tests you've written for it to be run automatically once it's built

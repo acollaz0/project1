@@ -1,0 +1,198 @@
+What is Java
+	Write Once Run Anywhere
+	tremendous library support
+	automatic memory allocation (no pointers!)
+		allows for faster development
+	Java is OOP (Object Oriented Programming)
+		has strong and static typing
+		does have some features that are not OOP like 
+		primitives
+		lambda
+	JDK(For Developers) -> 
+		JRE(Has resources and classes to run java apps) -> 
+			JVM(The Engine that process bytecode)
+				Has virtual processors/registers memory
+				
+--------------------------------------------------------
+Memory in Java
+  Automatic memory allocation
+  An object is marked for garbage collection when it can no longer be reached by the application. All references to it are gone.
+  garbage collection happens when java wants
+  we can request but not enforce collection with gc
+  
+  Heap - Where all objects live
+  Stack - Called methods are stored
+  
+--------------------------------------------------------
+OOP
+	paradigm of programming where we build applications 
+	around classes and objects
+	
+	class - blueprint for an object
+	object - instance of a class
+	
+
+	abstraction - hiding implementation - not necessary to know how something works
+	abstract classes, abstract methods, interfaces
+	
+	polymorphism - one object many labels
+	static polymorphism - overloading this happens at compile time
+	dynamic polymorphism - overriding this happens at runtime
+	
+	inheritance - Reusing code in other classes
+	using the extends keyword
+	
+	Encapsulation - Protecting variables, methods, and code
+	access modifiers
+--------------------------------------------------------
+Scope
+  JAVA HAS NO GLOBAL SCOPE
+  class/static scope
+  method scope
+  block scope
+  
+--------------------------------------------------------
+Access modifers (from least secure to most)
+
+  public - accessible anywhere in the application
+  protected - same package with the loophole of classes in other packages that inherit from it
+  default - Only the same package
+  private - Only the same class
+
+--------------------------------------------------------
+Constructors
+allocates memory for an object and builds that object
+the new keyword allocates memory technically
+Java provides a default no args constructor only if you do not provide constructors
+The first line in a constructor is always super even if you do not write it.
+--------------------------------------------------------
+Keywords
+  final - the value cannot be changed. make a method unable to be overridden, class unable to extended.
+  static
+  void
+--------------------------------------------------------
+String
+  Not a primitive
+  object designed to hold character information
+  Strings use the string pool to save memory 
+  The string pool is a special part of the heap where strings of the same value share the same memory address/object
+  String is immutable (is a final class)
+  StringBuilder is not a final class (is mutable)
+--------------------------------------------------------
+Exceptions
+  Exceptions are objects that are thrown when code executes in an unhappy path
+  Exceptions can and should be handled by the Programmer
+  Errors are Catastrophic problems that should be caught
+  They both inherit from throwable and therefore can be caught
+  
+  compile time or checked exceptions - Must be handled by the program
+  runtime exceptions - Can or cannot be handled
+  
+  try (code you want to run)
+  catch (code to run when an exception is caught)
+  finally (code that will always run)
+  only one catch block will ever execute
+  must write catch blocks from most specific to least specific exception
+  
+  throw- sends an exception into the application
+  throws- ducks an exception is part of the method signature
+-----------------------------------------------------
+Object
+  All objects inherit from the Object class
+  toString(), hashcode(), equals(), compareTo()
+-----------------------------------------------------
+Abstract class - a class that cannot be instantiated
+  abstract method is a method with a signature but no implementation
+Interface - cannot be instantiated
+  classes implement an interface to add methods/behavior
+  public static final variables
+  methods are abstract by default.
+  Can use the default keyword to not make them abstract
+
+  marker interface - an interface with nothing in it. Sole purpose is to tag an object
+-----------------------------------------------------
+Wrapper class
+  the object version of a primitive
+  
+  autoboxing - primitive -> wrapper
+  unboxing wrapper -> primitive
+-----------------------------------------------------
+Collection
+  Java Collection framework - set of objects designed to hold other objects
+  the root interface is iterable. The collection interface extends iterable.
+  Map (NOT ITERABLE) (black sheep of collection) Map is a Key Value Pair Map<K, V>()
+  List - preserves the order of insertion and allows duplicates
+  Set - does not preserve order of insertion and no duplicates
+  tree ordered
+  hash unordered
+-----------------------------------------------------
+File IO
+
+BufferedReader - to read in a file
+BufferedWriter - to write a file
+
+FileInputStream - read in a file as bytes (ex. images)
+FileOutputStream - output a file as bytes
+-----------------------------------------------------
+Generics 
+  are the <T> that allow us to specify a type in Collection
+------------------------------------------------------
+Reflection 
+  java api it is a way for Java to write Java while the application is running.
+  It can do things like access private variables create new methods from other methods
+  create new classes from other classes
+-------------------------------------------------------
+Thread
+  the smallest unit of instruction 
+  A single application with 1 to many threads.
+  The main thread is called the daemon thread.
+  
+  We can create threads implement Runnable interface and extending the Thread class.
+  Threading is a way to increase efficient use of processing power
+  
+  stages - new, runnable, running, terminated, blocked
+  conflicts - Deadlock, Alivelock
+-------------------------------------------------------
+Lambda
+  recent edition to Java allows us to perform functional programming
+  it is done using a functional interface
+  Function f =()->{code that runs};
+-------------------------------------------------------
+Logging
+  we use logging to trace our application for debugging, 
+  error/exception notification, important events
+-------------------------------------------------------
+Maven
+  tool for build automation and package management
+  we use the pom.xml (Project Object Model) to configure Maven for a project
+-------------------------------------------------------
+Design Pattern
+  a conventional solution to a coding problem/issue
+  singleton - you only ever want one instance of a class
+  			  implement a private constructor and public method 
+  			  to call that constructor when appropriate
+  factory   - need an object to perform some functionality you know what you need and the inputs but not a specific class
+  			  a factory will create the appropriate object
+  			  you can use the object with an interface
+-------------------------------------------------------
+Scanner
+  a class responsible for taking in user input
+  Scanner kbd = new Scanner(System.in);
+-------------------------------------------------------
+  
+  
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	

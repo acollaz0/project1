@@ -1,0 +1,6 @@
+2019-01-18 09:52:25 INFO  MyLogger:10 - Information Messages
+2019-01-18 09:58:22 INFO  MyLogger:11 - Information Messages
+2019-01-18 09:58:22 WARN  MyLogger:12 - Use this for when something occurs that isnt right but not necessarially an issue
+2019-01-18 09:58:22 ERROR MyLogger:13 - This is for exceptions and 'errors' shuold be stuff that doesn't crash apps
+2019-01-18 09:58:22 DEBUG MyLogger:14 - This is for debugging ie removing the milion printlines
+2019-01-18 09:58:22 FATAL MyLogger:15 - This is for catastrophic failures. Program crashed scenarios
