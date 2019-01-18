@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="AllTests" project="JavaCore_questions" tests="5" started="5" failures="0" errors="0" ignored="0">
-  <testsuite name="com.revature.eval.java.core.AllTests" time="0.0">
-    <testcase name="rotateCapitalLetters" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
-    <testcase name="rotateNumbers" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
-    <testcase name="rotatePunctuation" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
-    <testcase name="rotateAllLetters" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
-    <testcase name="rotateSingleCharacterWithWrapAround" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
-  </testsuite>
-</testrun>

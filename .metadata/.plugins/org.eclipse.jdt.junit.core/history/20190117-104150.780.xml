@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="AllTests" project="JavaCore_questions" tests="5" started="5" failures="0" errors="0" ignored="0">
-  <testsuite name="com.revature.eval.java.core.AllTests" time="0.0">
-    <testcase name="invalidCharacterInIsbn" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
-    <testcase name="validIsbnNumberWithCheckDigitOfTen" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
-    <testcase name="checkDigitIsACharacterOtherThanX" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
-    <testcase name="validIsbnNumber" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
-    <testcase name="invalidIsbnCheckDigit" classname="com.revature.eval.java.core.AllTests" time="0.0"/>
-  </testsuite>
-</testrun>

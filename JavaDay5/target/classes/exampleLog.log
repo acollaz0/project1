@@ -1,0 +1,11 @@
+2019-01-18 09:52:24 INFO  MyLogger:15 - Information message: some stuff happened
+2019-01-18 09:54:31 INFO  MyLogger:15 - Information message: some stuff happened
+2019-01-18 09:54:31 WARN  MyLogger:16 - Use this for when something occurs that isn't right but not necessarily bad
+2019-01-18 09:55:41 INFO  MyLogger:15 - Information message: some stuff happened
+2019-01-18 09:55:41 WARN  MyLogger:16 - Use this for when something occurs that isn't right but not necessarily bad
+2019-01-18 09:55:41 ERROR MyLogger:17 - Used for exceptions and 'errors'. Should be stuff that doesn't crash the app
+2019-01-18 09:57:30 INFO  MyLogger:15 - Information message: some stuff happened
+2019-01-18 09:57:30 WARN  MyLogger:16 - Use this for when something occurs that isn't right but not necessarily bad
+2019-01-18 09:57:30 ERROR MyLogger:17 - Used for exceptions and 'errors'. Should be stuff that doesn't crash the app
+2019-01-18 09:57:30 DEBUG MyLogger:18 - Use this for debugging purposes. Replace the System.out.println
+2019-01-18 09:57:30 FATAL MyLogger:19 - For catastrophic failures. Program crashed

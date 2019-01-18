@@ -8,6 +8,7 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="JavaDay5"/>
 			<item value="JavaDay3"/>
 			<item value="AccessModifiers"/>
 			<item value="JavaDay2"/>

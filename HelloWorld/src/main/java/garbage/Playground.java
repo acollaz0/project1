@@ -27,6 +27,14 @@ public class Playground {
 		//The programmer cannot destroy objects, and don't even try.
 		//Can only ignore object and delete references and hope java takes care of it.
 		
+		Integer i = 1;
+		Integer i2 = 1;
+		
+		Integer i3 = 3000;
+		Integer i4 = 3000;
+		System.out.println(i==i2); //true, thanks to low value integers using the bytepool
+		System.out.println(i3==i4); //false, since they don't share the same memory address (as you would expect)
+		
 	}
 	
 }
