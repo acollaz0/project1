@@ -505,10 +505,39 @@ public class EvaluationService {
 		 * @return
 		 */
 		public static String encode(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+			String cipher = "";
+			int count = 0;
+			Map<Character, Character> key = new HashMap<Character, Character>();
+			
+			for (int lower = 97; lower <= 122; lower++) {
+				key.put((char)lower, (char)(122 - (lower-97)));
+			}
+			
+			for (int upper = 65; upper <= 90; upper++) {
+				key.put((char)upper, (char)(90 - (upper-65)));
+			}
+			
+			for(int i = 0; i < string.length(); i++) {
+				if(count == 5) {
+					cipher = cipher + " ";
+					count = 0;
+				}
+				
+				if(string.substring(i, i+1).matches("[a-zA-Z]")) {
+					cipher = cipher + key.get(string.charAt(i));
+					count++;
+					
+				}
+				
+				else if(string.substring(i, i+1).matches("[0-9]")){
+					cipher = cipher + string.charAt(i);
+					count++;
+				}
+				
+			}
+			
+			return cipher.toLowerCase().trim();
 		}
-
 		/**
 		 * Question 14
 		 * 
@@ -516,8 +545,28 @@ public class EvaluationService {
 		 * @return
 		 */
 		public static String decode(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+			String cipher = "";
+			Map<Character, Character> key = new HashMap<Character, Character>();
+			
+			for (int lower = 97; lower <= 122; lower++) {
+				key.put((char)(122 - (lower-97)), (char)lower);
+			}
+			for(int i = 0; i < string.length(); i++) {
+				
+				if(string.substring(i, i+1).matches("[a-z]")) {
+					cipher = cipher + key.get(string.charAt(i));
+				}
+				
+				if(string.substring(i, i+1).matches("[0-9]")){
+					cipher = cipher + string.charAt(i);
+
+				}
+				
+				
+			}
+			
+			
+			return cipher;
 		}
 	}
 
@@ -544,8 +593,26 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isValidIsbn(String string) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		String parse = "";
+		int total = 0, index = 0;
+		for(int i = 0; i < string.length(); i++) {
+			if (string.substring(i, i+1).matches("[0-9|X]")){
+				parse = parse + string.charAt(i);
+			}
+		}
+		if(parse.length() == 10) {
+			for(int j = 10; j >= 1; j--) {
+				if(parse.charAt(index) == 'X') {
+					total = total + 10 * j;
+				}
+				else
+					total = total + parse.charAt(index)*j;
+			}
+		}
+		else
+			return false;
+		
+		return total % 11 == 0;
 	}
 
 	/**
@@ -562,8 +629,20 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isPangram(String string) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		String input = string.toLowerCase();
+		boolean [] alphacheck = new boolean[26];
+		int index = 0;
+		for (int i = 0; i < input.length(); i++) {
+			if(input.substring(i, i+1).matches("[a-z]")) {
+				index = input.charAt(i) - 'a';
+				alphacheck[index] = true;
+			}
+		}
+		for(int j = 0; j <= 25; j++) {
+			if(alphacheck[j] == false)
+				return false;
+		}
+		return true;
 	}
 
 	/**
@@ -593,8 +672,23 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int getSumOfMultiples(int i, int[] set) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+		List<Integer> multiples = new ArrayList<Integer>();
+		int sum = 0;
+		
+		for(int k : set) {
+			if (k == 1)
+				sum++;
+			for(int j = 2; j < i; j++) {
+				if((j % k == 0) && !multiples.contains(j)) {
+					multiples.add(j);
+				}
+			}
+		}
+		
+		for(int s : multiples) {
+			sum = sum + s;
+		}
+		return sum;
 	}
 
 	/**
