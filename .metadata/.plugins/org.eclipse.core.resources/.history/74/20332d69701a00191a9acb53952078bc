@@ -1,8 +1,0 @@
-package singleton;
-
-public class Road {
-	
-//	Car c = new Car("Bad car", 666); This is impossible, because the constructor is private.
-	Car c = Car.getCar();
-
-}

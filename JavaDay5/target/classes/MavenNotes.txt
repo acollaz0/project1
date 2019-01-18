@@ -1,4 +1,4 @@
-Maven is a tool for build automation and package management
+Maven is a tool for build automation and package management.
 
 We have to import packages all the time to have applications work
 Java has a lot of packages built in (collections, Math, etc.)
@@ -8,6 +8,18 @@ The old school way to add packages and java code to an applications was to downl
 when designing an application. This is tedious and prone to errors. You were responsible for keeping the program updated if one of the packags
 changed
 
-Maven will do build automation update packages for us. The heart of maven is the pom.xml
-Project Object Model - A config file for the java application. It will contain things like the name of the project, the packages used in project,
+Maven will do build automation update packages for us. The heart of maven is the "pom.xml"
+Project Object Model (pom) - A config file for the java application. It will contain things like the name of the project, the packages used in project,
 what version of java to compile the proj as, if you want the tests you've written to be run automatically on build, etc.
+
+Logging:
+Use logging to trace our application for debugging/error/exception notification, important events, etc.
+
+Scanner: responsible for taking user input (mostly)
+Scanner scan = new Scanner(System.in);
+
+Scopes:
+class/staic scope
+instance scope
+method scope
+block scope

@@ -1,7 +1,0 @@
-package abstractfun;
-
-public interface Herbivore {
-	
-	public void eatsPlants() ;
-
-}

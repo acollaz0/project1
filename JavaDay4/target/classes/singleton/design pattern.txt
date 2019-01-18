@@ -1,6 +1,6 @@
 What is a design pattern?
 
-It is an established convention for solving a software problem.
+It is an established convention for solving a software problem/issue.
 Aka: an approach/technique for solving a certain type of problem.
 
 Patterns will have distinctive features, but can be implemented slightly differently.(Whatever that means)
@@ -10,4 +10,9 @@ Use patterns because they promote extensibility, are low maintenance, and make c
 Singleton (an example of a design pattern): a solution where you only ever want one instance of a class. 
 All singletons should have a private constructor. Should have a method for determining if an instance exists, 
 	and if one doesn't, then create one
-Example: Useful to encapsulate a database connection, so that there is only ever one connection.
+Example: Useful to encapsulate a database connection, so that there is only ever one connection. Also good for a Logger class, so all logs go to
+same place
+
+Factory (A design pattern):  When you need an object to perform some functionality. You know what needs doing and the inputs, but not the class
+The factory will create an object with the appropriate class, and you will use that object through an interface.
+

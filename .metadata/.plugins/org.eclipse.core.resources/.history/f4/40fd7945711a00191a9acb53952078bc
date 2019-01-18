@@ -1,9 +1,0 @@
-package factory;
-
-public class Cupcake implements Cake {
-
-	@Override
-	public void serve() {
-	}
-
-}

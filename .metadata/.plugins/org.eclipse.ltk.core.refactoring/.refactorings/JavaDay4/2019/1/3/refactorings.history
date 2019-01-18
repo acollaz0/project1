@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename local variable &apos;amount&apos; in &apos;factory.CakeFactory.getCake(...)&apos; to &apos;peopletoserve&apos;&#x0D;&#x0A;- Original project: &apos;JavaDay4&apos;&#x0D;&#x0A;- Original element: &apos;factory.CakeFactory.getCake(int).amount&apos;&#x0D;&#x0A;- Renamed element: &apos;amount&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;amount&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src\/main\/java&lt;factory{CakeFactory.java[CakeFactory~getCake~I@amount!253!262!257!262!I!0!true" name="peopletoserve" references="true" stamp="1547741174968" version="1.0"/>
-</session>

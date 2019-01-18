@@ -1,9 +1,0 @@
-package abstractfun;
-
-public interface Herbivore {
-	
-	public default void eatsPlants() { //Using default implementation is a relatively new addition to java (Java 8)
-		System.out.println("Eat plants yum");
-	}
-
-}

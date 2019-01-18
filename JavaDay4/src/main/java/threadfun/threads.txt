@@ -25,3 +25,6 @@ kind of like a hostage situation.
 Livelock: When two threads are trying to give each other priority to use their resource
 Priority: essentially the order in which a thread should go. Minimum priority is 1, max is 10. Threads with higher priority 
 would be given access first
+
+Create threads by implementing the Runnable interface or extending the Thread class
+Threading is a way to increase efficient use of processing power

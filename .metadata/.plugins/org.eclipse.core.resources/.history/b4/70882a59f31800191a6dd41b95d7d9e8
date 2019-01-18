@@ -1,6 +1,0 @@
-package objectfun;
-
-public class Student {
-	String name;
-	int age;
-}
