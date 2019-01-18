@@ -1122,8 +1122,96 @@ public static boolean isValidIsbn(String string) {
 	 * @return
 	 */
 	public int getSumOfMultiples(int i, int[] set) {
-		// TODO Write an implementation for this method declaration
+		
+		
+		if (set.length==1) {
+			
+			int sum = 0;
+			
+			for (int j=set[0]; j<i; j+=set[0]) {
+				if (j<i) {
+					// add j to sum
+					sum+=j;	
+				}
+			}
+			
+			return sum;
+			
+		} else if (set.length==2) {
+			// so for 20, [3, 5]
+			// we've got i, x and y
+			
+			// we first want to capture every time x and y go into i
+			// so x: 3, 6, 9, 12, 15, 18
+			// y: 5, 10, 15
+			// then we just add them up
+			
+			// we'll loop through twice
+			
+			// first time using x
+			int x = set[0];
+			
+			int sum = 0;
+			
+			for (int j=x; j<i; j+=x) {
+				if (j<i) {
+					// add j to sum
+					sum+=j;	
+				}
+			}
+			
+			// then using y
+			int y = set[1];
+			
+			for (int k=y; k<i; k+=y) {
+				if (k<i && (k%x!=0)) {
+					// add j to sum
+					sum+=k;	
+				}
+			}
+			
+			return sum;
+		} else if (set.length==3) {
+			
+			// we'll loop through thrice
+			
+			// first time using x
+			int x = set[0];
+			
+			int sum = 0;
+			
+			for (int j=x; j<i; j+=x) {
+				if (j<i) {
+					// add j to sum
+					sum+=j;	
+				}
+			}
+			
+			// then using y
+			int y = set[1];
+			
+			for (int k=y; k<i; k+=y) {
+				if (k<i && (k%x!=0)) {
+					// add j to sum
+					sum+=k;	
+				}
+			}
+			
+			// then using z
+			int z = set[2];
+			
+			for (int l=z; l<i; l+=z) {
+				if (l<i && (l%x!=0) && (l%y!=0)) {
+					// add j to sum
+					sum+=l;	
+				}
+			}
+			
+			return sum;
+		}
+		
 		return 0;
+
 	}
 
 	//

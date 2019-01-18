@@ -17,75 +17,59 @@ public class Practice {
 	public static void main(String[] args) {
 		System.out.println(("___________ \n Practice \n"
 				+ "___________"));
-		System.out.println(getGigasecondDate(LocalDate.of(1967, Month.MARCH, 1)));		
+		System.out.println();		
 		
 		
 	}
 	
 	/**
-	 * 17. Calculate the moment when someone has lived for 10^9 seconds.
+	 * 18. Given a number, find the sum of all the unique multiples of particular
+	 * numbers up to but not including that number.
 	 * 
-	 * A gigasecond is 109 (1,000,000,000) seconds.
+	 * If we list all the natural numbers below 20 that are multiples of 3 or 5, we
+	 * get 3, 5, 6, 9, 10, 12, 15, and 18.
 	 * 
-	 * @param given
+	 * The sum of these multiples is 78.
+	 * 
+	 * @param i
+	 * @param set
 	 * @return
 	 */
-	public static Temporal getGigasecondDate(Temporal given) {
-		// we're given a birthday
+	public static int getSumOfMultiples(int i, int[] set) {
 		
-		// we want to return that birthday + 10^9 sec
+		// so for 20, [3, 5]
+		// we've got i, x and y
 		
-		// given LocalDate
+		// we first want to capture every time x and y go into i
+		// so x: 3, 6, 9, 12, 15, 18
+		// y: 5, 10, 15
+		// then we just add them up
 		
-		// returning LocalDateTime
+		// we'll loop through twice
 		
-		// how many days in 10^9 seconds?
-		// 60 sec in a min, 60 min in an hour, 24 hours in a day
-		double daysgiga = (Math.pow(10, 9))/60/60/24;
-		// get remaining seconds
-		int remainingsec = (int) ((Math.pow(10, 9))%(60*60*24));
+		// first time using x
+		int x = set[0];
 		
-		// now that we have gigadays, we want to add it to the given birthday
-		// using plusDays method
+		int sum = 0;
 		
-		// first we need to create LocalDate obj out of given
+		for (int j=x; j<i; j+=j) {
+			if (j<i) {
+				// add j to sum
+				sum+=j;	
+			}
+		}
 		
-		// parse given to create LocalDate
-		String[] bd = given.toString().split("-");
-		// get year
-		int year = Integer.parseInt(bd[0]);
-		// month
-		int month = Integer.parseInt(bd[1]);
-		// day
-		int day = Integer.parseInt(bd[2]);
-		// create localdate
-		LocalDate ld = LocalDate.of(year, month, day);
+		// then using y
+		int y = set[1];
 		
-		// add days to get gigasecond localdate
-		LocalDate gigald = ld.plusDays((long)(Math.pow(10, 9))/(60*60*24));
+		for (int k=y; k<i; k+=k) {
+			if (k<i) {
+				// add j to sum
+				sum+=k;	
+			}
+		}
 		
-		// now create new localdate string out of gigald
-		// parse given to create LocalDate
-		System.out.println(gigald);
-		String[] gbd = gigald.toString().split("-");
-		// get year
-		int gyear = Integer.parseInt(gbd[0]);
-		// month
-		int gmonth = Integer.parseInt(gbd[1]);
-		// day
-		int gday = Integer.parseInt(gbd[2]);
-		// create localdate
-		LocalDate gld = LocalDate.of(gyear, gmonth, gday);
-		
-		// now we want to create a localdatetime obj w/ remainingsec
-		// must first convert remainingsec to hours, minutes and sec
-		int hours = remainingsec/3600;
-		int minutes = (remainingsec%3600)/60;
-		int sec = ((remainingsec%3600)%60);
-		
-		LocalDateTime ldt = LocalDateTime.of(gyear, gmonth, gday, hours, minutes, sec);
-		
-		return ldt;
+		return sum;
 	}
 
 }
