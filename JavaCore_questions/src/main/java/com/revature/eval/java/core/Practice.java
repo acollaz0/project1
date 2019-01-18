@@ -1,5 +1,11 @@
 package com.revature.eval.java.core;
 
+import static org.junit.Assert.assertEquals;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -11,66 +17,75 @@ public class Practice {
 	public static void main(String[] args) {
 		System.out.println(("___________ \n Practice \n"
 				+ "___________"));
-		System.out.println(isPangram("abcdefghijklmnopqrstuvwxyz"));
-		// 30+45+72+56+12+5+20+0+14+10
+		System.out.println(getGigasecondDate(LocalDate.of(1967, Month.MARCH, 1)));		
+		
 		
 	}
 	
 	/**
-	 * 16. Determine if a sentence is a pangram. A pangram (Greek: παν γράμμα, pan
-	 * gramma, "every letter") is a sentence using every letter of the alphabet at
-	 * least once. The best known English pangram is:
+	 * 17. Calculate the moment when someone has lived for 10^9 seconds.
 	 * 
-	 * The quick brown fox jumps over the lazy dog.
+	 * A gigasecond is 109 (1,000,000,000) seconds.
 	 * 
-	 * The alphabet used consists of ASCII letters a to z, inclusive, and is case
-	 * insensitive. Input will not contain non-ASCII symbols.
-	 * 
-	 * @param string
+	 * @param given
 	 * @return
 	 */
-	public static boolean isPangram(String string) {
-
-
-		// we have a string 
+	public static Temporal getGigasecondDate(Temporal given) {
+		// we're given a birthday
 		
-		// we want to check to see if it contains every letter of the alphabet
+		// we want to return that birthday + 10^9 sec
 		
-		// we'll need to check the string's chars with the alphabet
+		// given LocalDate
 		
-		// so we'll create an alphabet array
-		char[] alphabet = ("abcdefghijklmnopqrstuvwxyz").toCharArray();
+		// returning LocalDateTime
 		
-		// then we'll create an arraylist of characters
-		ArrayList<Character> alphabetlist = new ArrayList<Character>();
+		// how many days in 10^9 seconds?
+		// 60 sec in a min, 60 min in an hour, 24 hours in a day
+		double daysgiga = (Math.pow(10, 9))/60/60/24;
+		// get remaining seconds
+		int remainingsec = (int) ((Math.pow(10, 9))%(60*60*24));
 		
-		// add letters to alphabetlist
-		for (int i=0; i<alphabet.length; i++) {
-			alphabetlist.add(alphabet[i]);
-		}
+		// now that we have gigadays, we want to add it to the given birthday
+		// using plusDays method
 		
-		// now we'll loop through the string to see if it contains every letter
-		// loop through each char in string
-		for (int j=0; j<string.length(); j++) {
-			// loop through each char in alphabetlist
-			for (int k=0; k<alphabetlist.size(); k++) {
-				// if char is in alphabetlist
-				if (string.charAt(j)==alphabetlist.get(k)) {
-					// remove char from alphabet list
-					alphabetlist.remove(k);
-				}
-			}
-			
-		}
+		// first we need to create LocalDate obj out of given
 		
-		// after checking each letter
-		// if we haven't removed every letter from alphabetlist
-		if (alphabetlist.size()>0) {
-			return false;
-		} else {
-			return true;
-		}
+		// parse given to create LocalDate
+		String[] bd = given.toString().split("-");
+		// get year
+		int year = Integer.parseInt(bd[0]);
+		// month
+		int month = Integer.parseInt(bd[1]);
+		// day
+		int day = Integer.parseInt(bd[2]);
+		// create localdate
+		LocalDate ld = LocalDate.of(year, month, day);
 		
+		// add days to get gigasecond localdate
+		LocalDate gigald = ld.plusDays((long)(Math.pow(10, 9))/(60*60*24));
+		
+		// now create new localdate string out of gigald
+		// parse given to create LocalDate
+		System.out.println(gigald);
+		String[] gbd = gigald.toString().split("-");
+		// get year
+		int gyear = Integer.parseInt(gbd[0]);
+		// month
+		int gmonth = Integer.parseInt(gbd[1]);
+		// day
+		int gday = Integer.parseInt(gbd[2]);
+		// create localdate
+		LocalDate gld = LocalDate.of(gyear, gmonth, gday);
+		
+		// now we want to create a localdatetime obj w/ remainingsec
+		// must first convert remainingsec to hours, minutes and sec
+		int hours = remainingsec/3600;
+		int minutes = (remainingsec%3600)/60;
+		int sec = ((remainingsec%3600)%60);
+		
+		LocalDateTime ldt = LocalDateTime.of(gyear, gmonth, gday, hours, minutes, sec);
+		
+		return ldt;
 	}
 
 }
