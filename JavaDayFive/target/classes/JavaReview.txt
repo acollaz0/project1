@@ -1,0 +1,330 @@
+Why Java?
+
+WORA - write once run anywhere
+tremendous library support
+automatic memory allocation ( no pointers! =) ) Allows for faster development
+OOP- however it does have some features that are not OOP like primitives and lambdas
+strongly and statically typed 
+compiled language
+
+JDK- Java Development kit . Only people writing java applications need this
+it turns Java Code in a .java file to byte code in a .class file
+javac -command prompt
+
+JRE- Java Runtime Environment. This has the resources and classes necessary
+to actually run a Java application
+java - command prompt
+
+JVM- Java Virtual Machine. This is the essentially the engine that processes 
+bytecode. Virtual processors/registers memory
+
+-----------------------------------------------------------------------------
+Memory in Java
+Automatic memory allocation
+An object is marked for garbage collection when it can no longer be reached by the
+application. All references to it are gone
+garbage collection occurs when Java feels like it
+We can request but not enforce garbage collection with System.gc()
+
+Heap- Where all objects live
+Stack- Called methods are stored
+
+------------------------------------------------------------------------------
+OOP
+paradigm of programming wherein we build applications around classes and objects
+
+class- is a blueprint for an object
+object - an instance of a class
+
+Abstraction - hiding implementation - not necessary to know how something works
+abstract classes, abstract methods. and interfaces
+
+Polymorphism -  one object many labels. 
+static polymorphism - overloading this happens at compile time
+dynamic polymorphism - overriding this happens at runtime
+ability to label on object as several different types
+
+
+Inheritance - Reusing code in other classes
+extends key word 
+
+Encapsulation - Protecting variables and methods and code
+access modifiers
+
+
+---------------------------------------------------------------------------
+Scopes in Java
+
+THERE IS NO GLOBAL SCOPE
+
+class/static scope
+instance scope
+method scope (local scope)
+block/ (local scope)
+
+
+----------------------------------------------------------------------------
+access modifiers
+public - accessible anywhere in the application
+protected - same package with the loophole of classes in other packages that inherit from it
+default- Only the same package
+private - Only the same class
+
+
+------------------------------------------------------------------------------
+Constructors
+allocates memory for and builds an object
+the new keyword allocates memory technically
+Java provides a default no args constructor only if you do not provide constructors
+The first line in a constuctor is always super even if you do not write it
+you can call a constructor of the same class if you use the this() as the first
+
+---------------------------------------------------------------------------------
+Keywords
+-final make a value unchangeable, make a method unable to be overridden, class unable to be inherited
+-static makes a method or variable attached to the class not to any one instance
+
+------------------------------------------------------------------------------------
+String-
+IS NOT A PRIMITIVE
+- object designed to hold character information
+- Strings use the string pool to save memory
+- The string pool is a special part of the heap where strings of the same value
+share the same memory address/object
+-String in immutable aka a final class
+
+StringBuilder- Is a mutable version of String
+StringBuffer- Is a thread safe version of String
+
+------------------------------------------------------------------------------------
+Exceptions
+- Exceptions are objects that are thrown when code executes in an unhappy path
+- Exceptions can and should be handled by the programmer
+- Errors are catastrophic problems that should not be caught
+- They both inherit from throwable and therefore can be caught
+
+compile time or checked exceptions - Must be handled by the programmer
+runtime exceptions - Can or cannot be handled
+
+try - code you want to run
+catch - code to run when an exception is caught
+finally - code that will always run
+only one catch block will ever execute
+must write catch blocks from most specific to least specific exception
+
+throw- sends an exception into the application
+throws- ducks an exception is part of the method signature (Its a warning)
+
+---------------------------------------------------------------------------
+Object class
+All objects inherit from the object class
+toString(), hashcode(), equals()
+
+---------------------------------------------------------------------------
+Abstract class - a class that cannot be instantiated
+abstract method is a method with a signature but no implementation
+
+Interface - cannot be instantiated
+classes implement an interface to add methods/behavior 
+public static final variables
+methods are abstract by default. 
+Can you use the default keyword to not make them abstract
+
+marker interface- interface with nothing in it. Sole purpose is to give the object a type
+
+----------------------------------------------------------------------------
+Wrapper class
+the object version of a primitive
+
+autoboxing- primitive -> wrapper
+unboxing - wrapper -> primitive
+
+------------------------------------------------------------------------------
+Collections
+
+Java Collections framework - set of objects designed to hold other objects
+the root interface is iterable. The collection interface extends iterable
+
+Map is not iterable (black sheep of the collection framework)
+map is a key value pair
+
+List - preserves the order of insertion and allows duplicates
+Set - does not preserve order of insertion and no duplicates
+
+tree - ordered
+hash - unordered
+
+Generics- the <> that allow us to specify the type of object that belongs 
+in a collection
+
+------------------------------------------------------------------------------
+File IO
+
+BufferedReader - to read in a file (text)
+BufferedWriter - to write a file (text)
+
+FileInputStream - to read in a file (bytes)
+FileOutputStream - to write to a file (bytes)
+
+-----------------------------------------------
+
+Reflection 
+Java api it is a way for Java to write Java while the application is running.
+It can do many things like access private variables create new methods from other methods
+create new classes from other classes. Sky is the limit Java is changing itself
+
+-----------------------------------------------
+Threading
+
+thread- smallest unit of instructions 
+A single application will 1 to many threads.
+The main thread is called the daemon thread.
+
+We can create threads implementing Runnable interface and extending the Thread class
+Threading is a way to increase efficent use of processing power
+
+stages - new, runnable, running, terminated, blocked
+Theading conflicts like deadlock and livelock
+
+-----------------------------------------------
+Lambdas are a recent addition to Java which enables us to perform functional programming
+it is done using a functional interface
+
+Function f = ()->{code I want to run};
+
+-----------------------------------------------
+Logging 
+we use logging to trace our application for debugging, error/exception notification, important events
+
+------------------------------------------------
+Maven 
+Tool for build automation and package management
+we use the POM.xml Project Object Model to configure Maven for a project
+
+------------------------------------------------
+Design Pattern is a conventional solution to a coding problem/issue
+
+Singleton - problem: Only ever want one instance of a class
+solution: priavte constructor and a public method with logic to call construction when appropriate
+
+
+Factory - problem: You need an object to perform some sort of functionality. You know
+what you need done and the inputs but not a specific class.
+solution - Factory will create the appropriate object and you use the object
+through an interface
+
+----------------------------------------------
+
+Scanner is a class responsible for taking in user input
+Scanner scan = new Scanner(System.in)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
