@@ -728,8 +728,48 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isLuhnValid(String string) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		String parse = "";
+		int total = 0;
+		if(string.length() <= 1)
+			return false;
+		StringBuilder reverse = new StringBuilder();
+		for(int i = 0; i < string.length(); i++) {
+			if(string.substring(i, i+1).matches("[0-9| ]")) {
+				if(string.charAt(i) == ' '){
+					continue;
+				}
+				parse = parse + string.charAt(i);
+				
+			}
+			else
+				return false;
+			
+		}
+		reverse.append(parse);
+		reverse.reverse();
+		
+		
+		for(int i = 0; i < reverse.length(); i++) {
+	
+			if(i % 2 == 0) {
+				
+				total = total + Character.getNumericValue(reverse.charAt(i));
+				
+			}
+			else {
+				
+				if((Character.getNumericValue(reverse.charAt(i)) * 2) > 9) {
+					total = total + ((Character.getNumericValue(reverse.charAt(i)) * 2) - 9);
+				}
+				else {
+					total = total + (Character.getNumericValue(reverse.charAt(i)) * 2);
+				}
+				
+			}
+			
+		}
+		
+		return (total % 10 == 0);
 	}
 
 	/**
@@ -760,7 +800,41 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int solveWordProblem(String string) {
-		// TODO Write an implementation for this method declaration
+		String[] parse = string.split(" ");
+		
+		int first = Integer.parseInt(parse[2]);
+		int second;
+		int solution = 0;
+		
+		if(parse.length == 5) {
+			if(parse[3].equals("plus")) {
+				second = Integer.parseInt(parse[4].substring(0, parse[4].length() - 1));
+				solution = first + second;
+				return solution;
+			}
+			if(parse[3].equals("minus")) {
+				second = Integer.parseInt(parse[4].substring(0, parse[4].length() - 1));
+				solution = first - second;
+				return solution;
+			}
+				
+				
+		}
+		if(parse.length == 6) {
+			if(parse[3].equals("multiplied")) {
+				second = Integer.parseInt(parse[5].substring(0, parse[5].length() - 1));
+				solution = first * second;
+				return solution;
+			}
+			if(parse[3].equals("divided")) {
+				second = Integer.parseInt(parse[5].substring(0, parse[5].length() - 1));
+				solution = first / second;
+				return solution;
+			}
+			
+		}
+		
+		
 		return 0;
 	}
 
