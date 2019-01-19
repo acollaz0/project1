@@ -1,5 +1,9 @@
 package com.revature.eval.java.core;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -257,8 +261,15 @@ public class EvaluationService {
 		private List<T> sortedList;
 
 		public int indexOf(T t) {
-			// TODO Write an implementation for this method declaration
+			
+			for(T tl : sortedList) {
+				if(tl.equals(t)) {
+					return sortedList.indexOf(tl);
+				}
+			}
 			return 0;
+					
+		
 		}
 
 		public BinarySearch(List<T> sortedList) {
@@ -276,7 +287,7 @@ public class EvaluationService {
 
 		@Override
 		public int compareTo(T arg0) {
-			// TODO Auto-generated method stub
+			
 			return 0;
 		}
 
@@ -600,18 +611,22 @@ public class EvaluationService {
 				parse = parse + string.charAt(i);
 			}
 		}
+		System.out.println(parse);
 		if(parse.length() == 10) {
-			for(int j = 10; j >= 1; j--) {
+			for(int j = 10; j > 0; j--) {
 				if(parse.charAt(index) == 'X') {
-					total = total + 10 * j;
+					total = total + 10 ;
 				}
-				else
-					total = total + parse.charAt(index)*j;
+				else {
+					System.out.println(parse.substring(index, index + 1));
+					total += Integer.parseInt(parse.substring(index, index + 1)) * j;
+					index++;
+				}
 			}
 		}
 		else
 			return false;
-		
+		System.out.println(total);
 		return total % 11 == 0;
 	}
 
@@ -654,8 +669,16 @@ public class EvaluationService {
 	 * @return
 	 */
 	public Temporal getGigasecondDate(Temporal given) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		
+		if(given.isSupported(ChronoUnit.SECONDS)) {
+			return given.plus(1000000000, ChronoUnit.SECONDS);
+		}
+		else {
+			LocalDate d = LocalDate.parse(given.toString());
+			LocalDateTime t = LocalDateTime.of(d.plusDays(11574), LocalTime.of(1, 46, 40));
+			return t;
+			
+		}
 	}
 
 	/**
