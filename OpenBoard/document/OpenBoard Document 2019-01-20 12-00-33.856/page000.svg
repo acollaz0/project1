@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ub="http://uniboard.mnemis.com/document" xmlns:xhtml="http://www.w3.org/1999/xhtml" version="1.1" ub:version="4.8.0" ub:uuid="e68cfa81-2faf-4818-aab2-b0298a83bd3d" viewBox="-690 -530 1380 1060" ub:nominal-size="1280x960" ub:dark-background="false" ub:crossed-background="false" ub:ruled-background="false" pageDpi="93">
+    <rect fill="white" x="-690" y="-530" width="1380" height="1060"/>
+    <foreignObject ub:type="text" x="0" y="0" width="143.745" height="27" transform="matrix(1, 0, 0, 1, -602.967, -423.501)" ub:z-value="-999998.000000" ub:background="false" ub:uuid="59f29986-bc15-4de0-b338-a6a959dbf859" ub:layer="-1000" ub:editable="true" ub:width="143.745" ub:height="27" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;User&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="143.745" height="26" transform="matrix(1, 0, 0, 1, -609.614, -446.291)" ub:z-value="-999997.000000" ub:background="false" ub:uuid="bb5e2385-b411-4259-a181-2ffbcfb2005c" ub:layer="-1000" ub:editable="true" ub:width="143.745" ub:height="26" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;POJO&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="143.745" height="27" transform="matrix(1, 0, 0, 1, -489.021, -423.501)" ub:z-value="-999996.000000" ub:background="false" ub:uuid="e809998a-0b91-4461-a7ef-63dcc4bb1d9f" ub:layer="-1000" ub:editable="true" ub:width="143.745" ub:height="27" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;UserDao&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="143.745" height="27" transform="matrix(1, 0, 0, 1, -486.172, -448.19)" ub:z-value="-999995.000000" ub:background="false" ub:uuid="4a50f092-1ebe-4ed4-8353-607057c136e2" ub:layer="-1000" ub:editable="true" ub:width="143.745" ub:height="27" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;interface&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="143.745" height="27" transform="matrix(1, 0, 0, 1, -538.398, -443.442)" ub:z-value="-999988.000000" ub:background="false" ub:uuid="847f323e-617e-4d12-a24e-e08f9f132738" ub:layer="-1000" ub:editable="true" ub:width="143.745" ub:height="27" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;uses&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="143.745" height="27" transform="matrix(1, 0, 0, 1, -496.617, -312.404)" ub:z-value="-999987.000000" ub:background="false" ub:uuid="f756a249-e7c8-4c8e-a244-8edcf288817e" ub:layer="-1000" ub:editable="true" ub:width="143.745" ub:height="27" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;UserDaoImpl&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="143.745" height="27" transform="matrix(1, 0, 0, 1, -445.341, -360.831)" ub:z-value="-999986.000000" ub:background="false" ub:uuid="fb9e05d9-a3ac-4835-97d2-d76a0b97bb78" ub:layer="-1000" ub:editable="true" ub:width="143.745" ub:height="27" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;implements&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="143.745" height="27" transform="matrix(1, 0, 0, 1, -616.261, -211.751)" ub:z-value="-999979.000000" ub:background="false" ub:uuid="11a692e0-2d07-4868-98ef-96b3b5f611fb" ub:layer="-1000" ub:editable="true" ub:width="143.745" ub:height="27" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Account&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="143.745" height="26" transform="matrix(1, 0, 0, 1, -610.564, -229.792)" ub:z-value="-999978.000000" ub:background="false" ub:uuid="ed900ad7-210b-49e9-a3ad-a5b1261542a1" ub:layer="-1000" ub:editable="true" ub:width="143.745" ub:height="26" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;POJO&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="143.745" height="46" transform="matrix(1, 0, 0, 1, -459.585, -229.792)" ub:z-value="-999977.000000" ub:background="false" ub:uuid="76a2105d-f062-4824-b6ae-0c83638343d6" ub:layer="-1000" ub:editable="true" ub:width="143.745" ub:height="46" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;interface&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;AccountDao&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="143.745" height="27" transform="matrix(1, 0, 0, 1, -478.576, -92.1068)" ub:z-value="-999976.000000" ub:background="false" ub:uuid="f130d678-a46f-4a05-a6a3-01714e6dbe42" ub:layer="-1000" ub:editable="true" ub:width="143.745" ub:height="27" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;AccountDaoImpl&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="143.745" height="27" transform="matrix(1, 0, 0, 1, -400.712, -151.929)" ub:z-value="-999975.000000" ub:background="false" ub:uuid="84034c2d-82db-4a6e-9df4-72f7d8212111" ub:layer="-1000" ub:editable="true" ub:width="143.745" ub:height="27" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;implements&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="143.745" height="27" transform="matrix(1, 0, 0, 1, -531.751, -238.338)" ub:z-value="-999974.000000" ub:background="false" ub:uuid="d11d8e40-ffe2-47eb-a9a9-23beb5e75b8b" ub:layer="-1000" ub:editable="true" ub:width="143.745" ub:height="27" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;uses&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="233.938" height="255" transform="matrix(1, 0, 0, 1, -238.338, -463.383)" ub:z-value="-999967.000000" ub:background="false" ub:uuid="9ab7128a-39d8-46f6-9f5f-52ba1983333c" ub:layer="-1000" ub:editable="true" ub:width="233.938" ub:height="255" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;User&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;-username: String&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;-password: String&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;-isSuper: boolean&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+User()&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+getUsername(): String&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+setUsername(): void&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+getPassword(): String&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+setPassword(): String&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+getSuper(): boolean&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+setSuper(): void&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="176.016" height="141" transform="matrix(1, 0, 0, 1, -60.7715, -463.383)" ub:z-value="-999966.000000" ub:background="false" ub:uuid="e8badabc-05bd-4236-b670-3f0fd91cf315" ub:layer="-1000" ub:editable="true" ub:width="176.016" ub:height="141" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;interface&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;UserDao&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+getAllUsers(): Set&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+updateUser(): void&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+deleteUser(): void&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+addUser(): void&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="170.328" height="217" transform="matrix(1, 0, 0, 1, 100.653, -461.484)" ub:z-value="-999965.000000" ub:background="false" ub:uuid="0c004676-9a06-4001-8828-e986444a2ac3" ub:layer="-1000" ub:editable="true" ub:width="170.328" ub:height="217" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;UserDaoImpl implements UserDao&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;-users: Set&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+UserDaoImpl()&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+getAllUsers() : Set&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+updateUser(): void&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+deleteUser(): void&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+addUser(): void&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="176.969" height="255" transform="matrix(1, 0, 0, 1, -235.49, -184.214)" ub:z-value="-999960.000000" ub:background="false" ub:uuid="a35ab7bc-ec97-4de0-b557-ea5588148320" ub:layer="-1000" ub:editable="true" ub:width="176.969" ub:height="255" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Account&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;-name: String&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;-value: double&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;-transactions: List&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+Account()&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+getName(): String&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+setName(): void&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+getValue(): double&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+setValue(): void&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+setTransactions(): void&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+getTransactions(): List&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="209.25" height="160" transform="matrix(1, 0, 0, 1, -53.1751, -203.205)" ub:z-value="-999959.000000" ub:background="false" ub:uuid="48b81c70-f461-4f91-af75-b4767c09814b" ub:layer="-1000" ub:editable="true" ub:width="209.25" ub:height="160" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;interface&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;AccountDao&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+getAllAccounts(): List&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+withdrawAccount(): void&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+depositAccount(): void&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+deleteAccount(): void&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+addAcount(): void&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="208.312" height="198" transform="matrix(1, 0, 0, 1, 150.979, -186.113)" ub:z-value="-999958.000000" ub:background="false" ub:uuid="f25ed7a0-1d92-4f83-9a8b-73412f1f2015" ub:layer="-1000" ub:editable="true" ub:width="208.312" ub:height="198" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;AccountDaoImpl&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;-accounts: List&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+AccountDaoImpl()&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+getAllAccounts(): List&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+withdrawAccount(): void&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+depositAccount(): void&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+deleteAccount(): void&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;+addAccount(): void&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="143.745" height="122" transform="matrix(1, 0, 0, 1, -607.715, 74.0653)" ub:z-value="-999957.000000" ub:background="false" ub:uuid="90af1395-89ee-4d5f-996f-e1fc4a7e2cce" ub:layer="-1000" ub:editable="true" ub:width="143.745" ub:height="122" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Users Table&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;id&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;username&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;password&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;admin&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <foreignObject ub:type="text" x="0" y="0" width="143.745" height="141" transform="matrix(1, 0, 0, 1, -461.484, 74.0653)" ub:z-value="-999956.000000" ub:background="false" ub:uuid="79310bc8-c9b2-40e7-9f96-79590d1277f6" ub:layer="-1000" ub:editable="true" ub:width="143.745" ub:height="141" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Accounts table&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;accountid&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;value&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;accountname&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;user_id&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;transactions&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <g ub:z-value="-999984" ub:fill-on-dark-background="#ffffff" ub:fill-on-light-background="#000000" ub:uuid="9fc21a44-2c9d-4cda-bfec-a36e5cf573e7" ub:layer="-1000" transform="matrix(1, 0, 0, 1, -448.19, -210.801)">
+        <polygon points="-4.74777,-175.43 -4.03561,-174.718 -4.74777,-174.006 -5.45994,-174.718 -4.74777,-175.43 " transform="matrix(1, 0, 0, 1, 0, 0)" fill="#000000" fill-opacity="1.00" fill-rule="evenodd" ub:uuid="9bdfc7e5-3c1a-4c84-98a6-f1968a3cd817" ub:parent="9fc21a44-2c9d-4cda-bfec-a36e5cf573e7"/>
+    </g>
+    <g ub:z-value="-999985" ub:fill-on-dark-background="#ffffff" ub:fill-on-light-background="#000000" ub:uuid="87449dc9-0f09-416d-ba21-c039f35e6098" ub:layer="-1000" transform="matrix(1, 0, 0, 1, -448.19, -210.801)">
+        <polygon points="-4.51039,-104.451 -4.51039,-174.725 -3.79822,-175.437 -3.08605,-174.725 -3.08605,-104.451 -3.79822,-103.739 -4.51039,-104.451 " transform="matrix(1, 0, 0, 1, 0, 0)" fill="#000000" fill-opacity="1.00" fill-rule="evenodd" ub:uuid="19eb23df-87ee-4973-92a4-943e7dff369c" ub:parent="87449dc9-0f09-416d-ba21-c039f35e6098"/>
+    </g>
+    <g ub:z-value="-999989" ub:fill-on-dark-background="#ffffff" ub:fill-on-light-background="#000000" ub:uuid="0c8a2bd5-b145-459b-9668-1c52f14bdf2f" ub:layer="-1000" transform="matrix(1, 0, 0, 1, -448.19, -210.801)">
+        <polygon points="-95.5276,-198.111 -80.3347,-188.616 -80.0919,-188.362 -80,-188.012 -80.7122,-187.3 -81.0897,-187.408 -96.2825,-196.904 -96.2826,-196.903 -96.5253,-197.157 -96.6172,-197.507 -95.905,-198.22 -95.5275,-198.111 -95.5276,-198.111 " transform="matrix(1, 0, 0, 1, 0, 0)" fill="#000000" fill-opacity="1.00" fill-rule="evenodd" ub:uuid="0bde646a-fe43-4f01-ad0d-350455a8a9a1" ub:parent="0c8a2bd5-b145-459b-9668-1c52f14bdf2f"/>
+    </g>
+    <g ub:z-value="-999990" ub:fill-on-dark-background="#ffffff" ub:fill-on-light-background="#000000" ub:uuid="988beac1-00f4-4b76-852e-1eb119e79d4e" ub:layer="-1000" transform="matrix(1, 0, 0, 1, -448.19, -210.801)">
+        <polygon points="-96.2661,-199.071 -80.1237,-208.566 -80.1238,-208.566 -79.7626,-208.665 -79.0504,-207.953 -79.1472,-207.594 -79.258,-207.45 -79.4014,-207.339 -95.544,-197.843 -95.5438,-197.843 -95.905,-197.745 -96.6172,-198.457 -96.5205,-198.816 -96.4097,-198.959 -96.2662,-199.071 -96.2661,-199.071 " transform="matrix(1, 0, 0, 1, 0, 0)" fill="#000000" fill-opacity="1.00" fill-rule="evenodd" ub:uuid="980246a8-8948-4539-8d82-fa5ddaddb8ce" ub:parent="988beac1-00f4-4b76-852e-1eb119e79d4e"/>
+    </g>
+    <g ub:z-value="-999991" ub:fill-on-dark-background="#ffffff" ub:fill-on-light-background="#000000" ub:uuid="96ea64bd-06b6-4978-b02c-d4093c240563" ub:layer="-1000" transform="matrix(1, 0, 0, 1, -448.19, -210.801)">
+        <polygon points="-44.6291,-197.745 -95.905,-197.745 -96.6172,-198.457 -95.905,-199.169 -44.6291,-199.169 -43.9169,-198.457 -44.6291,-197.745 " transform="matrix(1, 0, 0, 1, 0, 0)" fill="#000000" fill-opacity="1.00" fill-rule="evenodd" ub:uuid="efefa7e8-6da3-4de9-bfd5-8a40f3e53b2a" ub:parent="96ea64bd-06b6-4978-b02c-d4093c240563"/>
+    </g>
+    <g ub:z-value="-999973" ub:fill-on-dark-background="#ffffff" ub:fill-on-light-background="#000000" ub:uuid="76594035-bf33-4c11-a5a4-a2608df0c30a" ub:layer="-1000" transform="matrix(1, 0, 0, 1, -503.264, -75.9644)">
+        <polygon points="37.0326,-124.629 -35.1335,-124.629 -35.8457,-125.341 -35.1335,-126.053 37.0326,-126.053 37.7448,-125.341 37.0326,-124.629 " transform="matrix(1, 0, 0, 1, 0, 0)" fill="#000000" fill-opacity="1.00" fill-rule="evenodd" ub:uuid="974a97ea-067d-470d-afb3-d8699d00ede2" ub:parent="76594035-bf33-4c11-a5a4-a2608df0c30a"/>
+    </g>
+    <g ub:z-value="-999968" ub:fill-on-dark-background="#ffffff" ub:fill-on-light-background="#000000" ub:uuid="be99f7d7-54fb-4457-977e-c2dfbfdec90c" ub:layer="-1000" transform="matrix(1, 0, 0, 1, -503.264, -75.9644)">
+        <polygon points="82.3202,-109.47 88.9671,-93.3275 88.9672,-93.3278 89.0208,-93.0564 88.3086,-92.3442 87.65,-92.785 81.0032,-108.928 81.0031,-108.927 80.9496,-109.199 81.6617,-109.911 82.3203,-109.47 82.3202,-109.47 " transform="matrix(1, 0, 0, 1, 0, 0)" fill="#000000" fill-opacity="1.00" fill-rule="evenodd" ub:uuid="16797a39-d83c-4370-aece-0eec97928a94" ub:parent="be99f7d7-54fb-4457-977e-c2dfbfdec90c"/>
+    </g>
+    <g ub:z-value="-999981" ub:fill-on-dark-background="#ffffff" ub:fill-on-light-background="#000000" ub:uuid="fe6efc31-1b2b-47f0-b6b4-caf047de8d73" ub:layer="-1000" transform="matrix(1, 0, 0, 1, -448.19, -210.801)">
+        <polygon points="-3.18438,-173.407 -12.6799,-157.265 -12.6798,-157.265 -12.7913,-157.121 -12.9352,-157.011 -13.2938,-156.914 -14.0059,-157.626 -13.9077,-157.987 -4.41206,-174.13 -4.41214,-174.13 -4.30073,-174.273 -4.15679,-174.384 -3.79822,-174.481 -3.08605,-173.769 -3.1843,-173.407 -3.18438,-173.407 " transform="matrix(1, 0, 0, 1, 0, 0)" fill="#000000" fill-opacity="1.00" fill-rule="evenodd" ub:uuid="85b0ec53-2df2-4796-aa74-eb66b9ca7cb0" ub:parent="fe6efc31-1b2b-47f0-b6b4-caf047de8d73"/>
+    </g>
+    <g ub:z-value="-999971" ub:fill-on-dark-background="#ffffff" ub:fill-on-light-background="#000000" ub:uuid="b7788001-1562-4f5f-87cb-d20f3df8599a" ub:layer="-1000" transform="matrix(1, 0, 0, 1, -503.264, -75.9644)">
+        <polygon points="-31.0304,-125.035 -12.9889,-116.489 -12.9888,-116.489 -12.5816,-115.846 -13.2938,-115.134 -13.5988,-115.202 -31.6402,-123.748 -31.6403,-123.748 -32.0475,-124.392 -31.3353,-125.104 -31.0303,-125.035 -31.0304,-125.035 " transform="matrix(1, 0, 0, 1, 0, 0)" fill="#000000" fill-opacity="1.00" fill-rule="evenodd" ub:uuid="11e85278-7c57-496a-b4d5-1317515527e6" ub:parent="b7788001-1562-4f5f-87cb-d20f3df8599a"/>
+    </g>
+    <g ub:z-value="-999972" ub:fill-on-dark-background="#ffffff" ub:fill-on-light-background="#000000" ub:uuid="f13d77aa-25b5-4f07-b535-a57f1e5d50e8" ub:layer="-1000" transform="matrix(1, 0, 0, 1, -503.264, -75.9644)">
+        <polygon points="-35.4074,-125.999 -12.6181,-135.494 -12.6184,-135.494 -12.3442,-135.549 -11.632,-134.837 -12.0701,-134.179 -34.8596,-124.684 -34.8594,-124.684 -35.1335,-124.629 -35.8457,-125.341 -35.4077,-125.999 -35.4074,-125.999 " transform="matrix(1, 0, 0, 1, 0, 0)" fill="#000000" fill-opacity="1.00" fill-rule="evenodd" ub:uuid="6684e1e2-f449-440d-94e7-6f6ba00f532b" ub:parent="f13d77aa-25b5-4f07-b535-a57f1e5d50e8"/>
+    </g>
+    <g ub:z-value="-999980" ub:fill-on-dark-background="#ffffff" ub:fill-on-light-background="#000000" ub:uuid="fa52b89b-f3d0-48f0-a022-8d394a9de1a8" ub:layer="-1000" transform="matrix(1, 0, 0, 1, -448.19, -210.801)">
+        <polygon points="-2.22612,-173.165 7.26943,-156.073 7.2695,-156.073 7.35905,-155.727 6.64688,-155.015 6.28077,-155.116 6.1352,-155.232 6.02427,-155.381 -3.47121,-172.473 -3.47128,-172.473 -3.56083,-172.819 -2.84866,-173.531 -2.48255,-173.43 -2.33698,-173.314 -2.22605,-173.165 -2.22612,-173.165 " transform="matrix(1, 0, 0, 1, 0, 0)" fill="#000000" fill-opacity="1.00" fill-rule="evenodd" ub:uuid="eeee3a73-d5a0-43b1-b0b9-41bdc0af6a16" ub:parent="fa52b89b-f3d0-48f0-a022-8d394a9de1a8"/>
+    </g>
+    <g ub:z-value="-999969" ub:fill-on-dark-background="#ffffff" ub:fill-on-light-background="#000000" ub:uuid="ba5d8610-97d5-4fb3-ab33-fdb6a03f8136" ub:layer="-1000" transform="matrix(1, 0, 0, 1, -503.264, -75.9644)">
+        <polygon points="81.3565,-109.845 73.7601,-93.7027 73.7602,-93.7026 73.1157,-93.2938 72.4036,-94.0059 72.4712,-94.3093 80.0678,-110.452 80.0677,-110.452 80.7122,-110.861 81.4243,-110.148 81.3567,-109.845 81.3565,-109.845 " transform="matrix(1, 0, 0, 1, 0, 0)" fill="#000000" fill-opacity="1.00" fill-rule="evenodd" ub:uuid="19ebf5b0-1782-45a5-a632-77f11111fcf3" ub:parent="ba5d8610-97d5-4fb3-ab33-fdb6a03f8136"/>
+    </g>
+    <g ub:z-value="-999970" ub:fill-on-dark-background="#ffffff" ub:fill-on-light-background="#000000" ub:uuid="c399c009-1ce3-489d-8d99-e35290575024" ub:layer="-1000" transform="matrix(1, 0, 0, 1, -503.264, -75.9644)">
+        <polygon points="81.4243,-110.148 81.4243,-20.8094 80.7122,-20.0973 80,-20.8094 80,-110.148 80.7122,-110.861 81.4243,-110.148 " transform="matrix(1, 0, 0, 1, 0, 0)" fill="#000000" fill-opacity="1.00" fill-rule="evenodd" ub:uuid="52d1442f-dc93-4994-9095-d9a264b47e78" ub:parent="c399c009-1ce3-489d-8d99-e35290575024"/>
+    </g>
+</svg>
