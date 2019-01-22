@@ -32,4 +32,10 @@ public class SuperUser extends RegisteredUser implements User {
 		return false;
 	}
 
+	public RegisteredUser viewUser(RegisteredUser u) {
+		return u;
+	}
+		
+	
+
 }

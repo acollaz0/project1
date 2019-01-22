@@ -35,5 +35,12 @@ public class RegisteredUser implements User {
 
 		return false;
 	}
+	public User view() {
+		return this;
+	}
+	public boolean validatePassword(UUID id) {
+		
+		return false;
+	}
 
 }

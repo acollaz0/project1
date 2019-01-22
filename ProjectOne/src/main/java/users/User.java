@@ -10,5 +10,5 @@ public interface User{
 	boolean deposit		() ;
 	boolean create		() ;
 	boolean delete		() ;
-	boolean validatePassword();
+	boolean validatePassword(UUID id);
 }
