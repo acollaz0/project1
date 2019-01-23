@@ -7,33 +7,33 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import users.*;
+import dao.UserDAO;
 
 public class Bank {
 	public static void main(String[] args) {
-		ArrayList<RegisteredUser> users = new ArrayList<RegisteredUser>();
 		
 		Scanner kbd = new Scanner(System.in);
 		System.out.println("Are you a returning user?");
 		System.out.print(">>(y/n)");
 		String next = kbd.nextLine();
 		if(next != null && next.charAt(0)== 'y') {
-			User user;
 			String u, p;
 			//login user
 			System.out.println("Please enter username");
 			System.out.print(">>");
-			u = kbd.next();
+			String name = kbd.nextLine();
             System.out.println("Enter password: ");
             System.out.print(">>");
-        	p = kbd.next();
-        	user = UserFactory.getUser(u, p);
+        	p = kbd.nextLine();
         	
-        	System.out.println(user.toString());
 			
 		}
 		else if(next != null && next.charAt(0)== 'n') {
-			System.out.println("Please enter a password to create a new account.");
+			String u, p;
+			System.out.println("Please enter your first and last name.");
+			System.out.print(">>");
+			u= kbd.nextLine();	
+			System.out.println("Please enter your first and last name.");
 			System.out.print(">>");	
 		}
 		
