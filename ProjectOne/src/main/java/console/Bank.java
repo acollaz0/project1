@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import dao.UserDAO;
+
 
 public class Bank {
 	public static void main(String[] args) {
@@ -33,7 +33,7 @@ public class Bank {
 			System.out.println("Please enter your first and last name.");
 			System.out.print(">>");
 			u= kbd.nextLine();	
-			System.out.println("Please enter your first and last name.");
+			System.out.println("please enter a username");
 			System.out.print(">>");	
 		}
 		

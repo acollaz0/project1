@@ -17,7 +17,7 @@ Use sequences to generate USER_ID and BANK_ACCOUNT_ID.
 Provide validation messages through the console for all user actions. 
 Use the DAO design pattern. 
 Store database connection information in a properties file. 
-s
+
 Required technologies: 
 PL/SQL with at least one stored procedure, JDBC with prepared and callable statements,
 Scanner for user input.
