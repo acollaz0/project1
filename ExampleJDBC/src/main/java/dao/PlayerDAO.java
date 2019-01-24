@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -44,16 +45,16 @@ public class PlayerDAO implements IPlayer{
 		
 	 try
     {
-        String sql = "INSERT INTO player VALUES (?,?,?,?,?)";
-        PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
-        ps.setString(1, Integer.toString(p.getP_id()));
-        ps.setString(2, p.getName());
-        ps.setString(3, Integer.toString(p.getSalary()));
-        ps.setString(4, Integer.toString(p.getPoints()));
-        ps.setString(5, p.getTeam());
-        
-        ps.executeQuery();
-        return true;
+		 Connection conn = JDBCConnection.getConnection();
+		 String sql = "call add_player(?,?,?)";
+		 CallableStatement cs = conn.prepareCall(sql);
+		 
+		 cs.setString(1, p.getName());
+		 cs.setString(2, Integer.toString(p.getSalary()));
+		 cs.setString(3, p.getTeam());
+		 
+		 cs.execute();
+		 return true;
     }
     catch (SQLException e)
     {
