@@ -11,5 +11,9 @@ public class PlayerService {
 		
 		return p;
 	}
+	public static boolean addPlayer(Player p) {
+		return new PlayerDAO().addPlayer(p);
+
+	}
 
 }

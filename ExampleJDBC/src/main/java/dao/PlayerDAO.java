@@ -1,5 +1,7 @@
 package dao;
 
+import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,7 +41,22 @@ public class PlayerDAO implements IPlayer {
 	}
 
 	public boolean addPlayer(Player p) {
-		// TODO Auto-generated method stub
+		try {
+			Connection conn = JDBCConnection.getConnection();
+			String sql = "call add_player(?, ?, ?)";
+			CallableStatement cs = conn.prepareCall(sql);
+			
+			cs.setString(1, p.getName());
+			cs.setString(2, Integer.toString(p.getSalary()));
+			cs.setString(3, p.getTeam());
+			
+			cs.execute();
+			return true;
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 
