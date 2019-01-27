@@ -16,17 +16,19 @@ public class App {
 	
 	static Scanner scan = new Scanner(System.in);
 	static User u = new User();
-	static int input;
+	static String input;
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to this.bank are you a registered user?");
 		System.out.println("1. Yes");
 		System.out.println("2. No");
-		input = Integer.parseInt(scan.nextLine());
+		input = scan.nextLine();
 		
 		switch(input) {
-		case 1:{logon();}break;
-		case 2:{createAccount();}break;
+		case "1":{logon();}break;
+		case "2":{createAccount();}break;
+		default:{System.out.println("Invalid input try again.");
+				main(args);}
 		}
 	}
 	
@@ -48,11 +50,15 @@ public class App {
 				System.out.println("Would you like to: ");
 				System.out.println("1. Try again");
 				System.out.println("2. Create account");
-				input = Integer.parseInt(scan.nextLine());
+				System.out.println("3. Exit");
+				input = scan.nextLine();
 				
 				switch(input) {
-				case 1:{logon();}break;
-				case 2:{createAccount();}break;
+				case "1":{logon();}break;
+				case "2":{createAccount();}break;
+				case "3":{logout();}break;
+				default:{System.out.println("Invalid input try again");
+						logon();}
 				}
 			}
 		}
@@ -61,11 +67,15 @@ public class App {
 			System.out.println("Would you like to: ");
 			System.out.println("1. Try again");
 			System.out.println("2. Create account");
-			input = Integer.parseInt(scan.nextLine());
+			System.out.println("3. Exit");
+			input = scan.nextLine();
 			
 			switch(input) {
-			case 1:{logon();}break;
-			case 2:{createAccount();}break;
+			case "1":{logon();}break;
+			case "2":{createAccount();}break;
+			case "3":{logout();}break;
+			default:{System.out.println("Invalid input try again");
+					logon();}
 			}
 		}
 	}
@@ -82,20 +92,28 @@ public class App {
 			System.out.println("Would you like this user to be an admin?");
 			System.out.println("1. Yes");
 			System.out.println("2. No");
-			input = Integer.parseInt(scan.nextLine());
+			input = scan.nextLine();
 			
 			switch(input) {
-			case 1:{UserService.addUser(new User(0, username, password, 1));
+			case "1":{UserService.addUser(new User(0, username, password, 1));
 					System.out.println("Account created successfully");
+					System.out.println("Press Enter to continue");
+					scan.nextLine();
 					menu();}break;
-			case 2:{UserService.addUser(new User(0, username, password, 0));
+			case "2":{UserService.addUser(new User(0, username, password, 0));
 					System.out.println("Account created successfully");
+					System.out.println("Press Enter to continue");
+					scan.nextLine();
 					menu();}break;
+			default:{System.out.println("Invalid input try again");
+					createAccount();}
 			}
 		}
 		
 		if(UserService.addUser(new User(0, username, password, 0))) {
 			System.out.println("Account created successfully");
+			System.out.println("Press Enter to continue");
+			scan.nextLine();
 			u = UserService.getUser(username);
 			menu();
 		}
@@ -104,12 +122,14 @@ public class App {
 			System.out.println("1. Try again");
 			System.out.println("2. Log on");
 			System.out.println("3. Log out");
-			input = Integer.parseInt(scan.nextLine());
+			input = scan.nextLine();
 			
 			switch(input) {
-			case 1:{createAccount();}break;
-			case 2:{logon();}break;
-			case 3:{logout();}break;
+			case "1":{createAccount();}break;
+			case "2":{logon();}break;
+			case "3":{logout();}break;
+			default:{System.out.println("Invalid input try again");
+					createAccount();}
 			}
 		}
 	}
@@ -130,21 +150,25 @@ public class App {
 			System.out.println("9. Update user");
 			System.out.println("10. Delete user");
 		}
-		input = Integer.parseInt(scan.nextLine());
+		input = scan.nextLine();
 		
 		switch(input) {
-		case 1:{viewAccount();}break;
-		case 2:{createBankAccount();}break;
-		case 3:{deleteBankAccount();}break;
-		case 4:{withdraw();}break;
-		case 5:{deposit();}break;
-		case 6:{logout();}break;
-		case 7:{displayUsers();
+		case "1":{viewAccount();}break;
+		case "2":{createBankAccount();}break;
+		case "3":{deleteBankAccount();}break;
+		case "4":{withdraw();}break;
+		case "5":{deposit();}break;
+		case "6":{logout();}break;
+		case "7":{displayUsers();
+				System.out.println("Press Enter to continue");
+				scan.nextLine();
 				menu();}break;
-		case 8:{createAccount();}break;
-		case 9:{updateUser();}break;
-		case 10:{deleteUser();}break;
-		case 11:{viewUser();}break;
+		case "8":{createAccount();}break;
+		case "9":{updateUser();}break;
+		case "10":{deleteUser();}break;
+		case "11":{viewUser();}break;
+		default:{System.out.println("Invalid input try again");
+				menu();}
 		}
 	}
 	
@@ -158,15 +182,20 @@ public class App {
 		System.out.format("%15s %15s %10s", u.getB_id(), u.getUsername(), u.getPassword());
 		System.out.println();
 		System.out.println("----------------------------------------------");
+		System.out.println("Press Enter to continue");
+		scan.nextLine();
 		menu();
 	}
 
 	static void deleteUser() {
 		System.out.println("Which user would you like to delete?");
+		System.out.println("Please enter user ID");
 		displayUsers();
 		int id = Integer.parseInt(scan.nextLine());
 		UserService.deleteUser(id);
 		System.out.println("User successfully deleted");
+		System.out.println("Press Enter to continue");
+		scan.nextLine();
 		menu();
 	}
 
@@ -177,17 +206,36 @@ public class App {
 		System.out.println("Username or Password?");
 		System.out.println("1. Username");
 		System.out.println("2. Password");
-		input = Integer.parseInt(scan.nextLine());
+		System.out.println("3. Super");
+		input = scan.nextLine();
 		
 		switch(input) {
-		case 1:{System.out.println("What will the new username be?");
+		case "1":{System.out.println("What will the new username be?");
 				UserService.updateUserName(id, scan.nextLine());
 				System.out.println("Username updated successfully");
+				System.out.println("Press Enter to continue");
+				scan.nextLine();
 				menu();}break;
-		case 2:{System.out.println("What will the new password be?");
+		case "2":{System.out.println("What will the new password be?");
 				UserService.updateUserPass(id, scan.nextLine());
 				System.out.println("Password updated successfully");
+				System.out.println("Press Enter to continue");
+				scan.nextLine();
 				menu();}break;
+		case "3":{System.out.println("Would you like this user to be a super user?");
+				System.out.println("1. Yes");
+				System.out.println("2. No");
+				input = scan.nextLine();
+				switch(input) {
+				case "1":{UserService.updateUserSuper(id, 1);}break;
+				case "2":{UserService.updateUserSuper(id, 0);}break;
+				}
+				System.out.println("Super updated sucessfully");
+				System.out.println("Press Enter to continue");
+				scan.nextLine();
+				menu();}break;
+		default:{System.out.println("Invalid input try again");
+				updateUser();}
 		}
 	}
 
@@ -217,8 +265,9 @@ public class App {
 			}
 			System.out.println("----------------------------------------------");
 		}
-		else
+		else {
 			System.out.println("No active bank accounts");
+		}
 	}
 
 	static void withdraw() {
@@ -226,13 +275,18 @@ public class App {
 		displayBankAccounts();
 		int id = Integer.parseInt(scan.nextLine());
 		System.out.println("How much would you like to withdraw?");
-		input = Integer.parseInt(scan.nextLine());
-		if(AccountService.withdraw(id, input)) {
+		input = scan.nextLine();
+		if(AccountService.withdraw(id, Integer.parseInt(input))) {
 		System.out.println("Withdraw successful");
+		System.out.println("Press Enter to continue");
+		scan.nextLine();
 		menu();
 		}
-		else
+		else {
+			System.out.println("Press Enter to continue");
+			scan.nextLine();
 			menu();
+		}
 	}
 
 	static void deposit() {
@@ -240,38 +294,47 @@ public class App {
 		displayBankAccounts();
 		int id = Integer.parseInt(scan.nextLine());
 		System.out.println("How much would you like to deposit?");
-		input = Integer.parseInt(scan.nextLine());
-		AccountService.deposit(id, input);
+		input = scan.nextLine();
+		AccountService.deposit(id, Integer.parseInt(input));
 		System.out.println("Deposit successful");
+		System.out.println("Press Enter to continue");
+		scan.nextLine();
 		menu();
 	}
 
 	static void deleteBankAccount() {
 		displayBankAccounts();
 		System.out.println("Please enter account id to be deleted");
-		input = Integer.parseInt(scan.nextLine());
-		if(AccountService.getAccount(input).getAmount() == 0) {
-			AccountService.deleteAccount(input);
+		input = scan.nextLine();
+		if(AccountService.getAccount(Integer.parseInt(input)).getAmount() == 0) {
+			AccountService.deleteAccount(Integer.parseInt(input));
 			System.out.println("Account successfully deleted");
+			System.out.println("Press Enter to continue");
+			scan.nextLine();
 			menu();
 		}
-		else if(AccountService.getAccount(input).getAmount() > 0) {
+		else if(AccountService.getAccount(Integer.parseInt(input)).getAmount() > 0) {
 			System.out.println("Account has funds would you like to:");
 			System.out.println("1. Withdraw all funds and delete");
 			System.out.println("2. Go back to menu");
-			int id = input;
-			input = Integer.parseInt(scan.nextLine());
+			int id = Integer.parseInt(input);
+			input = scan.nextLine();
 			
 			switch(input) {
-			case 1:{
+			case "1":{
 				AccountService.withdrawAll(id);
 				AccountService.deleteAccount(id);
-				System.out.println("Account successfully deleted");}break;
-			case 2:{menu();}break;
+				System.out.println("Account successfully deleted");
+				System.out.println("Press Enter to continue");
+				scan.nextLine();
+				menu();}break;
+			case "2":{menu();}break;
 			}
 		}
 		else {
 			System.out.println("Invalid account id");
+			System.out.println("Press Enter to continue");
+			scan.nextLine();
 			menu();
 		}
 	}
@@ -281,47 +344,63 @@ public class App {
 		System.out.println("What type of account would you like to create?");
 		System.out.println("1. Checking");
 		System.out.println("2. Savings");
-		input = Integer.parseInt(scan.nextLine());
+		input = scan.nextLine();
 		
 		switch(input) {
-		case 1:{
+		case "1":{
 			type = "Checking";
 			AccountService.addAccount(new Account(0, 0, type, u.getB_id()));}break;
-		case 2:{
+		case "2":{
 			type = "Savings";
 			AccountService.addAccount(new Account(0, 0, type, u.getB_id()));}break;
 			
 		}
 		System.out.println("Account successfully created");
+		System.out.println("Press Enter to continue");
+		scan.nextLine();
 		menu();
 	}
 	
 	static void viewAccount() {
-		System.out.println("Which account would you like to view?");
-		displayBankAccounts();
-		input = Integer.parseInt(scan.nextLine());
-		List<Transaction> transactions = TransactionService.getTransactions(input);
-		if(transactions.size() > 0) {
-			System.out.printf("%45s", "Transactions for account "+input);
-			System.out.println();
-			System.out.println("------------------------------------------------------------------");
-			System.out.printf("%10s %20s %30s", "Difference", "Balance", "Date");
-			System.out.println();
-			System.out.println("------------------------------------------------------------------");
-			for(Transaction tra: transactions) {
-				System.out.format("%10s %20s %30s", tra.getChange(), tra.getTotal(), tra.getDatetime());
+		if(AccountService.allAccounts(u.getB_id()).size() > 0) {
+			System.out.println("Which account would you like to view?");
+			displayBankAccounts();
+			input = scan.nextLine();
+			List<Transaction> transactions = TransactionService.getTransactions(Integer.parseInt(input));
+			if(transactions.size() > 0) {
+			
+				System.out.printf("%45s", "Transactions for account "+input);
 				System.out.println();
+				System.out.println("------------------------------------------------------------------");
+				System.out.printf("%10s %20s %30s", "Difference", "Balance", "Date");
+				System.out.println();
+				System.out.println("------------------------------------------------------------------");
+				for(Transaction tra: transactions) {
+					System.out.format("%10s %20s %30s", tra.getChange(), tra.getTotal(), tra.getDatetime());
+					System.out.println();
+				}
+				System.out.println("------------------------------------------------------------------");
+				System.out.println("Press Enter to continue");
+				scan.nextLine();
+				menu();
 			}
-			System.out.println("------------------------------------------------------------------");
-			menu();
+			else {
+				System.out.println("No account activity");
+				System.out.println("Press Enter to continue");
+				scan.nextLine();
+				menu();
+			}
 		}
 		else {
-			System.out.println("No account activity");
+			System.out.println("No active accounts");
+			System.out.println("Press Enter to continue");
+			scan.nextLine();
 			menu();
 		}
 	}
 	
 	static void logout() {
+		System.out.println("Goodbye");
 		scan.close();
 		try {
 			JDBCConnection.getConnection().close();

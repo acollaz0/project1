@@ -11,5 +11,6 @@ public interface IUser {
 	public boolean deleteUser(int b_id);
 	public boolean updateUserPass(int b_id, String password);
 	public boolean updateUserName(int b_id, String username);
+	public boolean updateUserSuper(int b_id, int issuper);
 	public List<User> allUsers();
 }

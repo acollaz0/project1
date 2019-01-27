@@ -107,6 +107,22 @@ public class UserDAO implements IUser {
 		
 		return false;
 	}
+	public boolean updateUserSuper(int b_id, int issuper) {
+		String sql = "update bankuser set super = ? where b_id = ?";
+		try {
+			PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
+			ps.setString(1, Integer.toString(issuper));
+			ps.setString(2, Integer.toString(b_id));
+			ResultSet rs = ps.executeQuery();
+			return rs.next();
+			
+		} catch (SQLException e) {
+			System.out.println("Username is unavailable");
+		}
+		
+		
+		return false;
+	}
 	public List<User> allUsers() {
 		String sql = "select * from bankuser";
 		List<User> users = new ArrayList<>();

@@ -35,5 +35,9 @@ public class UserService {
 	public static boolean updateUserName(int b_id, String username) {
 		return ud.updateUserName(b_id, username);
 	}
+	
+	public static boolean updateUserSuper(int b_id, int issuper) {
+		return ud.updateUserSuper(b_id, issuper);
+	}
 
 }
