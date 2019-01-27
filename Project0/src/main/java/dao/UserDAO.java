@@ -1,5 +1,7 @@
 package dao;
 
+
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,68 +14,101 @@ import util.JDBCConnection;
 
 public class UserDAO implements IUser {
 
-	@Override
-	public User getUser(int u_id) {
-		String sql = "select * from bankuser where u_id = ?";
+	public User getUser(String username) {
+		String sql = "select * from bankuser where username = ?";
 		try {
 			PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
-			ps.setString(1, Integer.toString(u_id));
+			ps.setString(1, username);
 			
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
 				return new User(
-						rs.getInt("U_ID"),
+						rs.getInt("B_ID"),
 						rs.getString("USERNAME"),
 						rs.getString("PASSWORD"),
-						rs.getBoolean("ADMIN"));
+						rs.getInt("SUPER"));
 			}
 			
 		}catch(SQLException e){
-			
+			System.out.println("User does not exist");
 			
 		}
 		return null;
 	}
 
-	@Override
 	public boolean addUser(User u) {
-		String sql = "insert into bankuser values(?, ?, ?, ?)";
+		String sql = "call add_user(?, ?, ?)";
 		try {
-			PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
-			ps.setString(1, Integer.toString(u.getU_id()));
-			ps.setString(2, u.getUsername());
-			ps.setString(3, u.getPassword());
-			ps.setString(4, Boolean.toString(u.isSuper()));
+			CallableStatement cs = JDBCConnection.getConnection().prepareCall(sql);
+			cs.setString(1, u.getUsername());
+			cs.setString(2, u.getPassword());
+			cs.setString(3, Integer.toString(u.isSuper()));
 			
-			ps.executeQuery();
+			cs.execute();
 			return true;
 			
 		} catch (SQLException e) {
-			
-			e.printStackTrace();
+			if(e.getMessage().contains("unique constraint")) {
+				System.out.println("Username is unavailable");
+			}
+			else
+				e.printStackTrace();
 		}
 		return false;
 	}
 
-	@Override
-	public boolean deleteUser(int u_id) {
-		String sql = "delete bankuser where u_id = ?";
+	public boolean deleteUser(int b_id) {
+		String sql = "delete bankuser where b_id = ?";
 		try {
 			PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
-			ps.setString(1, Integer.toString(u_id));
-			ps.executeQuery();
-			return true;
+			ps.setString(1, Integer.toString(b_id));
+			ResultSet rs = ps.executeQuery();
+			return rs.next();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Invalid Username");
 		}
 		return false;
 	}
 
-	@Override
+	public boolean updateUserPass(int b_id, String password) {
+		
+		String sql = "update bankuser set password = ? where b_id = ?";
+		try {
+			
+			PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
+			ps.setString(1, password);
+			ps.setString(2, Integer.toString(b_id));
+			ResultSet rs = ps.executeQuery();
+			return rs.next();
+			
+		} catch (SQLException e) {
+			System.out.println("Invalid password");
+		}
+		
+		
+		return false;
+	}
+	
+	public boolean updateUserName(int b_id, String username) {
+		String sql = "update bankuser set username = ? where b_id = ?";
+		try {
+			PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
+			ps.setString(1, username);
+			ps.setString(2, Integer.toString(b_id));
+			ResultSet rs = ps.executeQuery();
+			return rs.next();
+			
+		} catch (SQLException e) {
+			System.out.println("Username is unavailable");
+		}
+		
+		
+		return false;
+	}
 	public List<User> allUsers() {
-		String sql = "select * from player";
+		String sql = "select * from bankuser";
 		List<User> users = new ArrayList<>();
 		try {
 			PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
@@ -85,10 +120,10 @@ public class UserDAO implements IUser {
 			while(rs.next()) {
 		
 				users.add( new User(
-						rs.getInt("U_ID"),
+						rs.getInt("B_ID"),
 						rs.getString("USERNAME"),
 						rs.getString("PASSWORD"),
-						rs.getBoolean("ADMIN")));
+						rs.getInt("SUPER")));
 			}
 			return users;
 		

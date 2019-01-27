@@ -2,27 +2,30 @@ package model;
 
 public class User {
 	
-	private int u_id;
+	private int b_id;
 	private String username;
 	private String password;
-	private boolean issuper;
+	private int issuper;
 	
 	
-	public int getU_id() {
-		return u_id;
-	}
-
-	public User(int u_id, String username, String password, boolean issuper) {
+	
+	public User(int b_id, String username, String password, int issuper) {
 		super();
-		this.u_id = u_id;
+		this.b_id = b_id;
 		this.username = username;
 		this.password = password;
 		this.issuper = issuper;
 	}
 
-	public void setU_id(int u_id) {
-		this.u_id = u_id;
+
+
+	@Override
+	public String toString() {
+		return "User [b_id=" + b_id + ", username=" + username + ", password=" + password + ", issuper=" + issuper
+				+ "]";
 	}
+
+
 
 	public User() {
 		super();
@@ -40,11 +43,18 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public boolean isSuper() {
+	public int isSuper() {
 		return issuper;
 	}
-	public void setSuper(boolean issuper) {
+	public void setSuper(int issuper) {
 		this.issuper = issuper;
 	}
+
+
+	public int getB_id() {
+		return b_id;
+	}
+
+
 
 }

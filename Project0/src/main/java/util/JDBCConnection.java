@@ -1,7 +1,9 @@
 package util;
 
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.Properties;
 
 public class JDBCConnection {
 	
@@ -15,9 +17,13 @@ public class JDBCConnection {
 			if (con == null) {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 				
-				String endpoint = "jdbc:oracle:thin:@aaronsdetdb.cxptu5dst9d5.us-east-2.rds.amazonaws.com:1521:ORCL";
-				String username = "aaron";
-				String password = "password";
+				Properties props = new Properties();
+				FileInputStream input = new FileInputStream("src/main/resources/connection.properties");
+				props.load(input);
+				
+				String endpoint = props.getProperty("url");
+				String username = props.getProperty("username");
+				String password = props.getProperty("password");
 				
 				con = DriverManager.getConnection(endpoint, username, password);
 				

@@ -182,6 +182,7 @@ hscore number(10),
 ascore number(10)
 );
 
+
 create table game_player(
 g_id number(10),
 p_id number(10)
@@ -196,7 +197,7 @@ where p_id = p_idn;
 
 end;
 
-call update_shooting(40, 30, 15);
+call update_shooting(40, 30, 15); 
 --you can place a foreign key on a non unique column
 --but it must reference something unique
 --putting a foreign key on a table makes it the child
@@ -209,7 +210,7 @@ alter table stats add constraint fk_stats_player foreign key
 (p_id) references player(p_id);
 
 alter table player add constraint fk_player_team foreign key
-(team) references team(name);
+(team) references team(name) on delete cascade;
 
 alter table coach add constraint fk_coach_team foreign key
 (team) references team(name);
