@@ -89,6 +89,10 @@ public class App {
 		System.out.println("Please enter new Password");
 		password = scan.nextLine();
 		if(u.isSuper()==1) {
+			if(UserService.getUser(username) != null) {
+				System.out.println("Username is unavailable");
+				createAccount();
+			}
 			System.out.println("Would you like this user to be an admin?");
 			System.out.println("1. Yes");
 			System.out.println("2. No");
@@ -181,12 +185,30 @@ public class App {
 	
 	static void viewUser() {
 		System.out.println("Enter Username of user you would like to view");
-		User u = UserService.getUser(scan.nextLine());
+		input = scan.nextLine();
+		User us = UserService.getUser(input);
+		boolean contains = false;
+		for(User user:UserService.allUsers()) {
+			if(user.getUsername().equals(input)) {
+				contains = true;
+			}
+		}
+		if(contains == false) {
+			System.out.println("Invalid input");
+			System.out.println("1. Try again");
+			System.out.println("2. Back to menu");
+			input = scan.nextLine();
+			switch(input) {
+			case "1":{viewUser();}break;
+			case "2":{menu();}break;
+			default:{menu();}
+			}
+		}
 		System.out.println("----------------------------------------------");
 		System.out.printf("%15s %15s %10s", "User ID", "Username", "Password");
 		System.out.println();
 		System.out.println("----------------------------------------------");
-		System.out.format("%15s %15s %10s", u.getB_id(), u.getUsername(), u.getPassword());
+		System.out.format("%15s %15s %10s", us.getB_id(), us.getUsername(), us.getPassword());
 		System.out.println();
 		System.out.println("----------------------------------------------");
 		System.out.println("Press Enter to continue");
@@ -198,6 +220,26 @@ public class App {
 		System.out.println("Which user would you like to delete?");
 		System.out.println("Please enter user ID");
 		displayUsers();
+		input = scan.nextLine();
+		boolean contains = false;
+		if(input.matches("[0-9]+")) {
+			for(User user:UserService.allUsers()) {
+				if(user.getB_id() == Integer.parseInt(input)) {
+					contains = true;
+				}
+			}
+		}
+		if(contains == false) {
+			System.out.println("Invalid input");
+			System.out.println("1. Try again");
+			System.out.println("2. Back to menu");
+			input = scan.nextLine();
+			switch(input) {
+			case "1":{deleteUser();}break;
+			case "2":{menu();}break;
+			default:{menu();}
+			}
+		}
 		int id = Integer.parseInt(scan.nextLine());
 		UserService.deleteUser(id);
 		System.out.println("User successfully deleted");
@@ -208,12 +250,28 @@ public class App {
 
 	static void updateUser() {
 		System.out.println("Which user would you like to update?");
+		System.out.println("Please enter user ID");
 		displayUsers();
-		int id = Integer.parseInt(scan.nextLine());
+		input = scan.nextLine();
+		boolean contains = false;
+		if(input.matches("[0-9]+")) {
+			for(User user:UserService.allUsers()) {
+				if(user.getB_id() == Integer.parseInt(input)) {
+					contains = true;
+				}
+			}
+		}
+		if(contains == false) {
+			System.out.println("Invalid input try again");
+			updateUser();
+		}
+		
+		int id = Integer.parseInt(input);
 		System.out.println("Username or Password?");
 		System.out.println("1. Username");
 		System.out.println("2. Password");
 		System.out.println("3. Super");
+		System.out.println("4. Back to menu");
 		input = scan.nextLine();
 		
 		switch(input) {
@@ -241,6 +299,7 @@ public class App {
 				System.out.println("Press Enter to continue");
 				scan.nextLine();
 				menu();}break;
+		case "4":{menu();}break;
 		default:{System.out.println("Invalid input try again");
 				updateUser();}
 		}
@@ -278,41 +337,119 @@ public class App {
 	}
 
 	static void withdraw() {
-		System.out.println("Which account would you like to withdraw from?");
-		displayBankAccounts();
-		int id = Integer.parseInt(scan.nextLine());
-		System.out.println("How much would you like to withdraw?");
-		input = scan.nextLine();
-		if(AccountService.withdraw(id, Integer.parseInt(input))) {
-		System.out.println("Withdraw successful");
-		System.out.println("Press Enter to continue");
-		scan.nextLine();
-		menu();
-		}
-		else {
+		if(AccountService.allAccounts(u.getB_id()).size() == 0) {
+			System.out.println("No active bank accounts");
 			System.out.println("Press Enter to continue");
 			scan.nextLine();
 			menu();
 		}
+		System.out.println("Which account would you like to withdraw from?");
+		displayBankAccounts();
+		input = scan.nextLine();
+		boolean contains = false;
+		if(input.matches("[0-9]+")) {
+			for(Account acc:AccountService.allAccounts(u.getB_id())) {
+				if(acc.getA_id() == Integer.parseInt(input)) {
+					contains = true;
+				}
+			}
+		}
+		if(contains == false) {
+			System.out.println("Invalid input try again");
+			withdraw();
+		}
+		if(input.matches("[0-9]+")) {
+			int id = Integer.parseInt(input);
+			System.out.println("How much would you like to withdraw?");
+			input = scan.nextLine();
+			if(input.matches("[0-9]+") && AccountService.withdraw(id, Integer.parseInt(input))) {
+				System.out.println("Withdraw successful");
+				System.out.println("Press Enter to continue");
+				scan.nextLine();
+				menu();
+			}
+			else if(!input.matches("[0-9]+")){
+				System.out.println("Invalid input try again");
+				withdraw();
+			}
+			else {
+				//sql exception catches insufficient funds and prints
+				System.out.println("Press Enter to continue");
+				scan.nextLine();
+				menu();
+			}
+		}
+		else {
+			System.out.println("Invalid input try again");
+			withdraw();
+		}
 	}
 
 	static void deposit() {
+		if(AccountService.allAccounts(u.getB_id()).size() == 0) {
+			System.out.println("No active bank accounts");
+			System.out.println("Press Enter to continue");
+			scan.nextLine();
+			menu();
+		}
 		System.out.println("Which account would you like to deposit into?");
+		System.out.println("Please enter account ID");
 		displayBankAccounts();
-		int id = Integer.parseInt(scan.nextLine());
-		System.out.println("How much would you like to deposit?");
 		input = scan.nextLine();
-		AccountService.deposit(id, Integer.parseInt(input));
-		System.out.println("Deposit successful");
-		System.out.println("Press Enter to continue");
-		scan.nextLine();
-		menu();
+		boolean contains = false;
+		if(input.matches("[0-9]+")) {
+			for(Account acc:AccountService.allAccounts(u.getB_id())) {
+				if(acc.getA_id() == Integer.parseInt(input)) {
+					contains = true;
+				}
+			}
+		}
+		if(contains == false) {
+			System.out.println("Invalid input try again");
+			deposit();
+		}
+		if(input.matches("[0-9]+")) {
+			int id = Integer.parseInt(input);
+			System.out.println("How much would you like to deposit?");
+			input = scan.nextLine();
+			if(input.matches("[0-9]+")) {
+				AccountService.deposit(id, Integer.parseInt(input));
+				System.out.println("Deposit successful");
+				System.out.println("Press Enter to continue");
+				scan.nextLine();
+				menu();
+			}
+			else {
+				System.out.println("Invalid input try again");
+				deposit();
+			}
+		}
+		else {
+			System.out.println("Invalid input try again");
+			deposit();
+		}
 	}
 
 	static void deleteBankAccount() {
 		displayBankAccounts();
+		if(AccountService.allAccounts(u.getB_id()).size() == 0) {
+			System.out.println("No active accounts");
+			menu();
+		}
 		System.out.println("Please enter account id to be deleted");
 		input = scan.nextLine();
+		boolean contains = false;
+		if(input.matches("[0-9]+")) {
+			for(Account acc:AccountService.allAccounts(u.getB_id())) {
+				if(acc.getA_id() == Integer.parseInt(input)) {
+					contains = true;
+				}
+			}
+		}
+		if(contains == false) {
+			System.out.println("Invalid input try again");
+			deleteBankAccount();
+		}
 		if(AccountService.getAccount(Integer.parseInt(input)).getAmount() == 0) {
 			AccountService.deleteAccount(Integer.parseInt(input));
 			System.out.println("Account successfully deleted");
@@ -336,13 +473,9 @@ public class App {
 				scan.nextLine();
 				menu();}break;
 			case "2":{menu();}break;
+			default:{System.out.println("Invalid input try again");
+					deleteBankAccount();}
 			}
-		}
-		else {
-			System.out.println("Invalid account id");
-			System.out.println("Press Enter to continue");
-			scan.nextLine();
-			menu();
 		}
 	}
 
@@ -376,6 +509,18 @@ public class App {
 			System.out.println("Please enter account ID");
 			displayBankAccounts();
 			input = scan.nextLine();
+			boolean contains = false;
+			if(input.matches("[0-9]+")) {
+				for(Account acc:AccountService.allAccounts(u.getB_id())) {
+					if(acc.getA_id() == Integer.parseInt(input)) {
+						contains = true;
+					}
+				}
+			}
+			if(contains == false) {
+				System.out.println("Invalid input try again");
+				viewAccount();
+			}
 			if(input.matches("[0-9]+")) {
 				List<Transaction> transactions = TransactionService.getTransactions(Integer.parseInt(input));
 			

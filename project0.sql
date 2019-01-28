@@ -15,10 +15,12 @@ b_id number(10)
 create table transaction(
 t_id number(10) primary key,
 change varchar2(200),
-total number(10),
+total number(10, 2),
 datetime varchar2(200),
 a_id number(10)
 );
+
+drop table bankaccount;
 
 create sequence id_maker
     minvalue 0

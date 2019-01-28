@@ -85,9 +85,24 @@ public class UserDAOTesting {
 	
 	@AfterClass
 	public static void setDown() {
+		if(UserService.getUser("Test2") != null) {
+			UserService.deleteUser(UserService.getUser("Test2").getB_id());
+			
+		}
+		if(UserService.getUser("Test3") != null) {
+			UserService.deleteUser(UserService.getUser("Test3").getB_id());
+			
+		}
+		if(UserService.getUser("Test4") != null) {
+			UserService.deleteUser(UserService.getUser("Test4").getB_id());
+			
+		}
+		if(UserService.getUser("test") != null) {
+			UserService.deleteUser(UserService.getUser("test").getB_id());
+			
+		}
 		UserService.deleteUser(UserService.getUser("Test1").getB_id());
-		UserService.deleteUser(UserService.getUser("Test4").getB_id());
-		UserService.deleteUser(UserService.getUser("test").getB_id());
+
 	}
 
 }

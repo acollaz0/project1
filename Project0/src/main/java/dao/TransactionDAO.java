@@ -26,7 +26,7 @@ public class TransactionDAO implements ITransaction {
 				transactions.add( new Transaction(
 						rs.getInt("T_ID"),
 						rs.getString("CHANGE"),
-						rs.getInt("TOTAL"),
+						rs.getDouble("TOTAL"),
 						rs.getString("DATETIME"),
 						rs.getInt("A_ID")));
 			}

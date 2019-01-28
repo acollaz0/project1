@@ -4,7 +4,7 @@ public class Transaction {
 	
 	private int t_id;
 	private String change;
-	private int total;
+	private double total;
 	private String datetime;
 	private int a_id;
 	
@@ -20,7 +20,7 @@ public class Transaction {
 		super();
 	}
 
-	public Transaction(int t_id, String change, int total, String datetime, int a_id) {
+	public Transaction(int t_id, String change, double total, String datetime, int a_id) {
 		super();
 		this.t_id = t_id;
 		this.change = change;
@@ -37,7 +37,7 @@ public class Transaction {
 		return change;
 	}
 
-	public int getTotal() {
+	public double getTotal() {
 		return total;
 	}
 
