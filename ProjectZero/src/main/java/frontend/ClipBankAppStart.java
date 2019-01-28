@@ -9,11 +9,12 @@ import backend.RDSClipBankDB;
 import tools.InputTools;
 import tools.IntTools;
 import tools.StringTools;
+import tools.UserInputException;
 
 
 public class ClipBankAppStart {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UserInputException { //this throws breaks the program, but I'm too lazy to put in the try catch blocks
 		
 		
 		ClipBankDao bank = null;
@@ -59,7 +60,7 @@ public class ClipBankAppStart {
 				"************************************************************"
 				+ "\n|" + StringTools.spaces(58) + "|"
 				+ "\n|" + StringTools.center("Welcome to the Clip Bank!", 58) + "|"
-				+ "\n|" + StringTools.center("(Please Press Enter)", 58) + "|"
+				+ "\n|" + StringTools.center("(Please Press ENTER)", 58) + "|"
 				+ "\n|" + StringTools.spaces(58) + "|"
 				+ "\n************************************************************\n"
 				);
@@ -70,47 +71,12 @@ public class ClipBankAppStart {
 			scan.nextLine();
 			System.out.println("What would you like to do?");
 			String[] options = new String[] {"Login", "Create Account", "Exit Application"};
-			//int selection = InputTools.getNumberInput(options);
 			
-			for (int i = 1; i <= options.length; i++) {
-				System.out.println(String.format("%-20s", options[i-1]) + " : " + i);
-			}
-			int selection = 0;
-			
-			try {
-				
-				
-				String s = scan.nextLine();
-				
-				selection = Integer.parseInt(s);
-				System.out.println("*" + s + "*");
-
-				System.out.println("*-" + selection + "-*");
-				
-				if (selection >= 1 && selection <= options.length) {
-					System.out.println("Made valid selection");
-				} else {
-					selection = 0;
-				}
-			} catch (InputMismatchException e) {
-				System.out.println("Invalid Input");
-				selection = 0;
-			}
-			
-			
-			
-			
-			if (selection!=0) {
-				
-				System.out.println("You selected : " + selection);
-				
-			} else {
-				System.out.println("Please input one of the options shown above.");
-				continue;
-			}
+			int selection = InputTools.getNaturalNumberInput(options);
 			
 			ClipBankUser user = null;
 			
+			mainswitch:
 			switch (selection) {
 			case 1:
 				//Login option. 
@@ -129,6 +95,41 @@ public class ClipBankAppStart {
 					System.out.println("Your username and password aren't valid. Try again.");
 				}
 				
+				break;
+				
+			case 2:
+				
+				
+				String newuser = "";
+				
+				boolean isValidUser = false;
+				
+				while (!isValidUser) {
+					newuser = InputTools.getAlphanumericString(6);
+					if (newuser.length()<0) {
+						System.out.println("Cancelling user account creation");
+						break mainswitch;
+					}
+					if (!bank.userExists(newuser)) {
+						isValidUser = true;
+					}
+				}
+				
+				//newuser is now a valid new username.
+				
+				String newpass = InputTools.getAlphanumericString(6);
+				
+				
+				if (newpass.length()>0) {
+					if (bank.createUser(newuser, newpass)) {
+						System.out.println("Welcome to the Clip Bank, " + newuser + "!\n"
+								+ "You may now log in.");
+					} else {
+						System.out.println("Something went wrong.");
+					}
+				} else {
+					System.out.println("Cancelling user account creation");
+				}
 				break;
 			case 3:
 				System.out.println("Goodbye!");

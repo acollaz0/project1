@@ -55,6 +55,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\tbnil\Desktop\JDBCTutorial"/>
 			<item value="C:\Users\tbnil\Desktop\sdet1901\1901sdet"/>
 			<item value="C:\Users\tbnil\Documents\stsSpace\JavaCore_questions"/>
 		</list>

@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Random;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
@@ -46,6 +47,7 @@ public class RDSClipBankDB implements ClipBankDao {
     private static final String KEY_STORE_FILE_PREFIX = "sys-connect-via-ssl-test-cacerts";
     private static final String KEY_STORE_FILE_SUFFIX = ".jks";
     private static final String DEFAULT_KEY_STORE_PASSWORD = "password"; //not sure if correct place for the password? NVM, def not, though apparently id doesn't break anything
+	public static final int MAX_DEPOSIT = 1000000;
 
     private RDSClipBankDB() throws Exception {
     	this.connection = getDBConnectionUsingIam();
@@ -60,28 +62,6 @@ public class RDSClipBankDB implements ClipBankDao {
     	}
     	
     }
-    
-//    public static void main(String[] args) throws Exception {
-//        //get the connection
-//    	//System.out.println(AWS_ACCESS_KEY);
-//        Connection connection = getDBConnectionUsingIam();
-//
-//        //verify the connection is successful
-//        Statement stmt= connection.createStatement();
-//        ResultSet rs=stmt.executeQuery("SELECT * FROM TESTTABLE\n"
-//        		+ "WHERE USRNAME='DeepBlue'");
-//        while (rs.next()) {
-//        	System.out.println("result:");
-//        	System.out.println(rs.getString("USRNAME") + " : " + rs.getString("PASS")); //Should print "Success!"
-//        }
-//
-//        //close the connection
-//        stmt.close();
-//        connection.close();
-//        
-//        clearSslProperties();
-//        
-//    }
 
     /**
      * This method returns a connection to the db instance authenticated using IAM Database Authentication
@@ -94,7 +74,7 @@ public class RDSClipBankDB implements ClipBankDao {
         try {
 			return DriverManager.getConnection(JDBC_URL, p);
 		} catch (Exception e) {
-			System.out.println(p.getProperty("password") + " is apparently null?");
+			e.printStackTrace();
 			return null;
 		}
         
@@ -150,6 +130,7 @@ public class RDSClipBankDB implements ClipBankDao {
         return createKeyStoreFile(createCertificate()).getPath();
     }
 
+    //unnecessary?
     /**
      *  This method generates the SSL certificate
      * @return
@@ -196,14 +177,56 @@ public class RDSClipBankDB implements ClipBankDao {
 	@Override
 	public boolean createUser(String username, String password) {
 		
+		try {
+			Statement s = connection.createStatement();
+			s.executeUpdate("INSERT INTO USERS (USRNAME, PASS) \n"
+					+ "VALUES ('" + username + "' , '" + password + "')");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
 		
-		
-		return false;
+		return true;
 	}
 
 	@Override
-	public ClipBox createClipBox(String username, String boxtype) {
-		return null;
+	public ClipBox createClipBox(String username) {
+		
+		String newID = generateUniqueClipBoxID(10);
+		
+		try {
+			Statement s = connection.createStatement();
+			
+			System.out.println(newID + ": " + username);
+			
+			s.executeUpdate("INSERT INTO CLIPBOXES (BOXID, USERNAME) \n"
+					+ "VALUES ('" + newID + "' , '" + username + "')");
+			s.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+		return ClipBox.getClipBox(newID);
+	}
+	
+	private String generateUniqueClipBoxID(int length) {
+		
+		char[] alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
+		StringBuilder newID = new StringBuilder(length);
+		Random r = new Random();
+		
+		do {
+			for (int i = 0; i < length; i++) {
+				newID.append(
+						alphanum[r.nextInt(alphanum.length)] );
+			}
+		} while (exists("CLIPBOXES","BOXID",newID.toString()));
+		
+		return newID.toString();
+		
 	}
 
 	@Override
@@ -257,12 +280,10 @@ public class RDSClipBankDB implements ClipBankDao {
 				s = connection.createStatement();
 				ResultSet r = s.executeQuery("SELECT * FROM CLIPBOXES\n"
 						+ "WHERE USERNAME='" + username + "'");
-				
+				//r.next();
 				while (r.next()) {
 					boxes.add(ClipBox.getClipBox(
-							r.getString("BOXID"), 
-							r.getInt("BALANCE"), 
-							r.getString("USERNAME")
+							r.getString("BOXID")
 							));
 				}
 				r.close();
@@ -285,10 +306,11 @@ public class RDSClipBankDB implements ClipBankDao {
 			s = connection.createStatement();
 			
 			if (this.exists("CLIPBOXES", "BOXID", boxID)) {
-				ResultSet r = s.executeQuery("SELECT BALANCE FROM CLIPBOXES"
+				ResultSet r = s.executeQuery("SELECT BALANCE FROM CLIPBOXES\n"
 						+ "WHERE BOXID='" + boxID + "'");
 				r.next();
 				balance = r.getInt(1);
+				r.close();
 			} else {balance = -1;}
 			
 			
@@ -301,18 +323,30 @@ public class RDSClipBankDB implements ClipBankDao {
 	}
 
 	@Override
-	public ClipBox getClipBox(String boxID) {
-		return null;
-	}
-
-	@Override
 	public int withdraw(int value, ClipBox box) {
-		return 0;
+		
+		int oldbalance = box.getBalance();
+		int newbalance = oldbalance - value;
+		try {
+			Statement s = connection.createStatement();
+		
+			int r = s.executeUpdate(
+					"UPDATE CLIPBOXES\n"
+					+ "SET BALANCE='" + newbalance + "'\n"
+					+ "WHERE BOXID='" + box.getClipboxID() + "'");
+			
+			this.recordTransaction(box,(-1)*value);
+			
+			return box.getBalance();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
 	}
 
 	@Override
 	public int deposit(int value, ClipBox box) {
-		return 0;
+		return withdraw(value*(-1), box);
 	}
 
 	@Override
@@ -321,18 +355,17 @@ public class RDSClipBankDB implements ClipBankDao {
 	}
 
 	@Override
-	public ClipBox createClipBox(ClipBankUser user) {
-		return null;
-	}
-
-	@Override
-	public ClipBox createClipBox(String username) {
-		return null;
-	}
-
-	@Override
-	public boolean deleteClipBox(String username, ClipBox box) {
-		return false;
+	public boolean deleteClipBox(ClipBox box) {
+		
+		try {
+			Statement s = connection.createStatement();
+			s.executeUpdate(String.format("DELETE FROM CLIPBOXES WHERE BOXID='%s'", box.getClipboxID()));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
 	}
 
 	@Override
@@ -344,7 +377,7 @@ public class RDSClipBankDB implements ClipBankDao {
 		
 		try {
 			Statement s = connection.createStatement();
-			ResultSet r = s.executeQuery("SELECT COUNT(*) FROM " + table + "\n"
+			ResultSet r = s.executeQuery("SELECT COUNT(*) FROM " + table + " \n"
 					+ "WHERE " + column + "='" + value + "'");
 			r.next();
 			return r.getInt(1)>0;
@@ -356,7 +389,53 @@ public class RDSClipBankDB implements ClipBankDao {
 
 	@Override
 	public String getClipBoxUserName(String clipboxID) {
-		return null;
+		
+		if (this.exists("CLIPBOXES", "BOXID", clipboxID)) {
+			Statement s=null;
+			try {
+				s = connection.createStatement();
+				ResultSet r = s.executeQuery("SELECT * FROM CLIPBOXES\n"
+						+ "WHERE BOXID='" + clipboxID + "'");
+				r.next();
+				String result = r.getString("USERNAME");
+				
+				r.close();
+				return result;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			}
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public boolean userExists(String username) {
+		
+		return this.exists("USERS", "USRNAME", username);
+	}
+
+	@Override
+	public boolean recordTransaction(ClipBox box, int value) {
+		
+		try {
+			Statement s = connection.createStatement();
+			
+			int r = s.executeUpdate(
+					String.format("INSERT INTO TRANSACTIONS (boxid, finalbalance, transaction_value, transaction_date)\r\n" + 
+					"VALUES ('%s', '%d','%d', SYSDATE)",
+					box.getClipboxID(), 
+					box.getBalance(), 
+					value));
+			return r==0;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return false;
 	}
 
 }
