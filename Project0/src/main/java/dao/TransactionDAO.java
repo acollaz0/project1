@@ -13,7 +13,7 @@ public class TransactionDAO implements ITransaction {
 
 	@Override
 	public List<Transaction> getTransactions(int a_id) {
-		String sql = "select * from transaction where a_id = ?";
+		String sql = "select * from transaction where a_id = ? order by datetime desc";
 		List<Transaction> transactions = new ArrayList<>();
 		try {
 			PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
