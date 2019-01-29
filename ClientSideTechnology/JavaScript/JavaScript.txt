@@ -1,0 +1,52 @@
+JavaScript to Java
+Hamster to Ham
+
+Java
+- Statically typed. A variable's type has to be declared 
+i.e. int num x = 100;
+
+- Server side language
+You see it on the backend of web applications
+exception is jsp 
+
+-Compiled language
+we write code and then it compiles 
+and the result is what you actually run
+
+- Has classes and classical inheritence
+we use classes as blueprints to create objects
+
+- Java has access modifiers
+
+- has 4 scopes
+
+- is only pass by value
+
+- very OOP based
+
+JavaScript
+- Loosely Typed  You do need not to delare a variables type 
+x = 100;
+
+- Pimarily a client side language
+node.js is being used to write server side JavaScript
+
+- Scripting language (Just in Time Compilation) JIT
+the program compiles and runs at the same time
+
+-No classes and has protypical inheritence
+an object refernces another object as a protype to build off of
+* ES6 ECMA added a Class keyword to simulate classes in js
+
+- no access modifiers 
+
+- JavaScript has 3 but we should only really use two
+
+- DataTypes primitives and objects
+a function is an object
+
+- JS is both pass by value and pass by reference
+
+- Multi-Paradigmed programming language
+it has oop capabilities it is heavily influenced by funtional
+programming

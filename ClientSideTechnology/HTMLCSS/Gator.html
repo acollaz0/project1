@@ -1,0 +1,85 @@
+<!DOCTYPE html> 
+<!-- document type it tells the browser what type of file 
+    this is and version  -->
+
+<html> 
+    <!-- the root tag everything goes in between this tag 
+    Essentially marks the begining and end of an html page-->
+
+<head>
+    <!-- meta information about the file -->
+    <title>Gator Football</title>
+
+    <link rel="stylesheet" type="text/css" href="Stylin.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+    <style>
+    /* style tag allows me to write css in the html page
+    but not necessarily with the element 
+    
+    selector- which will grab or identify elements to be selected
+    Declaration- which will give some propety a value for that element(s)
+    
+    
+    */
+
+
+/* the b is the selector and chooses all bold tags and 
+the color and value are the declaration
+the declaration is composed of property:value 
+
+3 types of selectors
+1. is to select by element i.e. b or body
+2. is to use the element id
+3. is to the class of an element
+*/
+        b{ color: darkblue}
+
+        body{
+            background-color:rosybrown
+        }
+        #GatorHeading{ color:rebeccapurple}
+
+
+
+
+    </style>
+
+</head>
+
+<body>
+    <!-- content goes in here -->
+<h1 id="GatorHeading">Who are the Florida Gators?</h1>
+<p>The Florida Gators are from the <b>University of Florida</b> located
+    in Gainesville, FL. The team plays in the SEC East
+    and invented <b>Gatorade</b>.
+</p>
+
+<!-- I added inline CSS. Inline css is define within the element -->
+<hr style="color: forestgreen" />
+
+<div div = "container">
+    <!-- a logical chunk or 'division of html' -->
+
+    <h3 style="color: aquamarine" class="champ">National Champions</h3>
+
+    <table class="jumbotron"> 
+        <!-- block element is an element to contain other elements -->
+        <tr><th>Opponent</th><th>Year</th></tr>
+        <tr><td>Florida State</td> <td>1996</td></tr>
+        <tr><td>Ohio State</td> <td>2006</td></tr>
+        <tr><td>Oklahoma</td> <td>2008</td></tr>
+
+    </table>
+
+    <img src="logo.jpg" height="300" width="100">
+
+</div>
+
+
+</body>
+
+
+
+</html>
+

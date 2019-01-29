@@ -1,0 +1,44 @@
+HTML (Hyper Text Markup Language)
+
+It is not a programming Language 
+(I will disown you if you say it is a programming language)
+
+The purpose of HTML is to display information and content on a webpage
+
+the HTML file extension tells the browser to interpret and parse the
+characters to create a webpage
+
+
+Elements- core building block of an html page
+They define the structure. 
+They can be nested. Generally bad practice to overlap or not closed
+
+Browsers tend to be very fault tolerant. 
+
+<h1>value of the element</h1>
+
+Attributes- Adjective to my element.
+key value relationship
+
+CSS: Cascading Style Sheets
+To make our web pages look pretty
+easy and approachble for humans to use
+
+The cascade algorithm determines what the final look of an html
+the most specific locator wins.
+
+inline always wins**
+
+
+Bootstrap is a CSS library developed by twitter
+CSS works on a grid system 12 units across
+
+
+
+
+
+
+
+
+
+
