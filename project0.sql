@@ -1,3 +1,7 @@
+select * from bankuser;
+select * from bankaccount;
+select * from transaction;
+
 create table bankuser(
 b_id number(10) primary key,
 username varchar2(200) unique,

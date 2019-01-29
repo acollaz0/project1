@@ -239,7 +239,7 @@ public class App {
 			default:{menu();}
 			}
 		}
-		int id = Integer.parseInt(scan.nextLine());
+		int id = Integer.parseInt(input);
 		UserService.deleteUser(id);
 		System.out.println("User successfully deleted");
 		System.out.println("Press Enter to continue");
