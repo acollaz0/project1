@@ -15,6 +15,7 @@ public class JDBCConnection {
 		
 		try {
 			if (con == null) {
+				MyLogger.logger.info("User connected to database");
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 				
 				Properties props = new Properties();

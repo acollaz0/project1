@@ -23,7 +23,7 @@ public class AccountDAO implements IAccount {
 			while(rs.next()) {
 				return new Account(
 						rs.getInt("A_ID"),
-						rs.getInt("AMOUNT"),
+						rs.getDouble("AMOUNT"),
 						rs.getString("TYPE"),
 						rs.getInt("B_ID"));
 			}
@@ -38,7 +38,7 @@ public class AccountDAO implements IAccount {
 		String sql = "call add_account(?, ?, ?)";
 		try {
 			CallableStatement cs = JDBCConnection.getConnection().prepareCall(sql);
-			cs.setString(1, Integer.toString(a.getAmount()));
+			cs.setString(1, Double.toString(a.getAmount()));
 			cs.setString(2, a.getType());
 			cs.setString(3, Integer.toString(a.getB_id()));
 			cs.execute();
@@ -81,7 +81,7 @@ public class AccountDAO implements IAccount {
 		
 				accounts.add( new Account(
 						rs.getInt("A_ID"),
-						rs.getInt("AMOUNT"),
+						rs.getDouble("AMOUNT"),
 						rs.getString("TYPE"),
 						rs.getInt("B_ID")));
 			}
@@ -95,11 +95,11 @@ public class AccountDAO implements IAccount {
 	}
 
 	@Override
-	public boolean withdraw(int a_id, int amount) {
+	public boolean withdraw(int a_id, double amount) {
 		String sql = "update bankaccount set amount = amount - ? where a_id = ?";
 		try {
 			PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
-			ps.setString(1, Integer.toString(amount));
+			ps.setString(1, Double.toString(amount));
 			ps.setString(2, Integer.toString(a_id));
 			ps.executeQuery();
 			return true;
@@ -111,11 +111,11 @@ public class AccountDAO implements IAccount {
 	}
 
 	@Override
-	public boolean deposit(int a_id, int amount) {
+	public boolean deposit(int a_id, double amount) {
 		String sql = "update bankaccount set amount = amount + ? where a_id = ?";
 		try {
 			PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
-			ps.setString(1, Integer.toString(amount));
+			ps.setString(1, Double.toString(amount));
 			ps.setString(2, Integer.toString(a_id));
 			ps.executeQuery();
 			return true;

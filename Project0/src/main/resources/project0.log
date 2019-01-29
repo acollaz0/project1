@@ -1,0 +1,15 @@
+2019-01-28 18:24:36 INFO  MyLogger:18 - User connected to database
+2019-01-28 18:26:11 INFO  MyLogger:18 - User connected to database
+2019-01-28 18:28:04 INFO  MyLogger:18 - User connected to database
+2019-01-28 18:40:25 INFO  MyLogger:18 - User connected to database
+2019-01-28 18:42:14 INFO  MyLogger:572 - User disconnected from database
+2019-01-28 18:42:19 INFO  MyLogger:18 - User connected to database
+2019-01-28 18:45:19 INFO  MyLogger:572 - User disconnected from database
+2019-01-28 18:45:25 INFO  MyLogger:18 - User connected to database
+2019-01-28 18:46:49 INFO  MyLogger:572 - User disconnected from database
+2019-01-28 18:47:06 INFO  MyLogger:18 - User connected to database
+2019-01-28 18:47:55 INFO  MyLogger:572 - User disconnected from database
+2019-01-28 18:48:02 INFO  MyLogger:18 - User connected to database
+2019-01-28 18:50:50 INFO  MyLogger:572 - User disconnected from database
+2019-01-28 18:54:04 INFO  MyLogger:18 - User connected to database
+2019-01-28 18:56:11 INFO  MyLogger:572 - User disconnected from database

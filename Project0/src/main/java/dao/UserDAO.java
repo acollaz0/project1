@@ -117,7 +117,7 @@ public class UserDAO implements IUser {
 			return rs.next();
 			
 		} catch (SQLException e) {
-			System.out.println("Username is unavailable");
+			e.printStackTrace();
 		}
 		
 		
@@ -128,10 +128,7 @@ public class UserDAO implements IUser {
 		List<User> users = new ArrayList<>();
 		try {
 			PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
-			
-			
 			ResultSet rs = ps.executeQuery();
-			
 			
 			while(rs.next()) {
 		

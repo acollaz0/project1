@@ -3,7 +3,6 @@ package application;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
-
 import model.Account;
 import model.Transaction;
 import model.User;
@@ -11,6 +10,7 @@ import service.AccountService;
 import service.TransactionService;
 import service.UserService;
 import util.JDBCConnection;
+import util.MyLogger;
 
 public class App {
 	
@@ -122,7 +122,6 @@ public class App {
 			menu();
 		}
 		else {
-			System.out.println("Invalid username");
 			System.out.println("Would you like to: ");
 			System.out.println("1. Try again");
 			System.out.println("2. Log on");
@@ -326,7 +325,7 @@ public class App {
 			System.out.println();
 			System.out.println("----------------------------------------------");
 			for(Account acc: accounts) {
-				System.out.format("%15s %15s %10s", acc.getA_id(), acc.getType(), "$"+acc.getAmount());
+				System.out.format("%15s %15s %6s%.2f", acc.getA_id(), acc.getType(), "$", acc.getAmount());
 				System.out.println();
 			}
 			System.out.println("----------------------------------------------");
@@ -344,6 +343,7 @@ public class App {
 			menu();
 		}
 		System.out.println("Which account would you like to withdraw from?");
+		System.out.println("Please enter account ID");
 		displayBankAccounts();
 		input = scan.nextLine();
 		boolean contains = false;
@@ -362,7 +362,8 @@ public class App {
 			int id = Integer.parseInt(input);
 			System.out.println("How much would you like to withdraw?");
 			input = scan.nextLine();
-			if(input.matches("[0-9]+") && AccountService.withdraw(id, Integer.parseInt(input))) {
+			if(input.matches("[0-9]+.[0-9]{2}") || input.matches("[0-9]+")) {
+				AccountService.withdraw(id, Double.parseDouble(input));
 				System.out.println("Withdraw successful");
 				System.out.println("Press Enter to continue");
 				scan.nextLine();
@@ -412,8 +413,8 @@ public class App {
 			int id = Integer.parseInt(input);
 			System.out.println("How much would you like to deposit?");
 			input = scan.nextLine();
-			if(input.matches("[0-9]+")) {
-				AccountService.deposit(id, Integer.parseInt(input));
+			if(input.matches("[0-9]+.[0-9]{2}") || input.matches("[0-9]+")) {
+				AccountService.deposit(id, Double.parseDouble(input));
 				System.out.println("Deposit successful");
 				System.out.println("Press Enter to continue");
 				scan.nextLine();
@@ -529,11 +530,11 @@ public class App {
 					System.out.printf("%45s", "Transactions for account "+input);
 					System.out.println();
 					System.out.println("------------------------------------------------------------------");
-					System.out.printf("%10s %20s %30s", "Difference", "Balance", "Date\\Time");
+					System.out.printf("%20s %20s %20s","Date\\Time", "Difference", "Balance");
 					System.out.println();
 					System.out.println("------------------------------------------------------------------");
 					for(Transaction tra: transactions) {
-						System.out.format("%10s %20s %30s", tra.getChange(), tra.getTotal(), tra.getDatetime());
+						System.out.format("%20s %20s %14s%.2f", tra.getDatetime(), tra.getChange(), "$", tra.getTotal());
 						System.out.println();
 					}
 					System.out.println("------------------------------------------------------------------");
@@ -566,6 +567,7 @@ public class App {
 		scan.close();
 		try {
 			JDBCConnection.getConnection().close();
+			MyLogger.logger.info("User disconnected from database");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

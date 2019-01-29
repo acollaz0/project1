@@ -7,7 +7,7 @@ super number(10)
 
 create table bankaccount(
 a_id number(10) primary key,
-amount number(10),
+amount number(10, 2),
 type varchar2(200),
 b_id number(10)
 );
@@ -20,8 +20,6 @@ datetime varchar2(200),
 a_id number(10)
 );
 
-drop table bankaccount;
-
 create sequence id_maker
     minvalue 0
     increment by 2
@@ -33,8 +31,6 @@ alter table bankaccount add constraint fk_account_user foreign key
 alter table transaction add constraint fk_transaction_account foreign key
 (a_id) references bankaccount(a_id) on delete cascade;
 
-
-
 create or replace procedure add_user(username varchar2, password varchar2, super number)
 is 
 begin
@@ -42,7 +38,6 @@ begin
 insert into bankuser values(id_maker.nextval, username, password, super);
 
 end;
-
 
 create or replace procedure add_account(amount number, type varchar2, b_id number)
 is

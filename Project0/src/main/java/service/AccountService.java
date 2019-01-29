@@ -21,14 +21,14 @@ public class AccountService {
 		return ad.deleteAccount(a_id);
 	}
 	
-	public static boolean withdraw(int a_id, int amount) {
+	public static boolean withdraw(int a_id, double amount) {
 		return ad.withdraw(a_id, amount);
 	}
 	
 	public static Account getAccount(int a_id) {
 		return ad.getAccount(a_id);
 	}
-	public static boolean deposit(int a_id, int amount) {
+	public static boolean deposit(int a_id, double amount) {
 		return ad.deposit(a_id, amount);
 	}
 	

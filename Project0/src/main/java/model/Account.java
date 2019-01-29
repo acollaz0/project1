@@ -3,7 +3,7 @@ package model;
 public class Account {
 
 	private int a_id;
-	private int amount;
+	private double amount;
 	private String type;
 	private int b_id;
 	
@@ -11,7 +11,7 @@ public class Account {
 		super();
 	}
 	
-	public Account(int a_id, int amount, String type, int b_id) {
+	public Account(int a_id, double amount, String type, int b_id) {
 		super();
 		this.a_id = a_id;
 		this.amount = amount;
@@ -29,11 +29,11 @@ public class Account {
 	}
 	
 	
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 	
-	public void setAmount(int amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 	
