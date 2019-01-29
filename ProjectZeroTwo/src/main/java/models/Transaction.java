@@ -7,14 +7,14 @@ import java.time.LocalDate;
 //Just a data storage class. Doesn't actually do anything, and can only be created by ClipBox objects
 public class Transaction {
 	
-	private ClipBox box;
+	private String box;
 	private String t_id;
 	private int value;
 	private Date date;
 	private int finalbalance;
 	
 	
-	public Transaction(ClipBox box, String t_id, int value, int finalbalance, Date date) {
+	public Transaction(String box, String t_id, int value, int finalbalance, Date date) {
 		super();
 		this.box = box;
 		this.t_id = t_id;
@@ -27,7 +27,7 @@ public class Transaction {
 		return this.date;
 	}
 	
-	public ClipBox getBox() {
+	public String getBox() {
 		return box;
 	}
 
@@ -49,7 +49,7 @@ public class Transaction {
 				this.t_id,
 				this.value,
 				this.finalbalance,
-				this.box.getCb_id(),
+				this.box,
 				simpleDateFormat.format(this.date));
 	}
 	

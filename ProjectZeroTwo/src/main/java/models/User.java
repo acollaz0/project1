@@ -5,6 +5,11 @@ public class User {
 	private String username;
 	private String password;
 	private boolean superUser;
+	/**
+	 * @param username
+	 * @param password
+	 * @param superUser
+	 */
 	public User(String username, String password, boolean superUser) {
 		super();
 		this.username = username;

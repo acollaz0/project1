@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.util.Dictionary"/>
 <fullyQualifiedTypeName name="a.Shape"/>
 <fullyQualifiedTypeName name="java.io.Serializable"/>
@@ -27,26 +26,16 @@
 <fullyQualifiedTypeName name="java.lang.Math"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="backend.ClipBox"/>
-<fullyQualifiedTypeName name="connect.JDBCLink"/>
-<fullyQualifiedTypeName name="dao.IUserDAO"/>
 <fullyQualifiedTypeName name="dao.ITransactionDAO"/>
 <fullyQualifiedTypeName name="java.util.Optional"/>
-<fullyQualifiedTypeName name="dao.TransactionDAO"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="dao.UserDAO"/>
 <fullyQualifiedTypeName name="java.awt.List"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="dao.ClipBoxDAO"/>
-<fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="java.sql.CallableStatement"/>
 <fullyQualifiedTypeName name="service.BankingService"/>
-<fullyQualifiedTypeName name="models.User"/>
 <fullyQualifiedTypeName name="tools.UserInputException"/>
-<fullyQualifiedTypeName name="models.Transaction"/>
-<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-<fullyQualifiedTypeName name="models.ClipBox"/>
-<fullyQualifiedTypeName name="java.sql.Date"/>
 <fullyQualifiedTypeName name="java.sql.SQLType"/>
 <fullyQualifiedTypeName name="java.sql.Types"/>
 <fullyQualifiedTypeName name="java.io.Console"/>
@@ -57,4 +46,18 @@
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
 <fullyQualifiedTypeName name="java.util.Properties"/>
 <fullyQualifiedTypeName name="tools.InputTools"/>
+<fullyQualifiedTypeName name="dao.TransactionDAO"/>
+<fullyQualifiedTypeName name="models.ClipBox"/>
+<fullyQualifiedTypeName name="dao.ClipBoxDAO"/>
+<fullyQualifiedTypeName name="org.junit.AfterClass"/>
+<fullyQualifiedTypeName name="models.Transaction"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="org.junit.After"/>
+<fullyQualifiedTypeName name="java.sql.Savepoint"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="connect.JDBCLink"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="models.User"/>
+<fullyQualifiedTypeName name="dao.IUserDAO"/>
 </qualifiedTypeNameHistroy>

@@ -22,14 +22,16 @@ public class UserDAO implements IUserDAO {
 			return false;
 		}
 		
-		String sql = "INSERT INTO BANKUSER (USRNAME, PASS) "
-				+ "VALUES (?, ?)";
+		String sql = "INSERT INTO BANKUSER (USRNAME, PASS, ISSUPER) "
+				+ "VALUES (?, ?, ?)";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, user.getUsername());
 			ps.setString(2, user.getPassword());
+			ps.setInt(3, user.isSuperUser() ? 1 : 0);
 			ResultSet rs = ps.executeQuery();
+			
 			//System.out.println(rs);
 			return true;
 			
@@ -62,9 +64,8 @@ public class UserDAO implements IUserDAO {
 			return rs.getInt(1)==1;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
-		
-		return false;
 	}
 
 //	public boolean validateSuperUser(User user) {
@@ -85,7 +86,7 @@ public class UserDAO implements IUserDAO {
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			int issuper = rs.getInt(1);
-			System.out.println(issuper);
+			//System.out.println(issuper);
 			return issuper==1;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -125,6 +126,7 @@ public class UserDAO implements IUserDAO {
 			ps.setString(1, user);
 			ResultSet rs = ps.executeQuery();
 			rs.next();
+			//System.out.println(rs.getInt("ISSUPER"));
 			return new User(user, rs.getString("PASS"), rs.getInt("ISSUPER")==1);
 		} catch (SQLException e) {
 			e.printStackTrace();

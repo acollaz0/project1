@@ -3,6 +3,7 @@ package dao;
 import static org.junit.Assert.assertArrayEquals;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,7 +20,27 @@ public class TransactionDAO implements ITransactionDAO {
 	private static Connection con = JDBCLink.getConnection();
 
 	public List<Transaction> getTransactions() {
-		return null;
+		
+		String sql = "select * from trans order by t_date";
+		List<Transaction> transactions = new ArrayList<Transaction>();
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				String boxID = rs.getString("BOXID");
+				String transID = rs.getString("t_id");
+				int value = rs.getInt("T_VALUE");
+				int finalbalance = rs.getInt("FINALBALANCE");
+				Date date = rs.getDate("T_DATE");
+				transactions.add(new Transaction(boxID, transID, value, finalbalance, date));
+			}
+			return transactions;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		
 	}
 
 	public List<Transaction> getTransactions(User user) {
@@ -62,10 +83,11 @@ public class TransactionDAO implements ITransactionDAO {
 			ps.setString(1, t_id);
 			ResultSet rs = ps.executeQuery();
 //			System.out.println(t_id);
-			rs.next();
-			IClipBoxDAO cbdao = new ClipBoxDAO();
-			ClipBox box = cbdao.getClipBox(rs.getString("BOXID"));
-			return new Transaction(box,t_id, rs.getInt("T_VALUE"), rs.getInt("FINALBALANCE"), rs.getDate("T_DATE"));
+			if (rs.next()) {
+				IClipBoxDAO cbdao = new ClipBoxDAO();
+				String boxID = rs.getString("BOXID");
+				return new Transaction(boxID,t_id, rs.getInt("T_VALUE"), rs.getInt("FINALBALANCE"), rs.getDate("T_DATE"));
+			} else {return null;}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

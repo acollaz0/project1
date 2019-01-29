@@ -151,7 +151,7 @@ public class BankingService {
 						"View Transactions",
 						"View All Users",
 						"Create New User",
-						"Update user(??)",
+						"Update user",
 						"Delete User"
 						};
 				selection = 0;
@@ -285,7 +285,7 @@ public class BankingService {
 
 		for (int i = 0; i < users.size(); i++) {
 			User user = users.get(i);
-			System.out.println(String.format("| %-5d | %-20s | %-20s | %-12s |", 
+			System.out.println(String.format("| %5d |   %-18s |   %-18s | %-12s |", 
 					i+1,
 					user.getUsername(),
 					user.getPassword(),
@@ -330,7 +330,7 @@ public class BankingService {
 		System.out.println(String.format("| %-5s | %-20s | %-20s | %-12s | %-20s |", "Label", "Username:", "Password:", "Super User:", "Clip Boxes:"));
 		for (int i = 0; i < users.size(); i++) {
 			User user = users.get(i);
-			System.out.println(String.format("| %5d | %20s | %20s | %12s | %20s |", 
+			System.out.println(String.format("| %5d |   %-18s |   %-18s | %12s | %12s |", 
 					i+1,
 					user.getUsername(),
 					user.getPassword(),
@@ -381,18 +381,24 @@ public class BankingService {
 
 	private static void displayTransactions(User user) {
 		
-		String header = String.format("| %14s | %20s | %20s | %12s | %30s |",
-				"T_ID",
-				"Transaction Value",
-				"Final Balance",
-				"Clip Box",
-				"Timestamp"
-				);
-		System.out.println(header);
 		List<Transaction> transactions = tdao.getTransactions(user);
-		
-		for (Transaction t : transactions) {
-			System.out.println(t);
+		if (transactions.size()>0) {
+
+			String header = String.format("| %14s | %20s | %20s | %12s | %30s |",
+					"T_ID",
+					"Transaction Value",
+					"Final Balance",
+					"Clip Box",
+					"Timestamp"
+					);
+			System.out.println(header);
+
+
+			for (Transaction t : transactions) {
+				System.out.println(t);
+			}
+		} else {
+			System.out.println("You have no recorded transactions.");
 		}
 		
 	}
@@ -436,22 +442,22 @@ public class BankingService {
 	}
 
 	private static ClipBox askForClipBox(User user) throws UserInputException {
-		List<ClipBox> clipboxes = getClipBoxes(user);
-		System.out.println(
-				String.format("%s | %-20s | %-20s |", "label", "Clip Box ID", "Balance")
-				);
+		List<ClipBox> boxes = getClipBoxes(user);
+		
+		if (boxes.size()>0) {
+			System.out.println(String.format("%s | %-20s | %-20s |", "label", "Clip Box ID", "Balance"));
+			for (int i = 0; i < boxes.size(); i++) {
 
-		for (int i = 0; i < clipboxes.size(); i++) {
-
-			System.out.println(
-					String.format("%5d | %20s | %20d | %30s |",i+1,clipboxes.get(i).getCb_id(),clipboxes.get(i).getBalance(),clipboxes.get(i).getDescription())
-					);
+				System.out.println(String.format("%5d | %20s | %20d | %30s |", i + 1, boxes.get(i).getCb_id(),
+						boxes.get(i).getBalance(), boxes.get(i).getDescription()));
+			}
+			int boxlabel;
+			boxlabel = InputTools.getNaturalNumberInput(boxes.size());
+			return boxes.get(boxlabel - 1);
+		} else {
+			System.out.println("You have no open Clip Boxes.");
+			throw new UserInputException();
 		}
-
-		int boxlabel;
-
-		boxlabel = InputTools.getNaturalNumberInput(clipboxes.size());
-		return clipboxes.get(boxlabel-1);
 	}
 	
 	public static void loadService() {

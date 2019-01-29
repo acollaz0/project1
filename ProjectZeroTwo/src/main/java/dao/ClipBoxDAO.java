@@ -19,18 +19,15 @@ public class ClipBoxDAO implements IClipBoxDAO {
 	private static UserDAO udao = new UserDAO();
 	private static ITransactionDAO tdao = new TransactionDAO();
 
-	public ClipBox getClipBox(int boxID) {
-		
-		
-		
-		return null;
-	}
-
 	public ClipBox addClipBox(User user) {
 		return addClipBox(user,"-");
 	}
 	
 	public ClipBox addClipBox(User user, String description) {
+		
+		if (!udao.isExtantUser(user.getUsername())) {
+			return null;
+		}
 		
 		String sql = "call add_box(?,?,?)";
 		
@@ -49,6 +46,10 @@ public class ClipBoxDAO implements IClipBoxDAO {
 	}
 
 	public boolean deleteClipBox(ClipBox box) {
+		
+		if (box.getBalance()!=0) {
+			return false;
+		}
 		
 		String sql = "delete from clipbox where boxid=?";
 		
@@ -90,8 +91,12 @@ public class ClipBoxDAO implements IClipBoxDAO {
 
 	public List<ClipBox> getClipBoxes(User user) {
 		
-		List<ClipBox> boxes = new ArrayList<>();
 		
+		
+		List<ClipBox> boxes = new ArrayList<>();
+		if (!udao.isExtantUser(user.getUsername())) {
+			return boxes;
+		}
 		String sql = "select boxid from clipbox where username=?";
 		
 		try {
@@ -153,20 +158,26 @@ public class ClipBoxDAO implements IClipBoxDAO {
 
 	public ClipBox getClipBox(String boxID) {
 		
+		if (!isExtantClipBox(boxID)) {
+			return null;
+		}
+		
 		String sql = "select * from clipbox where boxid=?";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, boxID);
 			ResultSet rs = ps.executeQuery();
-			rs.next();
-			return new ClipBox(
-					udao.getUser(rs.getString("USERNAME")),
-					rs.getInt("BALANCE"),
-					boxID,
-					rs.getString("DESCRIPTION")
-					);
-			
+			if (rs.next()) {
+				return new ClipBox(
+						udao.getUser(rs.getString("USERNAME")),
+						rs.getInt("BALANCE"),
+						boxID,
+						rs.getString("DESCRIPTION")
+						);
+			} else {
+				return null;
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

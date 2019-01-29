@@ -1,5 +1,9 @@
 package app;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import connect.JDBCLink;
 import models.User;
 import service.BankingService;
 import tools.InputTools;
@@ -9,6 +13,7 @@ import tools.UserInputException;
 public class ClipBankApp {
 
 	public static void main(String[] args) {
+		Connection con = JDBCLink.getConnection();
 		BankingService.loadService();
 		System.out.println(
 				"************************************************************\n"
@@ -105,6 +110,11 @@ public class ClipBankApp {
 			
 		}
 
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
