@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Bubbling</title>
+</head>
+
+<body id="body" onclick="console.log('Hello from body')">
+
+<div onclick="console.log('Hello from div')">
+
+    <span onclick="console.log('Hello from span')">
+                <h1 onclick="console.log('hello from h1')">in the center of the page</h1>
+    </span>
+
+</div>
+
+
+</body>
+<script>
+let parent = document.getElementById("body")
+parent.addEventListener("click",()=>{console.log("Capture")},true)
+
+
+</script>
+
+</html>

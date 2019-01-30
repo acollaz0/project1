@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>
+        Star Wars browser
+    </title>
+</head>
+
+<body>
+
+    <h1>Star Wars</h1>
+
+<button onclick="getCharacter()">Get Character</button>
+
+    <p id="reply">Charcter info</p>
+
+    <p id = "name">Name</p>
+
+    <p id = "mass">Mass</p>
+
+
+</body>
+
+<script>
+
+
+function getCharacter(){
+
+        let xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+              //document.getElementById("reply").innerHTML = this.responseText;
+                let character = JSON.parse(this.responseText)
+                console.log(character)
+
+                document.getElementById("name").innerHTML = character.name
+                document.getElementById("mass").innerHTML = character.mass
+            }
+          };
+
+          xhttp.open("GET", "https://swapi.co/api/people/3/?format=json", true);
+          xhttp.send(); 
+        }
+
+
+</script>
+
+
+</html>
+
