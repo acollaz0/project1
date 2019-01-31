@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>How Cold Is It?!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <style>
+
+        #mainp{
+            font-size: 50px;
+        }
+        span.info{
+            font-size: 70px;
+            color:skyblue;
+        }
+        .button {
+            background-color:darkcyan;
+            border-radius: 20px;
+            border: none;
+            color: lightgray;
+            padding: 30px 32px;
+            
+            text-align: center;
+            display: inline-block;
+            font-size: 50px;
+            
+            margin: 1% 1% 10px 1%;
+            display: inline;
+        }
+        #main {
+            text-align: center;
+            color: bisque;
+        }
+        #zipField{
+            background-color: darkgrey;
+            color: bisque;
+            margin: 1px 1% 1% 1%;
+            border: none;
+            
+        }
+        #zipField:focus{
+            border: 3px white;
+        }
+        p{
+            padding: 1px 1px;
+            margin:0px;
+        }
+    </style>
+</head>
+
+<body style="background-color:midnightblue">
+    <div id="main">
+    <button class="button" onclick="getWeather()">How Freaking Cold Is It?! </button>
+    <p>Enter Zip Code:</p>
+    <input type="text" name="Zipcode" id="zipField">
+    <p id="mainp" style="visibility: hidden"> It is <span class="info" id="temp_f"></span> <span class="info">&deg;F</span> in <span class="info" id="name"></span></p>
+    <p id="subp" style="visibility: hidden">(That's pretty freaking cold.)</p>
+    </div>
+
+</body>
+<script>
+
+    // XMLHttpRequest.prototype.realSend = XMLHttpRequest.prototype.send;
+    // var newSend = function (vData) {
+    //     this.setRequestHeader('token', 'yueBprkSYipmmExAqsuqcZaLaDLqvCzn');
+    //     this.realSend(vData);
+    // };
+    // XMLHttpRequest.prototype.send = newSend;
+    
+
+    function getWeather(){
+        let zipField = document.getElementById("zipField");
+        let matchResult = zipField.value.match("^[0-9]{5}$");
+        if (matchResult){
+            if (matchResult.length==1){
+                requestWeather(matchResult[0]);
+            }
+        } else {
+            console.log("No match");
+        }
+        
+        
+    }
+
+    function requestWeather(zipcode) {
+
+        let xhttp = new XMLHttpRequest();
+
+
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) { //This if condition verifies the response is appropriately recieved &APPID=25934816a6a57deba88f406a3fd578bb
+                // document.getElementById("reply").innerHTML = this.responseText;
+                let weatherStats = JSON.parse(this.responseText);
+                document.getElementById("name").innerHTML = weatherStats.location.name + ", " + weatherStats.location.region;
+                document.getElementById("temp_f").innerHTML = weatherStats.current.temp_f;
+                document.getElementById("mainp").style.visibility = "visible";
+                if (weatherStats.current.temp_f<15){
+                    document.getElementById("subp").style.visibility = "visible";
+                }
+
+            }
+        };
+
+        xhttp.open("GET", "http://api.apixu.com/v1/current.json?key=6216bd29878a40aaaab165238193001&q=" + zipcode, true);
+        xhttp.send();
+    }
+</script>
+
+</html>

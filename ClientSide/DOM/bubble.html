@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bubbling</title>
+</head>
+
+<body onclick="console.log('Hello from body')" id="bodu">
+    <div onclick="console.log('Hello from div')">
+        <span onclick="console.log('Hello from span')">
+            <!-- Can't click on just h1, without clicking on span, div, and body
+            This is called bubbling, when events execute from innermost element to outermost element.
+            This is the default for browsers.
+            The alternatuve is capturing, which executes the outermost elements first, then the inner elements -->
+            <h1 onclick="console.log('Hello From H1');">In the center of the page</h1>
+        </span>
+    </div>
+</body>
+<script>
+    let parent = document.getElementById("bodu");
+    parent.addEventListener("click",()=>{console.log("Capture Two!");},true);
+    parent.addEventListener("click",()=>{console.log("Capture");},true);//Set capturing to true
+    
+</script>
+
+</html>

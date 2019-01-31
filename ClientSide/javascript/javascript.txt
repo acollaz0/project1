@@ -1,0 +1,26 @@
+JavaScript Basics
+
+Java has zero relation to JavaScript
+
+Java:
+-Statically typed: A variable type has to be declared (int num)
+-Primarily server side language. Used for backend, except for java server pages (jsp)
+-Java is a compiled language: We write the code, and then it compiles, and that result 
+is what is actually run.
+-Java has classes and classical inheritance: Use classes as blueprints to create objects
+-Java has access modifiers
+-Has four scopes
+-Is only pass by value
+-Very OOP based
+
+JavaScript:
+-Interpretive/Loosely typed: You do not need to declare a variable's type (x=100)
+-Primarily client side, though node.js can be used to write server side JavaScript
+-Scripting Language (just in time compilation): The program compiles and runs at the same time.
+-Has no classes (sort of), and prototypical inheritance. Object references another object as a prototype
+to build off of. *ES6 added a class keyword to javascript to simulate classes in javascript
+-Has no access modifiers
+-Has three scopes, but should only really use two
+-Has datatypes, both primitives and objects. In javascript, a function is an object.
+- is both pas by value and pass by reference
+-"Multiparadigmed" language. Has OOP capabilities, but is heavily influenced by functional programming

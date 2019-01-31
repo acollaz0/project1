@@ -1,0 +1,33 @@
+AJAX - Asynchronous JavaScript and XML
+
+-used to update a webpage without refreshing the page.
+-creates a smoother user experience
+
+Asynchronous function:
+-Not run immediately.
+-It takes time for conditions to be met for it to execute.
+
+Stesp for ajax method
+1: Make an XML/HTML request. <let xhttp = new XMLHttpRequest();>
+2: Define a function to execute when the response of your request is ready
+3: Open the request <xhttp.open("GET", "https://api.myjson.com/bins/11ypyw", true);>. 
+    THink of it like writing the address on a letter, but you haven't sent it yet
+    "GET" is the http method I want to run. "GET" recieves info, "POST" sends info
+    The second param is the URL I want to run GET on
+4: Actually send the request (send the letter);
+5: The code from step 2 executes when you recieve a response.
+
+The readystate gives information on the status of your XMLHttpRequest.
+-Starts at 0. Request is unsent
+-1: shows you have called the open method, but haven't sent it
+-2: Headers recieved, aka we have called the send method
+-3: Loading, we're downloading the response from the request.
+-4: done, completed recieving the request.
+
+HTTP Status codes:
+-they tell you about how your request was handled.
+-100's is information
+-200's it was a successful call.
+-300's are redirects
+-400's are client side errors
+-500's are server side errors

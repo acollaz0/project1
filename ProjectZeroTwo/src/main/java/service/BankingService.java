@@ -279,8 +279,8 @@ public class BankingService {
 		
 		int selection = 0;
 		
-		System.out.println("Please select the label of the user you want to delete.");
-		System.out.println("You can only delete a user if they have no Clip Boxes.");
+		System.out.println("Please select the label of the user you want to edit.\n");
+//		System.out.println("You can only delete a user if they have no Clip Boxes.");
 		System.out.println(String.format("| %-5s | %-20s | %-20s | %-12s |", "Label", "Username:", "Password:", "Super User:"));
 
 		for (int i = 0; i < users.size(); i++) {
@@ -309,9 +309,14 @@ public class BankingService {
 		
 		String n_password = InputTools.getAlphanumericString(6, "What should their new password be? (The old one was " + user.getPassword() + ")");
 		
+		System.out.println("The new username is : " + n_username);
+		System.out.println("The new password is : " + n_password);
+//		System.out.println("Are you certain you want to make these changes to " + user.getUsername() + "?");
+		InputTools.getYesNo("Are you certain you want to make these changes to " + user.getUsername() + "?");
+		
 		udao.editUserInfo(user,n_username,n_password);
 		user = udao.getUser(n_username);
-		System.out.println(user + " " + user.getPassword());
+//		System.out.println(user + " " + user.getPassword());
 		
 	}
 
@@ -344,7 +349,7 @@ public class BankingService {
 			
 			selection = InputTools.getNaturalNumberInput(users.size());
 			User user = users.get(selection - 1);
-			System.out.println("You selected : " + user.getUsername());
+			System.out.println("You selected " + user.getUsername() + " for deletion. This cannot be undone.");
 			
 			if (cbdao.getClipBoxes(user).size()>0) {
 				System.out.println("That user still has active Clip Boxes, and cannot be deleted.");
@@ -415,10 +420,14 @@ public class BankingService {
 			box = askForClipBox(user);
 			if (box.getBalance()==0) {
 				keepasking=false;
+			} else {
+				System.out.println(box.getCb_id() + " is not an empty clip box. Please select a different box, \n"
+						+ "or withdraw all paperclips from " + box.getCb_id());
 			}
 		}
 		
-		cbdao.deleteClipBox(box);
+		boolean result = cbdao.deleteClipBox(box);
+		
 		
 	}
 

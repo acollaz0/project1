@@ -57,9 +57,12 @@ public class SQLPlayground {
 //			}
 //		}
 		
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 5; i++) {
 			System.out.println((i*105943)%104743);
 		}
+		Integer i = new Integer(2);
+		Integer j = 2;
+		System.out.println(i==j);
 		
 		
 		

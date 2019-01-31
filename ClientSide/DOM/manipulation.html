@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM Manipulation</title>
+    </head>
+    <body>
+        <!-- inline js is ok if you're doing something short and easy -->
+        <h1 onclick="this.innerHTML = 'inline change'">We can change the DOM with inline js.</h1>
+
+        <h1 onclick="internalFunction(this)">We can change the DOM internally, too</h1>
+
+        <h1 onclick="externalFunction(this)">We can change the DOM extrnally, also.</h1>
+
+    </body>
+    <script>
+        //This is an internal function
+        function internalFunction(element){
+            element.innerHTML="Internal function change";
+        }
+    </script>
+    <script src="manipulation.js"></script>
+</html>

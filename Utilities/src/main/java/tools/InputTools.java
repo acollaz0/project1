@@ -17,7 +17,7 @@ public class InputTools {
 		int selection = 0;
 		
 		for (int i = 1; i <= args.length; i++) {
-			System.out.println(String.format("%-20s", args[i - 1]) + " : " + i);
+			System.out.println(String.format("%3d : %-20s", i,args[i - 1]));
 		}
 		
 		while (
@@ -120,7 +120,7 @@ public class InputTools {
 			}
 			
 			if ( !(selection.matches(regexmatch)) ) {
-				System.out.println("*" + selection + "* doesn't match " + regexmatch);
+				System.out.println("*" + selection + "* is not a valid password.");
 			}
 			
 		}
@@ -190,7 +190,7 @@ public class InputTools {
 			}
 			
 			if ( !(selection.matches(regexmatch)) ) {
-				System.out.println("*" + selection + "* doesn't match " + regexmatch);
+				System.out.println("\""+selection + "\" is not a valid input.");
 			}
 			
 		}
@@ -202,6 +202,10 @@ public class InputTools {
 
 	public static int getYesNo() throws UserInputException {
 		System.out.println("Are you certain?");
+		return getNaturalNumberInput(new String[] {"Yes","No"});
+	}
+	public static int getYesNo(String prompt) throws UserInputException {
+		System.out.println(prompt);
 		return getNaturalNumberInput(new String[] {"Yes","No"});
 	}
 	

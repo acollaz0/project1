@@ -1,0 +1,26 @@
+DOM - Document Object Model
+It is a way to present an html page as a series of connected nodes
+JavaScript allows us to manipulate the DOM to create dynamic webpages.
+The DOM is a way of representing nested tags, basically:
+<body>
+    <h1></h1>
+    <p><b></b>
+    </p>
+    <div>
+        <table></table>
+    </div>
+</body>
+
+Becomes a tree, with the body tag as the first node of the tree, and h1, p, and div as the first child nodes of body
+
+Event Listeners:
+-An event is a user action or something that occurs on the page. (click, mouseover, load, etc.)
+-action function or code to be called when an event has been triggered.
+- Event listener/Event handler are used synonymously, though they are slightly different. (as the names suggest)
+Using an event:
+1: grab an element (ex: document.getElementByID("id"))
+2: add the event listener element.addEventListener()
+    parameters for addEventListener:
+    first: the event you are listening for (a string representation)
+    second: the code or function to be executed when the event occurs
+    third: whether or not the element should perform capturing or bubbling (optional param?)

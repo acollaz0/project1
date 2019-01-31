@@ -21,4 +21,4 @@ Scanner for user input.																		--Complete
 Bonus: 
 A user's transactions are recorded.															--Complete
 A user may view transaction history. 														--Complete
-JUnit tests on DAO methods.  																--In Progress
+JUnit tests on DAO methods.  																--Complete

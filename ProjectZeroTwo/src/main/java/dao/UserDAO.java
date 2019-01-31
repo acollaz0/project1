@@ -164,11 +164,16 @@ public class UserDAO implements IUserDAO {
 	@Override
 	public boolean deleteUser(User user) {
 		
+		if (!isExtantUser(user.getUsername())) {
+			return false;
+		}
+		
 		String sql = "delete from bankuser where usrname=?";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, user.getUsername());
+//			System.out.println(ps.executeUpdate());
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -178,7 +183,9 @@ public class UserDAO implements IUserDAO {
 	}
 	@Override
 	public boolean editUserInfo(User user, String n_username, String n_password) {
-		
+		if (!isExtantUser(user.getUsername())) {
+			return false;
+		}
 		String sql = "update bankuser set usrname=?,pass=? where usrname=?";
 		
 		try {
@@ -187,6 +194,7 @@ public class UserDAO implements IUserDAO {
 			ps.setString(2, n_password);
 			ps.setString(3, user.getUsername());
 			ps.executeUpdate();
+			//System.out.println("Results:" + ps.getResultSet().toString());
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();

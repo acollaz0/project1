@@ -102,5 +102,34 @@ public class UserDAOTest {
 	public void testGetUser() {
 		assertEquals(u1.getUsername(),udao.getUser(u1.getUsername()).getUsername());
 	}
+	
+	@Test
+	public void testGetAllUsers() {
+		assertEquals(2,udao.getAllUsers().size());
+	}
+	
+	@Test
+	public void testDeleteExtantUser() {
+		assertTrue(udao.deleteUser(u1));
+	}
 
+	@Test
+	public void testDeleteFakeUser() {
+		assertFalse(udao.deleteUser(new User("user3","aaaaaa",false)));
+	}
+	
+	@Test
+	public void testEditExtantUser() {
+		try {
+			udao.editUserInfo(u1, "userEdit", "password");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		assertTrue(udao.isExtantUser("userEdit"));
+		assertTrue(udao.validateUser("userEdit", "password"));
+	}
+	@Test
+	public void testEditFakeUser() {
+		assertFalse(udao.editUserInfo(new User("user3","aaaaaa",false), "hekko", "snekko"));
+	}
 }

@@ -45,7 +45,6 @@
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
 <fullyQualifiedTypeName name="java.util.Properties"/>
-<fullyQualifiedTypeName name="tools.InputTools"/>
 <fullyQualifiedTypeName name="dao.TransactionDAO"/>
 <fullyQualifiedTypeName name="models.ClipBox"/>
 <fullyQualifiedTypeName name="dao.ClipBoxDAO"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="models.User"/>
 <fullyQualifiedTypeName name="dao.IUserDAO"/>
+<fullyQualifiedTypeName name="tools.InputTools"/>
 </qualifiedTypeNameHistroy>

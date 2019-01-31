@@ -1,0 +1,18 @@
+/* This is what a comment in css looks like.
+        
+With CSS, you'll have a selector to identify elements to be selected
+then you'll have a declaration which will give some property a value for that element.
+*/
+
+/* here, the b is the selector which chooses all bold tags
+the color and value are the declaration (property:value). Can have as many properties as you want.*/
+b{ color:darkblue }
+body{background-color: slategray}
+/* there are three types of selectors
+1: Select by element (b, body, p, etc.) 
+2: Use the element id with a hashtag 
+3: use the element class with a dot*/
+#GatorHeading{color: peru}
+h3.champ{color: salmon}
+table.champ{color: springgreen}
+/* Can also write css externally */

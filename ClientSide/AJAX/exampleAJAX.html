@@ -1,0 +1,32 @@
+<html>
+
+<head></head>
+
+<body>
+    <h1> Testing AJAX </h1>
+    <button onclick="doAJAX()">Do AJAX </button>
+    <p id="reply"></p>
+    <Script>
+        function doAJAX() {
+            //create xhtml request
+            let xhttp = new XMLHttpRequest();
+
+            //Write what happens when the xhtml request gets a response
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) { //This if condition verifies the response is appropriately recieved
+                    document.getElementById("reply").innerHTML = this.responseText;
+
+                }
+            };
+
+            //Put the address on the letter
+            xhttp.open("GET", "https://api.myjson.com/bins/11ypyw", true);
+            //Send the letter
+            xhttp.send();
+        }
+
+    </Script>
+
+</body>
+
+</html>
