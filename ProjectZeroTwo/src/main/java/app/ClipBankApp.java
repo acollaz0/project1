@@ -13,8 +13,7 @@ import tools.UserInputException;
 public class ClipBankApp {
 
 	public static void main(String[] args) {
-		Connection con = JDBCLink.getConnection();
-		BankingService.loadService();
+		
 		System.out.println(
 				"************************************************************\n"
 				+ "                                         .,clol:,.          \r\n" + 
@@ -46,13 +45,16 @@ public class ClipBankApp {
 				"          .:dk0XXK0kd:'                                     \r\n" + 
 				"              ....                                          \r\n" + 
 				"                                                            \r\n" + 
-				"************************************************************"
-				+ "\n|" + StringTools.spaces(58) + "|"
+				"************************************************************");
+		Connection con = JDBCLink.getConnection();
+		BankingService.loadService();
+		
+		System.out.println("\n************************************************************\n|" + StringTools.spaces(58) + "|"
 				+ "\n|" + StringTools.center("Welcome to the Clip Bank!", 58) + "|"
 				+ "\n|" + StringTools.center("The World's Premiere Paperclip Banking Service", 58) + "|"
 				+ "\n|" + StringTools.spaces(58) + "|"
-				+ "\n************************************************************\n\n\n"
-				);
+				+ "\n************************************************************\n");
+
 		
 		boolean running = true;
 		mainloop:
