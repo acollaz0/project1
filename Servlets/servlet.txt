@@ -1,0 +1,56 @@
+Web Server- is a computer that is designed to handle
+HTTP requests. 
+
+Servlet- Is a Java Object designed to handle incoming requests
+not solely HTTP. Servlets can generate responses and
+process requests using Java Logic
+
+Servlet Container- it contains one to many Servlets and it primarily responsible
+for mapping the servlets to different addresses. Configure 
+our servlets.
+
+Tomcat - is a server designed by Apache that will host our house our servlet container.
+
+web.xml (Deplotment Descriptor) - gives the servlet Container mapping
+and configurationg details
+decides what requests are handled by a servlet
+
+
+Servlet Lifecycle
+1. Servlet Class is loaded into the servlet Container
+2. Servlet class is instantiated 
+3. Servlet's init() method is called the init method of the servlet class
+    is run only once and sets up initial configuration/parameters
+    -lazy init() is called upon the first request to a servlet
+    -eager init() is called as soon as the application starts
+4. Servlet service() method is called upon each request to the 
+servlet. The service method delegates the request to
+doGet(), doPost(), doDelete()...
+5. Servlet destroy() method is only called once and that is when
+the application is shit down
+
+ServletConfig - is an object specific to a single servlet
+that holds information on that servlet
+
+ServletContext - is an object that holds information about the
+entire servlet container and this all servlets
+
+uri - Uniform Resource Identifier 
+ - identifies a file or resource/servlet
+
+url - Uniform Resource Locator
+host + port + uri
+
+Forward - occurs on the server side and sends a request from one servlet to another.
+
+Redirect - is when a resource tells the client to send another
+request to a different location
+
+Session handling
+
+1. HttpSession object - this will keep track of the session server side
+2. Cookies to store information client side
+
+Do not recommend list
+3. url rewriting
+4. Hidden Forms
