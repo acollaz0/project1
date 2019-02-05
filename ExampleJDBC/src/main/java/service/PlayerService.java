@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import dao.PlayerDAO;
 import model.Player;
 
@@ -13,5 +15,11 @@ public class PlayerService {
 	
 	public static boolean addPlayer(Player p) {
 		return pd.addPlayer(p);
+	}
+	public static List<Player> allPlayers(){
+		return pd.getPlayers();
+	}
+	public static boolean deletePlayer(int p_id) {
+		return pd.deletePlayer(p_id);
 	}
 }

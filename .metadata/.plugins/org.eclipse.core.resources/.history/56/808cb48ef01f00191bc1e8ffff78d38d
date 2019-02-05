@@ -1,0 +1,13 @@
+package users;
+
+public interface User{
+	boolean login() ;
+	boolean logout();
+	boolean withdraw() ;
+	boolean deposit() ;
+	boolean create() ;
+	boolean delete() ;
+	
+	
+
+}

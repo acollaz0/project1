@@ -1,0 +1,31 @@
+Thread is the smallest units of command that can be executed
+Think of them as small process
+
+Multithreading is a technique in which we use multiple threads and multiple processors
+To speed up calculation and efficiency
+
+Code execute in parallel
+
+In Java you have a daemon thread which is the main thread. When this thread ends the
+program is over. This thread can generate other threads. daemon spawns are child threads
+
+Thread Lifecycle
+new - A thread is created
+runnable - A thread is able to be run but is not necessarily doing anything
+running - A thread is executing
+terminated - the thread is done
+
+blocked - prevented from running for some reason
+
+Scheduler - REsponsoble for blocing and freeing threads and trying to optimize thread
+throughput
+
+Deadlock - Hostage exchange where no one trusts eachother Each thread has a resource that
+the other wants but will not grant access to their own resource until the other is complete
+
+Alivelock - (CanadianLock) Both threads are to polite and each want to give away a 
+resource to continue
+
+priority - the order in which a thread should 'go'
+		minimum 1 maximum 10
+		

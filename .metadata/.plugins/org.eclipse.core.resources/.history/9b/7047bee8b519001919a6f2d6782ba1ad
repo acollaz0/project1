@@ -1,0 +1,22 @@
+package playground;
+
+public class Playground {
+
+	public static void main(String[] args) {
+		String d = "123-456-7890";
+		String d2 = "123-abc-7890";
+		StringBuilder sb1 = new StringBuilder();
+		for(String s : d.split("[^0-9]")) {
+			sb1.append(s);
+		}
+		
+		for(String s : d.split("[^0-9]")) {
+			System.out.print(s);
+		}
+		System.out.print("\n");
+		for(String s : d2.split("[^0-9]")) {
+			System.out.print(s + " ");
+		}
+	}
+
+}

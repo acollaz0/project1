@@ -1,0 +1,25 @@
+package org.bostic.Test;
+
+/**
+ * Hello world!
+ *
+ */
+public class App {
+    public static void main( String[] args ){
+        System.out.println( "Hello World!" );
+        String s = "This little about";
+        
+        
+    }
+	public String toPigLatin(String string) {
+		String[] input = string.split("[\\s]");
+		StringBuilder sb = new StringBuilder();
+		for(String s : input) {
+			if (s.charAt(0) == 'a' |s.charAt(0) == 'e'|s.charAt(0) == 'i'|s.charAt(0) == 'o'|s.charAt(0) == 'u') {
+				 sb.append(s).append("way");
+			}
+		}
+		
+		return null;
+	}
+}

@@ -1,0 +1,10 @@
+package playground;
+
+public class Playgroudn {
+
+	public static void main(String[] args) {
+		String d = "123-456-7890";
+		System.out.println(d.split("[0-9]"));
+	}
+
+}

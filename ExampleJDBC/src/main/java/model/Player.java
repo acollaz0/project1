@@ -1,11 +1,13 @@
 package model;
 
 public class Player {
+	
 	int p_id;
 	String name;
 	int salary;
 	int points;
 	String team;
+	
 	public Player() {
 		
 	}

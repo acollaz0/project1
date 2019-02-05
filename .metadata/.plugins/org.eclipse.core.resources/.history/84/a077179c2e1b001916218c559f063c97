@@ -1,0 +1,12 @@
+package scannerfun;
+
+import java.util.Scanner;
+
+public class BasicScanner {
+	public static void main(String[] args) {
+		Scanner kbd = new Scanner(System.in);
+		System.out.println("Please give me one number and I will add 10 to it");
+		int number = kbd.nextInt();	
+		System.out.println(number + 10);
+	}
+}

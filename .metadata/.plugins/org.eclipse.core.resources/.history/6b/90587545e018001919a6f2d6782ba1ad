@@ -1,0 +1,14 @@
+ackage com.revature.eval.java.core;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class EvaluationServiceTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

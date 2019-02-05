@@ -1,0 +1,7 @@
+package users;
+
+public class UserFactory {
+	public static User getUser(int i) {
+		
+	}
+}

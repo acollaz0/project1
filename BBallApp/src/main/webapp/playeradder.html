@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Player Adder</title>
+    </head>
+    <body>
+        <h3>id</h3>
+        
+    </body>
+    <script>
+        function addPlayer(){
+            let pid = document.getElementById("pid").value;
+            let name = document.getElementById("name").value;
+            let team = document.getElementById("team").value;
+            
+        }
+        function getPlayer() {
+        let pid = document.getElementById("pid").value;
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText)
+            }
+        };
+        xhttp.open("POST", "http://localhost:8080/BBallApp/addPlayer.do?id="+pid+"&name="+name+"&team="+team, true);
+        xhttp.send();
+        //localhost:8080/BBallApp/addPlayer.do?id=999&name=brandon&team=The Empire
+    }
+    </script>
+</html>

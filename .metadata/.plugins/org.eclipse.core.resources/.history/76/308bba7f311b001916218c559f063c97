@@ -1,0 +1,13 @@
+package logging;
+
+import org.apache.log4j.Logger;
+
+public class MyLogger {
+
+	final public static Logger logger = Logger.getLogger(MyLogger.class);
+	
+	public static void main(String[] args) {
+		logger.info("Information Messages");
+	}
+
+}

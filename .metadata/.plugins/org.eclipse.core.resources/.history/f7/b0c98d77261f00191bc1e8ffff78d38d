@@ -1,0 +1,32 @@
+package util;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class JDBCConnection {
+
+	public static void main(String[] args) {
+		System.out.println(getConnection());
+		while(true) {
+			
+		}
+	}
+	public static Connection getConnection() {
+		try {
+			Connection conn = null;
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			String endpoint = 
+					"jdbc:oracle:thin:@brandonsdetdb.cyiztrwjywhy.us-east-2.rds.amazonaws.com:1521:ORCL";
+			String username = "brandon";
+			String password = "password";
+			
+			conn = DriverManager.getConnection(endpoint, username, password);
+			
+			return conn;
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+}

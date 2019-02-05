@@ -1,0 +1,32 @@
+package org.bostic.Test;
+
+import java.util.Scanner;
+
+/**
+ * Hello world!
+ *
+ */
+public class App {
+    public static void main( String[] args ){
+        String ss = "This is a string for the scanner to read";
+        Scanner kbd = new Scanner(ss);
+        char[] vowels = {'a','e','i','o','u'};
+        
+        while(kbd.hasNext()) {
+        	String next = kbd.next();
+        	System.out.print(next.substring(0, next.length()-1));
+        }
+        kbd.close();
+    }
+	public String toPigLatin(String string) {
+		String[] input = string.split("[\\s]");
+		StringBuilder sb = new StringBuilder();
+		for(String s : input) {
+			if (s.charAt(0) == 'a' |s.charAt(0) == 'e'|s.charAt(0) == 'i'|s.charAt(0) == 'o'|s.charAt(0) == 'u') {
+				 sb.append(s).append("way");
+			}
+		}
+		
+		return null;
+	}
+}

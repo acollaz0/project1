@@ -1,0 +1,28 @@
+package practice;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import util.JDBCConnection;
+
+public class SQLPractice {
+	public static Connection conn = JDBCConnection.getConnection();
+	public static void main(String[] args) {
+		String playersSQL = "SELECT * FROM player";
+		
+		//do not use semicolons in the sql statement;;;;;;;;;;;;;
+		
+		try {
+			Statement statement = conn.createStatement();
+			ResultSet rs = statement.executeQuery(playersSQL);
+			while(rs.next()) {
+				String name = rs.getString("name");
+				System.out.println(name);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
