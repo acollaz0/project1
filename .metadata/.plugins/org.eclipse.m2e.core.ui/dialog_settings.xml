@@ -2,20 +2,10 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
-			<item value="org.nilson"/>
-			<item value="org.nilson.hello"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
-			<item value="Utilities"/>
-			<item value="OracleDBExamples"/>
-			<item value="ProjectZero"/>
-			<item value="JavaDay5"/>
-			<item value="JavaDay3"/>
-			<item value="AccessModifiers"/>
-			<item value="JavaDay2"/>
-			<item value="HelloWorld"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -49,8 +39,8 @@
 	</section>
 	<section name="org.eclipse.m2e.core.ui.internal.dialogs.MavenRepositorySearchDialog">
 		<item value="480" key="width"/>
-		<item value="3120" key="x"/>
-		<item value="87" key="y"/>
+		<item value="851" key="x"/>
+		<item value="108" key="y"/>
 		<item value="495" key="height"/>
 	</section>
 	<section name="MavenProjectImportWizardPage">
@@ -69,6 +59,7 @@
 		</list>
 	</section>
 	<section name="MavenProjectWizardArchetypePage">
+		<item value="All Catalogs" key="catalog"/>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
 			<item value="[artifactId]-TRUNK"/>
@@ -80,6 +71,9 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\Users\tbnil\Desktop\sdet1901\1901sdet\TestServelet"/>
+			<item value="C:\Users\tbnil\Desktop\sdet1901\1901sdet\ExampleJDBC"/>
+			<item value="C:\Users\tbnil\Desktop\sdet1901\1901sdet\Servers\NilServer-config"/>
 			<item value="C:\Users\tbnil\Documents\stsSpace\JavaCore_questions\pom.xml"/>
 			<item value="C:\Users\tbnil\Documents\stsSpace\JavaDay2\src\main\java\encapsulation\TestDrive.java"/>
 		</list>
@@ -94,10 +88,19 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="org.nilson.WebAppTest"/>
+			<item value="org.nilson.TestServlet"/>
+			<item value="org.nilson.TestServlet2"/>
+			<item value="org.nilson.TestServelet"/>
 		</list>
 		<list key="groupId">
+			<item value="org.nilson"/>
 		</list>
 		<list key="artifactId">
+			<item value="WebAppTest"/>
+			<item value="TestServlet"/>
+			<item value="TestServlet2"/>
+			<item value="TestServelet"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

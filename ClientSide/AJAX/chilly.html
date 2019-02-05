@@ -14,7 +14,7 @@
             color:skyblue;
         }
         .button {
-            background-color:darkcyan;
+            background-color:#0652BE;
             border-radius: 20px;
             border: none;
             color: lightgray;
@@ -27,19 +27,29 @@
             margin: 1% 1% 10px 1%;
             display: inline;
         }
+        .button:hover{
+            background-color: #075FDD;
+        }
+        .button:active{
+            background-color: #086DFD;
+        }
+        .button:focus{
+            outline: 0;
+        }
         #main {
             text-align: center;
             color: bisque;
         }
         #zipField{
-            background-color: darkgrey;
+            background-color: #0652BE;
             color: bisque;
             margin: 1px 1% 1% 1%;
             border: none;
-            
+            text-align: center;
         }
         #zipField:focus{
-            border: 3px white;
+            outline-width: 10px;
+            outline-color: azure;
         }
         p{
             padding: 1px 1px;
@@ -48,10 +58,10 @@
     </style>
 </head>
 
-<body style="background-color:midnightblue">
+<body style="background-color:#03295F">
     <div id="main">
-    <button class="button" onclick="getWeather()">How Freaking Cold Is It?! </button>
-    <p>Enter Zip Code:</p>
+    <button class="button" id="mainButton">How Freaking Cold Is It?! </button>
+    <p>Enter Location:</p>
     <input type="text" name="Zipcode" id="zipField">
     <p id="mainp" style="visibility: hidden"> It is <span class="info" id="temp_f"></span> <span class="info">&deg;F</span> in <span class="info" id="name"></span></p>
     <p id="subp" style="visibility: hidden">(That's pretty freaking cold.)</p>
@@ -67,17 +77,39 @@
     // };
     // XMLHttpRequest.prototype.send = newSend;
     
+    function intToHex(num){
+        let hex = parseInt(num).toString(16);
+        return (hex.length < 2) ? "0" + hex : hex;
+    }
 
-    function getWeather(){
+    function tempToColor(temp){
+        let greenval = 0;
+        let blueval = 0;
+        let redval = 0;
+        let tempval = ((temp)/120) * 510; //tempval ranges from 0 to 510
+        if (tempval > 255) {
+            blueval=0;
+            redval=tempval-255;
+            greenval=255-redval;
+        } else {
+            redval=0;
+            blueval = 255-tempval;
+            greenval = 255-blueval;
+        }
+        return "#" + intToHex(redval) + intToHex(greenval) + intToHex(blueval);
+    }
+
+    let getWeather = ()=>{
         let zipField = document.getElementById("zipField");
         let matchResult = zipField.value.match("^[0-9]{5}$");
-        if (matchResult){
-            if (matchResult.length==1){
-                requestWeather(matchResult[0]);
-            }
-        } else {
-            console.log("No match");
-        }
+        // if (matchResult){
+        //     if (matchResult.length==1){
+        //         requestWeather(matchResult[0]);
+        //     }
+        // } else {
+        //     console.log("No match");
+        // }
+        requestWeather(zipField.value);
         
         
     }
@@ -94,16 +126,54 @@
                 document.getElementById("name").innerHTML = weatherStats.location.name + ", " + weatherStats.location.region;
                 document.getElementById("temp_f").innerHTML = weatherStats.current.temp_f;
                 document.getElementById("mainp").style.visibility = "visible";
+                // document.getElementById("temp_f").style.color 
+                let elems = document.getElementsByClassName("info")
+                for (let i = 0; i < elems.length; i++){
+                    elems[i].style.color = tempToColor(weatherStats.current.temp_f);
+                }
+                
+                // .forEach(element => {
+                //     element.style.color= tempToColor(weatherStats.current.temp_f);
+                // }); 
+                console.log(document.getElementsByClassName("info"));
                 if (weatherStats.current.temp_f<15){
+                    document.getElementById("subp").innerHTML = "That's pretty freakin' cold.";
+                    document.getElementById("subp").style.visibility = "visible";
+                } else if (weatherStats.current.temp_f <32) {
+                    document.getElementById("subp").innerHTML = "Ok, it's kinda chilly.";
+                    document.getElementById("subp").style.visibility = "visible";
+                } else if (weatherStats.current.temp_f <50) {
+                    document.getElementById("subp").innerHTML = "Hah, this is nothing.";
+                    document.getElementById("subp").style.visibility = "visible";
+                } else if (weatherStats.current.temp_f <85) {
+                    document.getElementById("subp").innerHTML = "Ah, nice and warm.";
+                    document.getElementById("subp").style.visibility = "visible";
+                } else if (weatherStats.current.temp_f <105) {
+                    document.getElementById("subp").innerHTML = "Ok, this is a bit too hot.";
+                    document.getElementById("subp").style.visibility = "visible";
+                } else if (weatherStats.current.temp_f <150) {
+                    document.getElementById("subp").innerHTML = "You are currently in hell. RIP.";
                     document.getElementById("subp").style.visibility = "visible";
                 }
 
+            }
+            if (this.readyState == 4 && this.status == 400) {
+                document.getElementById("mainp").style.visibility = "hidden";
+                document.getElementById("subp").innerHTML = "Can't find that location.";
+                document.getElementById("subp").style.visibility = "visible";
             }
         };
 
         xhttp.open("GET", "http://api.apixu.com/v1/current.json?key=6216bd29878a40aaaab165238193001&q=" + zipcode, true);
         xhttp.send();
     }
+
+    document.getElementById("mainButton").addEventListener("click",getWeather);
+    document.getElementById("zipField").addEventListener("keyup",(e)=>{
+        if (e.keyCode == 13){
+            getWeather();
+        }
+    })
 </script>
 
 </html>

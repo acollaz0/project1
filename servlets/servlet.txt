@@ -1,0 +1,47 @@
+What is a web server?
+It is a computer that is designed to handle http requests.
+
+A servlet is a java object designed to handle incoming requests, not solely http. Servlets can
+generate responses and process requests using java logic.
+
+Servlet Container: Where the servlet lives. It contains one or many servlets, and is primarily
+responsible for mapping the servlets to different addresses. It helps to configure out servlets.
+
+Tomcat - a server designed by apache that will host or house our servlet container.
+
+Our web.xml (aka Deployment Descriptor) - gives the servlet Container mapping and configuration details.
+Decised what requests are handled by a servlet.
+
+Servlet Lifecycle: 
+1: Servlet class is loaded into the servlet container.
+2: Servlet class is instantiated
+3: Servlets init() method is called. The main Servlet class implements the init method. It is 
+run only once and sets up initial configurations/parameters.
+    -Lazy: init is called upon the first request to a servlet.
+    -Eager: init is called as soon as the application starts.
+4: Servlet service() method is called upon each request to the servlet. The service() method delegates 
+the request to doGet(), doPost(), etc.
+5: Servlet destroy() method is only called once and that is when the app is shut down.
+
+ServletConfig: an object specific to a single servlet that holds info on that servlet.
+
+ServletContext: an object that holds info about the entire servlet container, and is accessible to all
+servlets.
+
+URI: Uniform Resource Identifier - Identifies a file or resrouce/servlet.
+
+URL: Uniform Resrouce Locator - The host + port + URI
+
+Forward: Occurs on the server side, and sends a request from one servlet to another. Doesn't change URL
+in browser
+
+Redirect: when a resrouce tells the client to send another request to a different location. Changes
+URL in browser
+
+Session handling:
+1: Use HttpSession object - keep track of session server side.
+2: Cookies - store information client side. Be wary of storing sensitive info.
+
+Don't recommend:
+3: URL rewriting - storing session info in URL.
+4: Hidden forms - elements on HTML that are not displayed.
