@@ -1,0 +1,71 @@
+<!DOCTYPE html> 
+<!-- document type tells the browser what
+    type of file it is and the version -->
+<html>
+    <!-- the root tag everything goes in between this tag
+    Essentially marks the beginning and end of an html page -->
+
+<head>
+    <!-- meta information about the file -->
+    <title>Gator Football</title>
+
+<link rel="stylesheet" type "text/css" href="Stylin.css">
+<link<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+<style>/*style tag allows me to write css in the html page
+but not necessarily with the element
+
+selector - which will grab or identify elements to be selected
+declaration- which will give some property a value for that element
+
+
+*/
+/* the b is the selector and chooses all bold tags and the color and 
+value are the declaration 
+the declaration is composed of property:value
+
+3 types of selectors
+
+1. Select by element i.e. b or body
+2. Element ID
+3. Use the Class
+*/
+b{color: darkblue}
+body{
+background-color:rosybrown
+
+}
+#GatorHeading {color:seagreen}
+</style>
+
+</head>
+
+<body>
+<!-- content goes here -->
+<h1 id="GatorHeading">Who are the Florida Gators</h1>
+<p>The Florida Gators are from the <b>University of Florida</b> located
+    in Gainesville, FL. The team plays in the SEC East
+    and invented <b>Gatorade</b>.
+</p>
+
+<!-- I added inline CSS. Inline CSS is defined within the element -->
+
+<hr style="color:forestgreen" style ="width:20px">
+
+<div div="container">
+    <!-- a logical chunk or 'division of html' -->
+    <h3 class="champ">National Champions</h3>
+
+    <table class="champ">
+        <tr> <th>Opponent</th><th>Year</th> </tr>
+        <tr><td>Florida State</td><td>1996</td><td></tr>
+        <tr><td>Ohio State</td><td>2006</td><td></tr>
+        <tr><td>Oklahoma</td><td>2008</td><td></tr>
+    </table>
+
+    <img src="logo.jpg"height=300px" width="150px">
+
+</div>
+</body>
+
+</html>

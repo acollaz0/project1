@@ -1,0 +1,6 @@
+AJAX Asynchronous JavaScript 
+
+-used to update a webpage without refreshing the page
+-Creates a smoother user experience
+
+-Asynchronous

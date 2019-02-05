@@ -172,7 +172,7 @@ public class EvaluationService {
 		}
 		}
 		//System.out.println("Your word is worth "+ score +" points.");
-		return 0;
+		return score;
 	}
 
 	/**
