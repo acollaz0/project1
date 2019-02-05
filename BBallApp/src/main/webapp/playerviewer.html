@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Player Viewer</title>
+</head>
+<body>
+
+    <h3>Player viewer by id</h3>
+    <input id="pid" type="text">
+
+    <button onclick="getPlayer()">get player</button>
+    <p id="result"></p>
+
+
+
+</body>
+<script>
+
+function getPlayer(){
+    let pid = document.getElementById("pid").value
+
+let xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        let player = JSON.parse(this.responseText)
+
+        let information = ` <h3>id  ${player.id}</h3>
+                            <h3>name ${player.name} </h3>
+                            <h3>team  ${player.team}</h3>`
+
+        document.getElementById("result").innerHTML = information
+
+    }
+  };
+
+  xhttp.open("GET","http://localhost:8080/BBallApp/getPlayer.do?id="+pid, true);
+  xhttp.send(); 
+}
+// http://localhost:8080/BBallApp/getPlayer.do?id=988
+
+</script>
+</html>

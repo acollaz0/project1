@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Player adder</title>
+</head>
+<body>
+
+    <h3>Player id</h3>
+    <input id="pid" type="text">
+
+    <h3>Name</h3>
+    <input id="name" type="text">
+
+    <h3>team</h3>
+    <input id="team" type="text">
+
+    <button onclick="addPlayer()">add Player</button>
+
+</body>
+<script>
+
+        function addPlayer(){
+
+            let pid = document.getElementById("pid").value 
+            let name = document.getElementById("name").value 
+            let team = document.getElementById("team").value 
+
+        
+        let xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+        
+                console.log(this.responseText)
+            }
+          };
+        
+          xhttp.open("POST",
+          "http://localhost:8080/BBallApp/addPlayer.do?id="+pid+"&name="+name+"&team="+team, 
+          true);
+          xhttp.send(); 
+        }
+        // http://localhost:8080/BBallApp/addPlayer.do?id=988&name=Noah&team=The Gators
+        
+        </script>
+
+</html>
