@@ -21,7 +21,7 @@
 	</section>
 	<section name="DialogBounds_GenerateConstructorUsingFieldsSelectionDialog">
 		<item value="588" key="DIALOG_WIDTH"/>
-		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-24|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-24|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 		<item value="690" key="DIALOG_HEIGHT"/>
 		<item value="522" key="DIALOG_X_ORIGIN"/>
 		<item value="71" key="DIALOG_Y_ORIGIN"/>
@@ -109,7 +109,7 @@
 	</section>
 	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
 		<item value="588" key="DIALOG_WIDTH"/>
-		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-24|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-24|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 		<item value="708" key="DIALOG_HEIGHT"/>
 		<item value="476" key="DIALOG_X_ORIGIN"/>
 		<item value="59" key="DIALOG_Y_ORIGIN"/>
@@ -120,7 +120,7 @@
 	</section>
 	<section name="DialogBounds_GenerateToStringDialog">
 		<item value="588" key="DIALOG_WIDTH"/>
-		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-24|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-24|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 		<item value="694" key="DIALOG_HEIGHT"/>
 		<item value="423" key="DIALOG_X_ORIGIN"/>
 		<item value="69" key="DIALOG_Y_ORIGIN"/>
@@ -149,7 +149,7 @@
 		<item value="false" key="FinalModifier"/>
 	</section>
 	<section name="NewPackageWizardPage">
-		<item value="true" key="create_package_info_java"/>
+		<item value="false" key="create_package_info_java"/>
 	</section>
 	<section name="quick_assist_proposal_size">
 	</section>

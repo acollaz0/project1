@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- <meta charset="ISO-8859-1"> -->
+    <title>Basketball Players</title>
+</head>
+
+<body style="align-content: center">
+    <h1>Enter Player ID here:</h1>
+    <input type="text" name="" id="p_id">
+    <p id="result"></p>
+</body>
+<script>
+    function getPlayer() {
+        let pid = document.getElementById("p_id").value;
+        let req = new XMLHttpRequest();
+        req.onreadystatechange = function () {
+            // console.log(req.readyState + " , " + this.status);
+            if (this.readyState == 4 && this.status == 200) {
+                let player = JSON.parse(this.responseText);
+
+                // literals:
+                let info=  `<h3>id ${player.id}</h3>
+                            <h3>name ${player.name}</h3>
+                            <h3>team ${player.team}</h3>`;
+                document.getElementById("result").innerHTML = info;
+                console.log(this.responseText);
+            }
+        }
+        //http://localhost:8080/BBallApp/getPlayer.do?id=888
+        req.open("GET","http://localhost:8080/BBallApp/getPlayer.do?id=" + pid,true);
+        req.send();
+
+    }
+    document.getElementById("p_id").addEventListener("keyup",(e)=>{
+        if (e.keyCode == 13){
+            console.log("Called func.");
+            getPlayer();
+        }
+    })
+</script>
+
+</html>

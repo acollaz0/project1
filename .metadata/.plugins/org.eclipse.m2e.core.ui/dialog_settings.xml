@@ -71,6 +71,10 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\Users\tbnil\Desktop\sdet1901\1901sdet\BBallApp\src\main\webapp\index.jsp"/>
+			<item value="C:\Users\tbnil\Desktop\sdet1901\1901sdet\BasicServ\src\main\java\serf\MasterServlet.java"/>
+			<item value="C:\Users\tbnil\Desktop\sdet1901\1901sdet\WebAppTest\src\main\java\serf\TestServ.java"/>
+			<item value="C:\Users\tbnil\Desktop\sdet1901\1901sdet\Servers"/>
 			<item value="C:\Users\tbnil\Desktop\sdet1901\1901sdet\TestServelet"/>
 			<item value="C:\Users\tbnil\Desktop\sdet1901\1901sdet\ExampleJDBC"/>
 			<item value="C:\Users\tbnil\Desktop\sdet1901\1901sdet\Servers\NilServer-config"/>
@@ -88,6 +92,9 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="org.nilson.PizzaProject"/>
+			<item value="org.nilson.BBallApp"/>
+			<item value="org.nilson.BasicServ"/>
 			<item value="org.nilson.WebAppTest"/>
 			<item value="org.nilson.TestServlet"/>
 			<item value="org.nilson.TestServlet2"/>
@@ -97,6 +104,9 @@
 			<item value="org.nilson"/>
 		</list>
 		<list key="artifactId">
+			<item value="PizzaProject"/>
+			<item value="BBallApp"/>
+			<item value="BasicServ"/>
 			<item value="WebAppTest"/>
 			<item value="TestServlet"/>
 			<item value="TestServlet2"/>

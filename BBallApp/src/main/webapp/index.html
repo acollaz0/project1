@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>BBall League</title>
+<style>
+	object{
+		width: 100%;
+		height: 100%;
+	}
+</style>
+</head>
+<body>
+	<h2>BBall League</h2>
+	<!-- Can always use a link to connect pages -->
+<!-- 	<a href="http://localhost:8080/BBallApp/PlayerViewer.html">View a Player</a> -->
+	<button onclick="loadViewer()">Player Viewer</button>
+	<button onclick="loadAdder()">Player Adder</button>
+	<div id="main"></div>
+</body>
+<script type="text/javascript">
+	function loadViewer(){
+		let mainbox = document.getElementById("main")
+		mainbox.innerHTML = "<object data='PlayerViewer.html'></object>"
+	}
+	function loadAdder(){
+		let mainbox = document.getElementById("main")
+		mainbox.innerHTML = "<object data='PlayerAdder.html'></object>"
+	}
+</script>
+</html>

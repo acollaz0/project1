@@ -1,0 +1,2 @@
+DevOps: a mindset where programs are developed, tested, and operated on at the same time.
+-Automate everything that you can.

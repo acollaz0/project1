@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+</head>
+
+<body>
+<h3>Player id</h3>
+<input type="text" id="id">
+
+<h3>Player name</h3>
+<input type="text" id="name">
+
+<h3>Player team</h3>
+<input type="text" id="team">
+</body>
+
+<script>
+    function addPlayer() {
+        // let pid = document.getElementById("p_id").value;
+        let req = new XMLHttpRequest();
+
+        let id = document.getElementById("id").value;
+        let name = document.getElementById("name").value;
+        let team = document.getElementById("team").value;
+
+        req.onreadystatechange = function () {
+            // console.log(req.readyState + " , " + this.status);
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+            }
+        }
+        //http://localhost:8080/BBallApp/getPlayer.do?id=888
+        req.open("GET", "http://localhost:8080/BBallApp/addPlayer.do?id=" + id +"&name=" + name + "&team=" + team, true);
+        req.send();
+
+    }
+    document.getElementById("team").addEventListener("keyup", (e) => {
+        if (e.keyCode == 13) {
+            console.log("Called func.");
+            addPlayer();
+        }
+    })
+</script>
+
+</html>
