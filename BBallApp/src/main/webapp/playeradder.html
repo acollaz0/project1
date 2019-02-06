@@ -35,9 +35,11 @@
           };
         
           xhttp.open("POST",
-          "http://localhost:8080/BBallApp/addPlayer.do?id="+pid+"&name="+name+"&team="+team, 
+          "http://localhost:8080/BBallApp/addPlayer.do", 
           true);
-          xhttp.send(); 
+          xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+          xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+          xhttp.send("id="+pid+"&name="+name+"&team="+team); 
         }
         // http://localhost:8080/BBallApp/addPlayer.do?id=988&name=Noah&team=The Gators
         
