@@ -30,6 +30,7 @@ public class MainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		ObjectMapper om = new ObjectMapper();
+		System.out.println("Test");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

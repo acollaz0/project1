@@ -24,3 +24,75 @@ to build off of. *ES6 added a class keyword to javascript to simulate classes in
 -Has datatypes, both primitives and objects. In javascript, a function is an object.
 - is both pas by value and pass by reference
 -"Multiparadigmed" language. Has OOP capabilities, but is heavily influenced by functional programming
+-single threaded language
+
+Datatypes: Javascript is pass by value and pass by reference. 
+Primitives are pass by value.
+    -String, Number, null, undefined, boolean
+Objects are pass by reference:
+    -Object, array, function, etc.
+
+Scopes: global (no declaration), block (let, const), function (var, don't use)
+
+Hoisting: A "feature" where declarations are hoisted to the top of the scope, but not the actual value. 
+only var can be hoisted.
+
+functions: Are objects
+Can be anonymous
+Can be hoisted, not that you'd want to.
+
+You have self-invoking functions: (function(){some code;})()
+
+You have arrow notation: let foo = (params)=>{code;}
+
+Callback functions are functions that are passed in as parameter to another function.
+
+Closure: When a function within a function has access to variables defined in the outer function.
+
+Template literal: Denoted by single tiks ``. Is a way of storing string information, 
+provides for interpolation
+
+Objects: Basically just sets of key-value pairs
+ex: let person = {
+    name : "adam";
+    profession : "trainer"
+    train : function() {
+        some code;
+    }
+}
+
+person.name == "adam";
+person.train();
+
+JSON and JS objects.
+JSO key-value pairs are used for performing logic and programming
+JSON is just a string format:
+    {"name":"Adam","Age":19}
+JSONs do not contain functions
+The purpose of a JSON is to provide a very easy and common format for programmers to communicate.
+
+Truthy falsey: JavaScript's type coercion
+== performs type coercion
+=== does not.
+
+NaN is always falsey, even against itself.
+
+DOM-Document Object Model:
+    -A series of connected nodes, as a tree.
+
+Event listeners: a trap set on an element or action that happens on the page.
+element.addEventListener("theevent", codeToExecute, bubble or not(default is true));
+
+bubbling is when javascript executes from the innermost element out. Capturing is the outermost in.
+
+To make an ajax call:
+1: Make an xmlhttp request object: let xhttp = new XMLHttpRequest()
+2: define the onreadystatechance event listener: xhttp.onreadystatechange = function() {}
+3: open the object, neet http verb and url: xhttp.open("VERB", "URL", true);
+4: send the call
+5: allow onreadystatechange event to call its stored function.
+
+CSS: Cascading style sheets
+make webpages look nice
+Cascade algorithm- determines what ultimate style is applied to an element. Most specific style wins.
+Selectors: id, class, tag

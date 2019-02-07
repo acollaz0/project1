@@ -103,7 +103,7 @@ Maven Goals:
 AWS service presentation:
 give 4-5 minute presentation with partner about a specific service, along with short study guide about service.
 
-
+IAM Security groups, vpc, Route53, elastic ip - Security and IP address
 
 
 
