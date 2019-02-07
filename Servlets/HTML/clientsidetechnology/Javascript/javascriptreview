@@ -1,0 +1,110 @@
+JavaScript Review
+-Scripting language, just in time compiled, compiles and runs simultaneously
+-Dynamic/loose/interpretive typing
+-Multi paradigmed language (Functional with support for oop)
+-no classes and therfore cannot have classical inheritence
+
+js is a single threaded language
+
+prototypical
+-You create an object and then that object is the base for another object
+
+Datatypes in JavaScript
+
+primitives are pass by value - 
+String, Number, null, undefined, boolean
+Objects are pass by reference - object, array, function
+
+Variable scopes
+-global - no declaration
+-function - var
+-block - let & const
+
+Hoisting
+"feature" werein declarations are hoisted to the top of the scope
+but not the actual value
+
+functions-
+1. are Objects
+2. can be anonymous 
+3. can be hoisted 
+
+self invoking functions (function(){some code})();
+
+arrow notation let foo = (param) =>{}
+
+callback function - it is a function passed in as a parameter
+
+closure - is when a function within a funciton has access to variables 
+defined in the outer function 
+fucntion returns another function
+
+
+template literal - denoted by `` backticks
+way of storing string information 
+provides for interpolation
+
+Objects - key value pairs
+
+let person = {
+    name : "adam"
+    profession : "trainer"
+    train : function(){
+        some code
+    }
+}
+person.train()
+
+JSON vs JSO
+JSO - key value pairs used for performing and programming
+
+JSON - Just a string format
+{"name":"Adam","age":19}
+
+JSON do not contain functions
+The purpose of a JSON is to provide a very easy and common format
+for programmers to communicate with
+
+truthy falsy
+JavaScript type coersion at play
+== which performs type coercion
+=== which does not
+
+NaN is always even against itself.
+
+DOM
+-Document Object Model
+connected nodes or tree 
+
+eventlisteners- Its a trap set on an element or action that happens on the page 
+element.addEventListener("event",code to execute, bubble?)
+
+bubbling is when JavaScript executes from the innermost element out 
+capturing is the outermost element in 
+
+Simulate classes in JavaScript by using closures and having the returning
+function be the constructor
+
+AJAX call
+1. Make an xmlhttprequest() object
+2. onreadystatechange needs to be given a function to exectute
+3. open the object (http verb and url)
+4. you need to send it
+
+HTML - Hyoer Text Markup Language
+not a programming language
+
+elements - building blocks for web page
+attributes - properties for elements adjectives
+
+css 
+Cascading Style Sheets
+makes your webpages look nice
+
+Cascade algorithm- Determines what ultmiate style is applied to an element
+the more specific style is applied
+
+selectors
+id
+class 
+tag 
