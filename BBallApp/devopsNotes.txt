@@ -1,2 +1,118 @@
 DevOps: a mindset where programs are developed, tested, and operated on at the same time.
--Automate everything that you can.
+-Automate everything that you can. From testing, to development, to delivery
+
+DevOps Pipeline: The modern approach to development.
+
+	-Continuous Integration: A group of programmers will work together using a SCM (Source code manager 
+	like github, svn), and after a push the program will be compiled and tested. Pushes can trigger 
+	automatic builds
+	
+	-Continuous Delivery: Extention to continuous integration, whereing the completed program will be put into some staging area.
+	Considered deployment ready, but not actually being used. Someone will manually approve that it goes live.
+	
+	-Continuous Deployment: Extension continuous delivery, where if app passes automated tests, the application
+	immediately goes live for general use.
+
+--------------
+Cloud Computing:
+	-In the past, all the computers you would need for your company/organization would be on site. You would 
+	own all the servers and have the hardware physically with you.
+	-Cloud computing is abstracting ownershi of physical hardware and computers to the web. We are removing the 
+	physical infrastructure required to create software projects/services.
+	
+	
+Many advantages to cloud computing:
+	-Elasticity: can commission and decomission resources (i.e.: computers/databases) as necessary. 
+	Happens Dynamically. Allows you to meet demand as appropriate.
+	
+	-Scalability: Related to elasticity.
+		Vertical - Taking one computer and increasing its cpu/memory/storage. Not increasing the amount of
+		machines.
+		Horizontal - Comissioning more or less machines to handle current needs.
+
+In cloud computing, you often only pay for what you use, and by the hour. 
+
+Cloud computing can offer three types of services:
+	-Infrastructure as a service (IaaS): Using the cloud to abstract hardware (ec2, virtual machines,
+	buying processing time like on MARCC)
+	
+	-Platform as a service (PaaS): Similar to IaaS. Provides more like a foundation for you to develop on. RDS is
+	an example. 
+	
+	-Software as a service (SaaS): A completed produce available over the web, like google drive or netflix.
+	
+	
+AWS - Amazon Web Services:
+	-Largest cloud computing service.
+	-IBM, microsoft, and google have their own cloud computing services.
+	
+	-Regions: geographical areas where AWS services are provided. 
+		Availability zones: the datacenters within a region that provide resiliency and backups to each other.
+
+Some AWS services:
+
+	EC2: Elastic Compute Cloud
+	-An ec2 is a VM. Literally just another computer somwhere else in the world.
+	-Amazon allows you to use an OS of your choice. Can specialize the "hardware", 
+	with more processing power/memory
+	
+	Windows password for bballApp:
+	IyK;=gKz8E.fxglZykckOb7JNV!GIkt%
+	
+	EBS: Elastic block store
+	-The virtual hard drive to an ec2.
+	-can expand or replace your EBS as needed.
+	
+	ELB: Elastic Load Balancing
+	-Spreading out requests for services to multiple EC2s.
+	
+	AMI: Amazon Machine Image
+	-Essentially a snapshot of a machine and its setup.
+	-Includes the OS for the ec2
+
+	Security Groups
+	-Essentially a virtual firewall to protect your computer.
+	
+	VPC: Virtual Private Cloud
+	-An abstraction of having a local network
+	-Only intended to connect cloud machines/services
+	
+	IAM: Identity Access Management
+	-Control who has access to your AWS account, and what they can do.
+	
+	S3: Simple Storage Service
+	-Designed to hold data as files, similar to dropbox.
+	
+	Route53: Domain name service
+	-Amazon will give your EC2 a proper website name.
+	
+	
+------
+Maven:
+	-Built by apache.
+	-It is a dependency manager and build automation.
+	
+Maven Goals:
+	-clean: will remove the compiled source code in the target folder
+	-compile: will compile source code
+	-package: package your code and run tests
+	-install: will put your package in the local .m2 directory.
+	-deploy: copy a war/jar file to a remote repo
+	
+---------
+AWS service presentation:
+give 4-5 minute presentation with partner about a specific service, along with short study guide about service.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
