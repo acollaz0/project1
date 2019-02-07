@@ -29,4 +29,26 @@ public class UserService {
 		
 		return ud.addUser(u);
 	}
+	
+	/**
+	 * updateLoyaltyPoints method
+	 * Updates a User's loyalty points in the database
+	 * @param The User to update
+	 * @return true if a User was actually updated, else false
+	 */
+	public static boolean updateLoyaltyPoints(User u) {
+		
+		return ud.updateLoyaltyPoints(u);
+	}
+	
+	/**
+	 * deleteUser method
+	 * Deletes a user from the database
+	 * @param The user id for the User you want to delete
+	 * @return true if a User was actually deleted, else false
+	 */
+	public static boolean deleteUser(int user_id) {
+		
+		return ud.deleteUser(user_id);
+	}
 }

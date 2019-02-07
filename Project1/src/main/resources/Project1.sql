@@ -1,10 +1,10 @@
 -- drop tables
-drop table proj1_user;
-drop table an_order;
+drop table pizza_topping;
 drop table pizza;
 drop table topping;
 drop table pizza_order;
-drop table pizza_topping;
+drop table an_order;
+drop table proj1_user;
 
 -- drop sequences
 drop sequence user_id_maker;
@@ -20,7 +20,7 @@ create table proj1_user(
     f_name varchar2(200),
     l_name varchar2(200),
     user_type varchar2(200),
-    loyalty_points number(10)
+    loyalty_points number(10) default 0
 );
 
 create table an_order(
@@ -93,10 +93,10 @@ create sequence topping_id_maker
 
 -- create procedures
 create or replace procedure add_user(username varchar2, password varchar2, f_name varchar2, l_name varchar2,
-    user_type varchar2, loyalty_points number)
+    user_type varchar2)
 is
 begin
-insert into proj1_user values(user_id_maker.nextval, username, password, f_name, l_name, user_type, loyalty_points);
+insert into proj1_user values(user_id_maker.nextval, username, password, f_name, l_name, user_type, 0);
 end;
 
 create or replace procedure add_order(user_id number, cost number, time_ordered number, status varchar2,

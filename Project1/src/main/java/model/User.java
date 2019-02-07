@@ -34,21 +34,20 @@ public class User {
 	/**
 	 * Constructor used for adding a User to the database.
 	 * Lacks a user_id parameter because a SQL sequence will generate a new user_id.
+	 * Also lacks a loyalty_points parameter as SQL will initialize the loyalty_points to 0 for a new user.
 	 * @param username
 	 * @param password
 	 * @param f_name
 	 * @param l_name
 	 * @param user_type
-	 * @param loyalty_points
 	 */
-	public User(String username, String password, String f_name, String l_name, String user_type, int loyalty_points) {
+	public User(String username, String password, String f_name, String l_name, String user_type) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.f_name = f_name;
 		this.l_name = l_name;
 		this.user_type = user_type;
-		this.loyalty_points = loyalty_points;
 	}
 
 	/**

@@ -63,7 +63,7 @@ public class UserDAO implements IUser {
 	public boolean addUser(User u) {
 		try {
 			// prepare an SQL procedure call
-			String sql = "CALL add_user(?, ?, ?, ?, ?, ?)";
+			String sql = "CALL add_user(?, ?, ?, ?, ?)";
 			Connection conn = JDBCConnection.getConnection();
 			CallableStatement cs = conn.prepareCall(sql);
 			
@@ -72,7 +72,6 @@ public class UserDAO implements IUser {
 			cs.setString(3, u.getF_name());
 			cs.setString(4, u.getL_name());
 			cs.setString(5, u.getUser_type());
-			cs.setString(6, Integer.toString(u.getLoyalty_points()));
 			
 			// execute the query
 			cs.executeQuery();
@@ -85,6 +84,65 @@ public class UserDAO implements IUser {
 		}
 		
 		return false;
+	}
+	
+	/**
+	 * updateLoyaltyPoints method
+	 * Updates a User's loyalty points in the database
+	 * @param The User to update
+	 * @return true if a User was actually updated, else false
+	 */
+	public boolean updateLoyaltyPoints(User u) {
+		
+		try {
+			// prepare an SQL statement
+			String sql = "UPDATE proj1_user SET loyalty_points = ? WHERE user_id = ?";
+            Connection conn = JDBCConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            
+            ps.setString(1, Integer.toString(u.getLoyalty_points()));
+            ps.setString(2, Integer.toString(u.getUser_id()));
+            
+            // get the result set from the query
+            ResultSet rs = ps.executeQuery();
+            
+            // return true if at least one row was updated, else false
+            return rs.next();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+		
+		return false;
+	}
+	
+	/**
+	 * deleteUser method
+	 * Deletes a user from the database
+	 * @param The user id for the User you want to delete
+	 * @return true if a User was actually deleted, else false
+	 */
+	public boolean deleteUser(int user_id) {
+		
+		try {
+			// prepare an SQL statement
+            String sql = "DELETE FROM proj1_user WHERE user_id = ?";
+            Connection conn = JDBCConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            
+            ps.setString(1, Integer.toString(user_id));
+            
+            // get the result set
+            ResultSet rs = ps.executeQuery();
+            
+            // return true if the user was deleted, else false
+            return rs.next();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return false;
 	}
 
 }
