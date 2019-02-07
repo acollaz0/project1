@@ -1,0 +1,108 @@
+Devops is a mindset wherein programs are developed tested and operated on at the same time
+-Automate everything you can
+
+Cloud Computing- Abstracting ownership of physical hardware and computers
+to the web. We are removing the physical infrastructure required to create a software
+project/service.
+
+advantages of cloud Computing
+
+Elasticty - comminson and decommission resources (computers/databases etc) as necessary
+Happens dynamically. Meet the demand that is appropriate.
+
+Scalability - 
+
+Vertical - Taking one computer and increases its cpu or memory or storage
+not increasing the amount of machines
+
+Horizontal - comminsioning more machines to handle current needs
+
+In cloud computing you often* only pay for what use and by the hour
+
+Cloud compting can offer 3 types of services
+
+IaaS infrastructure as a Service
+- using the cloud to abstract hardware
+ec2 or virtual machines
+buy processing time
+
+PaaS Platform as a Service
+- foundation for you to develop on
+RDS 
+
+SaaS Software as a Service
+- Completed product provided over the web
+Google Drive or Netflix 
+
+----------------------------------------------------------------------------------------
+DevOps pipeline- The modern approach to development
+
+Continuous Integration - A group of programmers will work together using a SCM 
+source code manager (GitHub) and after a push the program will be compiled and tested.
+Pushes can trigger an automatic build
+
+Continuous Delivery - Extenstion to CI wherein the completed program will 
+be put into some staging area. Deployment Ready but not actually being used.
+Someone will manually approve that it goes live.
+
+Continuous Deployment - Extension to CD wherein if it passes the automated tests
+the application goes live immediately for use.
+
+AWS - Amazon Web Services
+
+- Largest cloud computing service
+
+Regions- geographical areas where services are provided
+(Ohio, North Virginia, Tokyo)
+
+Availablity Zones - Data centers within a region that provide resliency and 
+backups to each other
+
+-----------------------------------------------------------------------------------
+
+AWS Services
+
+EC2- Elastic Compute Cloud
+- a vm
+- literally just another computer somewhere else in the world
+- Use an os of your choice you can specialize the 'hardware' i.e. more ram or cpu
+
+EBS- Elastic BLock Store 
+- the virtual hardrive to an EC2
+- expand or replace an EBS as needed
+
+ELB Elastic Load Balancing
+- spreads out requests for services to multiple EC2S
+
+AMI - Amazon Machine Image
+- Its essentially a snapshot of a machine and setup
+- It includes the os for the EC2
+
+Security Group- virtual firewall to protect your computer
+
+VPC -Virtual Private cloud 
+this an abstraction of having a local network
+
+IAM - Identity Access Management
+- This is a way to control who has access to your aws account 
+- and what they can do
+
+S3 - Simple Storage Service
+- Designed to hold data as files (Similar to Dropbox)
+
+Route53- Domain name service
+- Amazon will give your ec2 a proper website name
+
+------------------------------------------------------------------------------------
+
+Maven 
+- developed by apache
+- Dependency Manager and build automation
+
+Maven Goals
+
+clean - will remove the compiled source code in the target folder
+compile - will compile source code
+package - Package your code and run tests
+install - will put your package in the local .m2 directory
+Deploy - copy a war/jar to a remote repo
