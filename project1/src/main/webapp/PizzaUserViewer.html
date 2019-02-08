@@ -8,19 +8,19 @@
 <body>
     <h3>PizzaUserViewer by username</h3>
     <input id="username" type="text">
-    <button onclick="getPlayer()">Get PizzaUser</button>
+    <button onclick="getPizzaUser()">Get PizzaUser</button>
     <p id="result"></p>
 
 </body>
 <script>
-    function getPlayer() {
+    function getPizzaUser() {
         let xhttp = new XMLHttpRequest();
         let username = document.getElementById("username").value
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                let puser =  JSON.parse(this.responseText);
+                let puser = JSON.parse(this.responseText);
 
-                console.log(player);
+                console.log(puser);
 
                 let information = `<h3>id ${puser.u_id}</h3>
                                     <h3>username ${puser.username}</h3>
