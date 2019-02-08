@@ -1,52 +1,54 @@
-JavaScript to Java
-Hamster to Ham
+JavaScript to Java 
+Hamster to Ham 
 
-Java
-- Statically typed. A variable's type has to be declared 
+Java - statically typed
+A variable's type has to be declared
 i.e. int num x = 100;
 
-- Server side language
+-Server side language
 You see it on the backend of web applications
 exception is jsp 
 
 -Compiled language
 we write code and then it compiles 
-and the result is what you actually run
+and the result is what you can actually run
 
-- Has classes and classical inheritence
+-Has classes and classical inheritance
 we use classes as blueprints to create objects
 
-- Java has access modifiers
+-Java has access modifiers
 
-- has 4 scopes
+-Java has 4 scopes
 
-- is only pass by value
+-Java only passed by value
 
-- very OOP based
+-Java very OOP based
 
-JavaScript
-- Loosely Typed  You do need not to delare a variables type 
+JavaScript - Loosely typed. You do not need to declare a variables type
 x = 100;
 
-- Pimarily a client side language
+-Primarily a client side language
 node.js is being used to write server side JavaScript
 
-- Scripting language (Just in Time Compilation) JIT
-the program compiles and runs at the same time
+-Scripting language (Just in Time Compilation) JIT 
+the program compiles and runs at the same time 
 
--No classes and has protypical inheritence
-an object refernces another object as a protype to build off of
-* ES6 ECMA added a Class keyword to simulate classes in js
+-No classes and has prototypical inheritance 
+an object references another object as a prototype to build off of 
+*ES6 ECMA added a Class keyword to simulate classes in JavaScript
 
-- no access modifiers 
+-no access modifiers 
 
-- JavaScript has 3 but we should only really use two
+-JavaScript has 3 scopes but we should only really use two
 
-- DataTypes primitives and objects
-a function is an object
+-DataTypes primitives and objects
+a function is a object
 
-- JS is both pass by value and pass by reference
+-JavaScript is both pass by value and pass by reference
 
-- Multi-Paradigmed programming language
-it has oop capabilities it is heavily influenced by funtional
+-Multi-paradigmed programming language
+it has oop capabilities it is heavily influenced by functional
 programming
+
+
+

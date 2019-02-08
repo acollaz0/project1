@@ -1,0 +1,144 @@
+RDBMS - Relation Database Management System
+software designed to manage a Database
+examples oracle sql developer, PostGres, MySQL, WinowsSQLServer
+
+Database - a collection of objects designed to hold information
+Relation Database - A Database which holds information in tables
+related to each other
+
+Table - composed of columns called fields which hold attributes
+and rows called records which model an instance
+
+SQL - Structured Query Language
+
+DDL = (Data Definition Language) - Defines the rules and structures
+truncate, create, alter, and drop
+
+DML - (Data Manipulation Language) - Adds removes or edits data in the
+database. Insert, delete, set, and update.
+
+DQL - (Data Query Language) - for reading information
+SELECT
+
+DCL - (Data Control Language) - for granting permissions to users
+
+TCL - (Transaction Control Language) - for generating transactions
+commit, rollback, savepoint
+
+clauses in SQL
+where - specific condition to be met
+group by - arrange results into bundles/groups used for aggregate functions
+having - used with group by because you cannot use where
+order by - rearranges the presentation of the results but not what records are returned
+and/or - conditionals
+
+constraints - rules that we put on a table
+Primary Key - unique identifier for a record
+(composite key) - combination of two or more columns to create a primary key
+
+Foreign Key - establishes a relationship to another table
+the table that has the foreign key is the child
+
+Unique - all values must be unique
+
+default - set a default value for a column
+
+not null - value cannot be null
+
+referential integrity - the use of keys to prevent orphan records
+
+orphan records - records who reference a record/parent who no long exists
+
+PL/SQL
+
+Procedure - set of SQL commands/code that is essentially a script
+a procedure can have 0 to any number of inputs. 0 to any number of outputs
+can actually change values in the database
+compiled once and stored
+
+
+function - has at least 1 input. Always 1 output
+never changes data in the database
+compiled each time
+
+Trigger - code to be executed when a certain event occurs on a table
+
+Multiplicities
+1-1
+1-many
+many-many Junction Table
+
+Sequence - Database object to generate numbers
+
+
+
+
+normalization - process of reducing redundancy in a database
+(not always what we want)
+
+1nf - all data is atomic. single piece of information i.e. breaking down an address
+Each record is uniquely identifiable i.e. primary key
+
+2nf - in 1nf and there are no functional dependencies 
+(you cannot calculate the value of another field)
+
+3nf in 2nf and there are no transitive dependencies
+(you cannot find that value anywhere else in the database)
+
+transaction - A logical unit of sql commands
+oracle transactions obey ACID
+
+Atomic - all statements in a transaction succeed or none of them do
+
+Consistency - the database moves from one consistent committed state to another
+
+Isolation - concurrent transactions do not cause consistency issues*
+
+Durable - Durable transactions fail gracefully and do not cause your database to crash some other awful happening
+
+Isolation levels - 
+read uncommitted - cardinal sin of databases 
+allows for dirty reads reading uncommitted data
+
+read committed - allows for nonrepeatable reads
+a record found at the start of the transaction cannot be found at the end
+
+repeatable read - allows for phantom reads
+a record not found at the beginning of the transaction is found at the end
+
+serializable - allows for no consistency errors
+is slow because transactions cannot run concurrently
+
+joins - combine two tables horizontally based on some type of predicate
+i.e. "on player.team = team.name"
+
+left join
+right join
+cross join cartesian product
+natural join
+inner join
+full outer join
+outer join
+theta join a predicate other than equals
+
+unions - combine two tables vertically based on
+they have the same number and type of columns 
+
+---------------------------------------------------------------------------------
+JDBC - Java Data Base Connectivity
+a java library with classes to connect to a database
+interfaces of JDBC
+
+Connection -- used to connect to a database
+PreparedStatement protects against sql injection sanitizes inputs to the sql query
+Statement -- just pure sql string
+CallableStatement -- used for calling procedures
+ResultSet -- stores the results from a query
+
+
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+Pizzeria website
+
+You need to create a website for a local pizzeria
+a customer should be able to create a pizza loyalty account
+they can order a pizza pickup or delivery and have reward points added to their account (money for the order can be assumed to be paid on arrival or when delivered)
+they should be able to redeem reward points 
+A customer can see the status of their order (pending, ready for pickup or out for delivery, complete)
+
+An employee should be log in 
+They should be able to see active orders
+They should be able to update order status
+
+Bonus- 
+Employees can see a statistics page showing stats about what pizzas are ordered the most or what peak times are etc
+customers have a build a custom pizza feature
+customers save orders to their account for easy ordering
+customers can see a history of their orders
+
+non-optional mandatory bonus
+- make it fun and give it a theme

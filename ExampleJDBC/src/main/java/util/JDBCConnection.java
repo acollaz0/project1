@@ -1,39 +1,44 @@
 package util;
 
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.time.LocalDateTime;
+import java.util.Properties;
 
 public class JDBCConnection {
 	
 	public static Connection con = null;
+
+	
 	
 	public static Connection getConnection() {
-
+		
 		try {
-			
-			if(con ==null) {
+			if (con == null) {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 				
-				String endpoint = "jdbc:oracle:thin:@adamsdetdb.cwrqnnecy1to.us-east-2.rds.amazonaws.com:1521:ORCL";			
-				String username = "adam";
-				String password = "password";// do not connect to my database plzzzzz			
+				Properties props = new Properties();
+				FileInputStream input = new FileInputStream("src/main/resources/connection.properties");
+				props.load(input);
 				
-				con= DriverManager.getConnection(endpoint, username, password);
+				String endpoint = props.getProperty("url");
+				String username = props.getProperty("username");
+				String password = props.getProperty("password");
+				
+				con = DriverManager.getConnection(endpoint, username, password);
+				
 				return con;
+				
 			}
-			else {
+			else
 				return con;
-			}
-					
+			
 		}catch(Exception e) {
+			
 			e.printStackTrace();
 		}
 		
-		
-		
 		return null;
 	}
-	
 
 }

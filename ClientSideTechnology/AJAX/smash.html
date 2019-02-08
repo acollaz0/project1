@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+}
+.center{
+    text-align: center;
+}
+.button{
+    background-color: black;
+    color:white;
+    border: none;
+    padding: 15px 32px;
+}
+.bg {
+  background-image: url("https://media.nintendo.com/smashbros/buy/assets/smash-logo-red.png");
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+h1 { 
+    color: #111; 
+    font-family: 'Helvetica Neue', sans-serif; 
+    font-size: 75px; 
+    font-weight: bold; 
+    letter-spacing: -1px; 
+    line-height: 1; 
+}
+p { 
+    color: #111; 
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 0 0 24px; 
+}
+</style>
+<head>
+    <title>
+        Amiibro Browser
+    </title>
+</head>
+
+
+<body class = "bg">
+    <div class="center">
+        <h1>Super Smash Bros. Amiibros</h1>
+        <button class="button" onclick="getCharacter()">Choose your fighter!</button>
+        <p id = "series">Game series</p>
+        <p id = "name">Name</p>
+        <img id = "image">
+    </div>
+</body>
+<script>
+    function getCharacter(){
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let character = JSON.parse(this.responseText)
+                let random = Math.floor((Math.random()*66)+0)
+                document.getElementById("series").innerHTML = character.amiibo[random].gameSeries         
+                document.getElementById("name").innerHTML = character.amiibo[random].name
+                document.getElementById("image").setAttribute('src', character.amiibo[random].image)
+            }
+        }
+        xhttp.open("GET", "http://www.amiiboapi.com/api/amiibo/?amiiboSeries=Super Smash Bros.", true);
+        xhttp.send(); 
+    }
+</script>
+</html>

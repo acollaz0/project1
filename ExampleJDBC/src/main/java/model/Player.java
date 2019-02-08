@@ -1,13 +1,14 @@
 package model;
 
 public class Player {
-	
+
 	private int p_id;
 	private String name;
 	private int salary;
 	private int points;
 	private String team;
-		
+	
+	
 	public Player() {
 		super();
 	}
@@ -20,6 +21,7 @@ public class Player {
 		this.points = points;
 		this.team = team;
 	}
+	
 	public int getP_id() {
 		return p_id;
 	}
@@ -57,7 +59,5 @@ public class Player {
 				+ team + "]";
 	}
 	
-	
-	// you could make this a bean
-
+	//could make this a bean
 }

@@ -1,4 +1,4 @@
 
 function externalFunction(element){
-element.innerHTML = 'External change'
+    element.innerHTML = 'external change'
 }

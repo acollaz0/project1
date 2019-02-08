@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ub="http://uniboard.mnemis.com/document" xmlns:xhtml="http://www.w3.org/1999/xhtml" version="1.1" ub:version="4.8.0" ub:uuid="51c47ea3-2348-47bc-8960-37a0f314408d" viewBox="-690 -530 1380 1060" ub:nominal-size="1280x960" ub:dark-background="false" ub:crossed-background="false" ub:ruled-background="false" pageDpi="93">
+    <rect fill="white" x="-690" y="-530" width="1380" height="1060"/>
+    <foreignObject ub:type="text" x="0" y="0" width="143.745" height="27" transform="matrix(1, 0, 0, 1, -85.4599, -201.306)" ub:z-value="-999994.000000" ub:background="false" ub:uuid="8d9385e7-2d6b-417e-81d1-4c1b86ab9735" ub:layer="-1000" ub:editable="true" ub:width="143.745" ub:height="27" ub:pixels-per-point="1.33333" ub:fill-on-dark-background="#000000" ub:fill-on-light-background="#000000">
+        <itemTextContent>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;User&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</itemTextContent>
+    </foreignObject>
+    <g ub:z-value="-999993" ub:fill-on-dark-background="#ffffff" ub:fill-on-light-background="#000000" ub:uuid="9d3c5ad3-b5b3-4f55-afdc-68ecb87780d4" ub:layer="-1000">
+        <polygon points="-96.8546,-202.018 -7.55099,-202.018 -6.83883,-201.306 -7.55099,-200.593 -96.8546,-200.593 -97.5668,-201.306 -96.8546,-202.018 " transform="matrix(1, 0, 0, 1, 0, 0)" fill="#000000" fill-opacity="1.00" fill-rule="evenodd" ub:uuid="f338aeaa-52de-4a88-9da0-e29401197862" ub:parent="9d3c5ad3-b5b3-4f55-afdc-68ecb87780d4"/>
+    </g>
+    <g ub:z-value="-999992" ub:fill-on-dark-background="#ffffff" ub:fill-on-light-background="#000000" ub:uuid="140dec0a-4860-4d0f-ba0e-c619a199e4e5" ub:layer="-1000">
+        <polygon points="-6.88427,-204.154 -6.88427,-172.819 -7.59644,-172.107 -8.30861,-172.819 -8.30861,-204.154 -7.59644,-204.866 -6.88427,-204.154 " transform="matrix(1, 0, 0, 1, 0, 0)" fill="#000000" fill-opacity="1.00" fill-rule="evenodd" ub:uuid="350d82d4-ad41-40a4-a1f8-0435c1aa80ea" ub:parent="140dec0a-4860-4d0f-ba0e-c619a199e4e5"/>
+    </g>
+    <g ub:z-value="-999991" ub:fill-on-dark-background="#ffffff" ub:fill-on-light-background="#000000" ub:uuid="4e2b33b3-eb46-4220-9dab-2af5a9b15ca6" ub:layer="-1000">
+        <polygon points="-7.59644,-172.107 -96.9,-172.107 -97.6122,-172.819 -96.9,-173.531 -7.59644,-173.531 -6.88427,-172.819 -7.59644,-172.107 " transform="matrix(1, 0, 0, 1, 0, 0)" fill="#000000" fill-opacity="1.00" fill-rule="evenodd" ub:uuid="97e67b61-9483-4577-801f-7d873e626ca5" ub:parent="4e2b33b3-eb46-4220-9dab-2af5a9b15ca6"/>
+    </g>
+    <g ub:z-value="-999990" ub:fill-on-dark-background="#ffffff" ub:fill-on-light-background="#000000" ub:uuid="68963607-cf6a-468a-86b1-4077b221c431" ub:layer="-1000">
+        <polygon points="-97.5668,-175.668 -97.5668,-201.323 -96.8546,-202.035 -96.1424,-201.323 -96.1424,-175.668 -96.8546,-174.955 -97.5668,-175.668 " transform="matrix(1, 0, 0, 1, 0, 0)" fill="#000000" fill-opacity="1.00" fill-rule="evenodd" ub:uuid="c2c22155-ac5d-4e7e-ba6d-2ee2bf17cb0a" ub:parent="68963607-cf6a-468a-86b1-4077b221c431"/>
+    </g>
+</svg>
