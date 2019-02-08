@@ -17,4 +17,4 @@ customers save orders to their account for easy ordering
 customers can see a history of their orders
 
 non-optional mandatory bonus
-- make it fun and give it a themea
+- make it fun and give it a theme
