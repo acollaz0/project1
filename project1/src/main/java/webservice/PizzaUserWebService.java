@@ -37,7 +37,7 @@ public class PizzaUserWebService {
 		PizzaUserService.addPizzaUser(p);
 		
 		try {
-			response.getWriter().append("Player added to database");
+			response.getWriter().append("PizzaUser added to database");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
