@@ -11,12 +11,12 @@
     <h3>Password</h3>
     <input id="password" type="text">
 
-    <button onclick="addPlayer()">add Player</button>
+    <button onclick="addPizzaUser()">add PizzaUser</button>
 
 </body>
 <script>
 
-        function addPlayer(){
+        function addPizzaUser(){
 
             let username = document.getElementById("username").value 
             let password = document.getElementById("password").value 
@@ -35,7 +35,7 @@
           true);
           xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
           xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-          xhttp.send("&username="+username+"&password="+password); 
+          xhttp.send("username="+username+"&password="+password); 
         }
         
         
