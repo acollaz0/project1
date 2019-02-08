@@ -1,6 +1,11 @@
 package model;
 
 public class PizzaUser {
+	@Override
+	public String toString() {
+		return "PizzaUser [u_id=" + u_id + ", username=" + username + ", password=" + password + ", rewards=" + rewards
+				+ ", employee=" + employee + "]";
+	}
 	private int u_id;
 	private String username;
 	private String password;
