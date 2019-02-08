@@ -17,15 +17,15 @@ public class Order {
 	 * @param order_type
 	 * @param saved
 	 */
-	public Order(double cost, long time_ordered, String status, String order_type, int saved) {
+	public Order(int order_id, double cost, long time_ordered, String status, String order_type, int saved) {
 		super();
+		this.order_id = order_id;
 		this.cost = cost;
 		this.time_ordered = time_ordered;
 		this.status = status;
 		this.order_type = order_type;
 		this.saved = saved;
-	}
-	
+	}	
 	
 	/**
 	 * Constructor used for adding an Order to the database.
@@ -37,9 +37,8 @@ public class Order {
 	 * @param order_type
 	 * @param saved
 	 */
-	public Order(int order_id, double cost, long time_ordered, String status, String order_type, int saved) {
+	public Order(double cost, long time_ordered, String status, String order_type, int saved) {
 		super();
-		this.order_id = order_id;
 		this.cost = cost;
 		this.time_ordered = time_ordered;
 		this.status = status;

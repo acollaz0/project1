@@ -56,19 +56,19 @@ create table pizza_topping(
 
 -- add foreign keys to tables
 alter table an_order add constraint fk_order_user foreign key
-(user_id) references proj1_user(user_id);
+(user_id) references proj1_user(user_id) on delete cascade;
 
 alter table pizza_order add constraint fk_po_order foreign key
-(order_id) references an_order(order_id);
+(order_id) references an_order(order_id) on delete cascade;
 
 alter table pizza_order add constraint fk_po_pizza foreign key
-(pizza_id) references pizza(pizza_id);
+(pizza_id) references pizza(pizza_id) on delete cascade;
 
 alter table pizza_topping add constraint fk_pt_pizza foreign key
-(pizza_id) references pizza(pizza_id);
+(pizza_id) references pizza(pizza_id) on delete cascade;
 
 alter table pizza_topping add constraint fk_pt_topping foreign key
-(topping_id) references topping(topping_id);
+(topping_id) references topping(topping_id) on delete cascade;
 
 -- create sequences
 create sequence user_id_maker
