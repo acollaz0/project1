@@ -1,8 +1,8 @@
 package model;
 
-import java.util.List;
+import java.util.Map;
 
 public class Pizza {
-	List<String> toppings;
+	Map<String, Integer> toppings;
 	
 }
