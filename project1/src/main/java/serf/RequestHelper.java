@@ -17,6 +17,7 @@ public static void Process(HttpServletRequest request, HttpServletResponse respo
 		
 		case "/project1/getPizzaUser.do":{PizzaUserWebService.getPizzaUser(request, response); break;}
 		case "/project1/addPizzaUser.do":{PizzaUserWebService.addPizzaUser(request, response); break;}
+		case "/project1/getSession.do":{PizzaUserWebService.getSession(request, response); break;}
 		}
 	}
 }

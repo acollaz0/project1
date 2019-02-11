@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pizza app</title>
+</head>
+
+<body>
+    <h2>Hello World!</h2>
+    <button onclick="loadViewer()">PizzaUserViewer</button>
+    <button onclick="loadAdder()">PizzaUserAdder</button>
+    <div id="main"></div>
+</body>
+<script>
+    function loadViewer(){
+        document.getElementById("main").innerHTML="<object data ='PizzaUserViewer.html'></object>"
+    }
+    function loadAdder(){
+        document.getElementById("main").innerHTML="<object data ='PizzaUserAdder.html'></object>"
+    }
+
+</script>
+
+</html>

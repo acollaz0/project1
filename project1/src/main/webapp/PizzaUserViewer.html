@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="result">
 
 <head>
     <title>PizzaUserViewer</title>
@@ -9,7 +9,6 @@
     <h3>PizzaUserViewer by username</h3>
     <input id="username" type="text">
     <button onclick="getPizzaUser()">Get PizzaUser</button>
-    <p id="result"></p>
 
 </body>
 <script>
@@ -33,7 +32,7 @@
 
             }
         }
-        xhttp.open("GET", "http://ec2-18-188-241-243.us-east-2.compute.amazonaws.com:8080/project1/getPizzaUser.do?username="+username, true);
+        xhttp.open("GET", "http://localhost:8080/project1/getPizzaUser.do?username="+username, true);
         xhttp.send();
     }
 </script>

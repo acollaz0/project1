@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<style>
+    object {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<head>
+    <h1 style="widows: 500px;" id="header"></h1>
+
+
+</head>
+
+<body onload="getSession()">
+
+
+</body>
+
+<script>
+
+    function getSession() {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let puser = JSON.parse(this.responseText);
+
+                console.log(puser);
+                let header = `welcome ${puser.username} rewards: ${puser.rewards}`
+                document.getElementById("header").innerHTML = header
+
+            }
+        }
+        xhttp.open("GET", "http://localhost:8080/project1/getSession.do", true);
+        xhttp.send();
+    }
+
+</script>
+
+</html>

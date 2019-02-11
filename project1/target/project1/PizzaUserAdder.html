@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PizzaUserAdder</title>
+</head>
+<body>
+
+    <h3>Username</h3>
+    <input id="username" type="text">
+
+    <h3>Password</h3>
+    <input id="password" type="text">
+
+    <button onclick="addPizzaUser()">add PizzaUser</button>
+
+</body>
+<script>
+
+        function addPizzaUser(){
+
+            let username = document.getElementById("username").value 
+            let password = document.getElementById("password").value 
+
+        
+        let xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+        
+                console.log(this.responseText)
+            }
+          };
+        
+          xhttp.open("POST",
+          "http://ec2-18-188-241-243.us-east-2.compute.amazonaws.com:8080/project1/addPizzaUser.do?", 
+          true);
+          xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+          xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+          xhttp.send("username="+username+"&password="+password); 
+        }
+        
+        
+        </script>
+
+</html>
