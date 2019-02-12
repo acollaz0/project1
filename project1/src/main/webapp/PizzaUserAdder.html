@@ -2,53 +2,53 @@
 <html id="main">
 
 <head>
-  <title>PizzaUserAdder</title>
+    <title>PizzaUserAdder</title>
 </head>
 
 <body>
 
-  <p id="invalid"></p>
-  <h3>Username</h3>
-  <input id="username" type="text">
+    <p id="invalid"></p>
+    <h3>Username</h3>
+    <input id="username" type="text">
 
-  <h3>Password</h3>
-  <input id="password" type="text">
+    <h3>Password</h3>
+    <input id="password" type="text">
 
-  <button onclick="addPizzaUser()">add PizzaUser</button>
+    <button onclick="addPizzaUser()">add PizzaUser</button>
 
 </body>
 <script>
 
-  function addPizzaUser() {
+    function addPizzaUser() {
 
-    let username = document.getElementById("username").value
-    let password = document.getElementById("password").value
+        let username = document.getElementById("username").value
+        let password = document.getElementById("password").value
 
 
-    let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
 
-        if(this.responseText==1){
-          login();
-        }
-        else{
-          document.getElementById("invalid").innerHTML = "Username is unavailable"
+                if (this.responseText == 1) {
+                    login();
+                }
+                else {
+                    document.getElementById("invalid").innerHTML = "Username is unavailable"
 
-        }
-      }
-    };
+                }
+            }
+        };
 
-    xhttp.open("POST",
-      "http://localhost:8080/project1/addPizzaUser.do?",
-      true);
-    xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-    xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhttp.send("username=" + username + "&password=" + password);
-  }
+        xhttp.open("POST",
+            "http://localhost:8080/project1/addPizzaUser.do?",
+            true);
+        xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhttp.send("username=" + username + "&password=" + password);
+    }
 
-  function login() {
-        document.getElementById("main").innerHTML = "<object data ='PizzaMenu.html' style='width:100%;'></object>"
+    function login() {
+        document.getElementById("main").innerHTML = "<object data ='index.html' style='height:500px;width:100%;'></object>"
     }
 
 
