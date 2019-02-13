@@ -1,0 +1,85 @@
+node.js - node.js is a javascript runtime environment. We use node
+to run javascript server side. we do not need a browser to run javascript
+
+NPM node package manager- This is our dependency manager similar to maven except
+instead of Java it is javascript on node.js
+
+package.json - it is a list of dependencies for our node project
+listed in a json format
+
+we can install the dependencies by calling npm install
+
+SPA - a single page application is a website wherein there is 
+only main html page and html/js/css is dynamically inserted
+and removed to create a smooth browsing experience
+
+AngularJS -  was the original Angular. It was written in Javascript
+and had features like scope
+
+Angular 2.0- A SPA designed by Google. It is written in TypeScript
+Angular 2.0 and up are called Angular.
+
+Angular CLI (Command Line Interface) - Command line utility 
+to generate projects, components, pipes, services
+ng some command ng new projectname, ng component name
+USE IT!!!! dont try to write angular without it
+
+WebPack - Module bundler. This is responsible for wrapping up
+your html, TypeScript and all its dependencies into a cohesive final
+project to be sent to your client. Can send this code in module sized chunks 
+for efficiency
+
+TypeScript - A Superset of JavaScript
+ - Created by Microsoft 
+ - provides for oop support than js it has classes and access modifiers
+ - interfaces
+ - strongly typed
+ - you cannot run a TypeScript file
+ - TypeScript will transpile into JavaScript and that js is run
+
+Access modifiers
+public - Function like Java
+private - Function like Java
+protected - Function like Java
+read only - Value cannot be changed and must be initialized when
+created
+
+types 
+boolean, number, string, void, array, undefined, null, enum, any
+you can also create your own types 
+never
+
+*any basically emulates JavaScripts dynamic interprative behavior
+*never is the return type for a function that should not finish
+or should fail
+
+Advantages of TypeScript
+ - more oop
+ - statically typed
+ - catch more roors at compile time
+
+-----------------------------------------------------------------------------
+Angular
+ - JS Framework for building SPA
+ - Allows for expressive html and is modular
+ - the functional gear of an Angular application is the component
+
+Module
+ - The highest level of design in Angular
+ - cohesive block of components providing functionality
+ - all angular apps have at least the root-module
+ - the root module will bootstrap a root-component
+
+Bootstrapping
+ - the process of an initial piece of code pulling in more code
+ which can in turn pull in more code and builds off itself
+ - Chaining chunks together
+
+component
+ - the function gear of Angular
+1. HTML template
+2. TS file (logic for the html)
+
+
+
+
