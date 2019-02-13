@@ -44,7 +44,15 @@
                 let puser = JSON.parse(this.responseText);
 
                 console.log(puser);
-                let header = `welcome ${puser.username} rewards: ${puser.rewards}`
+                let header = `welcome ${puser.username} rewards: ${puser.rewards}
+                            <h3>Deluxe</h3>
+                            <button>Order</button>
+                            <h3>Ultimate Pepperoni</h3>
+                            <button>Order</button>
+                            <h3>Buffalo Chicken</h3>
+                            <button>Order</button>
+                            <h3>Spinach & Feta</h3>
+                            <button>Order</button>`
                 document.getElementById("main").innerHTML = header
 
             }
@@ -54,8 +62,8 @@
     }
 
     function registerPizzaUser() {
-        document.getElementById("main").innerHTML = 
-        `<p id="invalid"></p>
+        document.getElementById("main").innerHTML =
+            `<p id="invalid"></p>
         <h3>Username</h3>
         <input id="username" type="text">
         <h3>Password</h3>
