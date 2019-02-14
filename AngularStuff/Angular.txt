@@ -76,9 +76,82 @@ Bootstrapping
  - Chaining chunks together
 
 component
- - the function gear of Angular
+ - the functional gear of Angular
 1. HTML template
 2. TS file (logic for the html)
+3. Decorator (Meta information and labeling for that component)
+
+    Selector - the name of the html tag for this component
+    template url - the location of the html for the component
+    style url - the location of the css for the component
+
+
+Directive (Custom HTML)
+1.Attribute directive like ngModel custom html attributes
+2.Structural directives like *ngFor and *ngIf add or remove html elements which are the
+building blocks of a webpage. That is why they are called structural directives
+3.Component directive which is a custom HTML tag
+
+dependency Injection
+ - design pattern where a class recieves an instance of an object it needs to function
+ in the constructor. This instance that is injected is shared among classes
+ - Change only one class and have it affect multiple classes without having us to refactor
+ - in Angular we see this with services which provide some sort of utility to different 
+ components
+ - in general if we need a certain function that is not component specific it should be a 
+ service
+
+
+Observable 
+ - Asynchronous object
+ - You create an Observable by setting up a call.
+ - you then subscribe to the Observable
+ - The subscribe method takes in callback functions that handle if the call is successful
+ vs unsuccessful
+
+creating an http
+
+Data binding
+
+ event binding
+ HTML => TS (click) = "someFunction()"
+
+ two way binding
+ HTML <==> TS [(NgModel)] = "value"
+
+ property binding
+ TS => HTML [href] = "variable"
+
+ interpolation
+ TS => {{}}
+
+ pipe |
+ a pipe will transform some sort of input into a different output before
+ it is displayed in the html.
+ input                  output
+ 10 | currency: 'USD'  $10.00
+
+Steps to creating a service and using it in a class
+1. ng generate service myservice
+1.5 the service has the @Injectable decorator which says the Angular Injector 
+can inject this class into other classes
+2. add the service to the provider
+3. add the service to the constructor of the class using it
+                            The service that is injected
+constructor(private service:SomeService)
+
+How to set up Routing
+1. import RouterModule
+2. RouterModule.forRoutes(routes)
+3. const routes: Route = [
+    {path:"url" component:componentA}
+]
+4. <router-outlet></router-outlet>
+
+
+ 
+
+
 
 
 

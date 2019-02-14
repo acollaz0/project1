@@ -20,6 +20,8 @@
     let puser;
     pizzas = [];
     let custmenu;
+    let type;
+    let total;
     
 
     function getPizzaUser() {
@@ -42,9 +44,9 @@
     }
 
     
-    function addDeluxe(){
+    function addPizza(){
         document.getElementById("main").innerHTML =
-        `<h3>Deluxe</h3>
+        `<h3 id="pizza">${type}</h3>
     <div>
         Size:
         <select id="size">
@@ -71,14 +73,21 @@
             <option value="Alfredo Sauce">Alfredo Sauce</option>
         </select>
     </div>
-    <Button onclick="addToOrder()">Add To Order</Button>
+    <Button onclick="addToppings()">Add To Order</Button>
     <Button onclick="menu()">Back To Menu</Button>`
     }
-    function addToOrder(){
+    function addToppings(){
             let size = document.getElementById("size").value;
             let crust = document.getElementById("crust").value;
             let sauce = document.getElementById("sauce").value;
-            let toppings = ["pepperoni","i_sausage","g_peppers","mushrooms","onions"]
+            let toppings = [];
+
+            switch(type){
+                case "Deluxe":
+                toppings = ["pepperoni","i_sausage","g_peppers","mushrooms","onions"];
+                break;
+
+            }
             let pizza = {
                 toppings: toppings,
                 size: size,
@@ -94,28 +103,130 @@
     function menu(){
         console.log(puser);
         custmenu = `welcome ${puser.username} rewards: ${puser.rewards}
-                            <h3>Deluxe</h3>
-                            <button onclick="addDeluxe()">Order</button>
-                            <h3>Ultimate Pepperoni</h3>
+                            <h3 id="deluxe">Deluxe</h3>
+                            <button onclick="setDeluxeType()">Order</button>
+                            <h3 id="ultimatepep">Ultimate Pepperoni</h3>
                             <button>Order</button>
-                            <h3>Buffalo Chicken</h3>
+                            <h3 id="buffalochick">Buffalo Chicken</h3>
                             <button>Order</button>
-                            <h3>Spinach & Feta</h3>
+                            <h3 id="spinachfeta">Spinach & Feta</h3>
                             <button>Order</button>
                             <button onclick="checkout()">Checkout</button>`
+
         document.getElementById("main").innerHTML = custmenu;
     }
+    function setDeluxeType(){
+        type = document.getElementById("deluxe").innerHTML;
+        addPizza();
+        
+    }
+
     function checkout(){
+        total = 0;
         for (pizza in pizzas){
-            console.log(pizzas[pizza]);
+            console.log(pizzas[pizza].size);
+            switch(pizzas[pizza].size){
+                case "Small":
+                total = total+8;
+                break;
+
+                case "Medium":
+                total = total+10;
+                break;
+
+                case "Large":
+                total = total+12;
+                break;
+
+                case "Extra Large":
+                total = total+14;
+                break;
+            }
             let full = `${pizzas[pizza].size},
                         ${pizzas[pizza].crust},
-                        ${pizzas[pizza].sauce}`
+                        ${pizzas[pizza].sauce}, `
+            for(i = 0; i < pizzas[pizza].toppings.length; i++){
+                full = full.concat(`${pizzas[pizza].toppings[i]}, `)
+            }
             let p = document.createElement("P");
             let node = document.createTextNode(full);
             p.appendChild(node);
             document.getElementById("main").appendChild(p);
+            placeOrder();
+
         }
+    }
+
+    function placeOrder(){
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+
+                addPizzaToDB();
+            }
+        }
+
+        xhttp.open("POST",
+            "http://localhost:8080/project1/addOrder.do?",
+            true);
+        xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhttp.send("u_id=" + puser.u_id + "&total=" + total );
+    }
+
+    function addPizzaToDB(){
+        let order = getCustOrder();
+        console.log(order);
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                addToppingsToDB(0);
+
+            }
+        }
+        for (pizza in pizzas){
+            xhttp.open("POST", "http://localhost:8080/project1/addPizza.do?", true);
+            xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+            xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhttp.send("o_id=" + order.o_id + "&p_size=" +pizzas[pizza].size+ "&crust=" + pizzas[pizza].crust + "&sauce=" + pizzas[pizza].sauce);
+        }
+
+    }
+    
+    function addToppingsToDB(){
+        let pizza = getCustPizza();
+        console.log(pizza)
+
+
+    }
+
+    function getCustPizza(){
+
+        let order = getCustOrder();
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                return JSON.parse(this.responseText);
+            }
+        }
+        xhttp.open("GET", "http://localhost:8080/project1/getPizzas.do?o_id=" + order.o_id, true);
+        xhttp.send();
+
+    }
+
+    function getCustOrder(){
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                console.log(JSON.parse(this.responseText))
+                let order = JSON.parse(this.responseText);
+                return order;
+            }
+
+        }
+
+        xhttp.open("GET", "http://localhost:8080/project1/getPizzaOrder.do?u_id=" + puser.u_id, true);
+        xhttp.send();
     }
 
     function getSession() {
