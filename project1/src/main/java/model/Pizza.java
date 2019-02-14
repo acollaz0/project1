@@ -3,7 +3,6 @@ package model;
 public class Pizza {
 	private int p_id;
 	private int o_id;
-	private int t_id;
 	private String p_size;
 	private String crust;
 	private String sauce;
@@ -12,11 +11,10 @@ public class Pizza {
 	public Pizza() {
 		super();
 	}
-	public Pizza(int p_id, int o_id, int t_id, String p_size, String crust, String sauce) {
+	public Pizza(int p_id, int o_id, String p_size, String crust, String sauce) {
 		super();
 		this.p_id = p_id;
 		this.o_id = o_id;
-		this.t_id = t_id;
 		this.p_size = p_size;
 		this.crust = crust;
 		this.sauce = sauce;
@@ -32,12 +30,6 @@ public class Pizza {
 	}
 	public void setO_id(int o_id) {
 		this.o_id = o_id;
-	}
-	public int getT_id() {
-		return t_id;
-	}
-	public void setT_id(int t_id) {
-		this.t_id = t_id;
 	}
 	public String getP_size() {
 		return p_size;
@@ -59,7 +51,7 @@ public class Pizza {
 	}
 	@Override
 	public String toString() {
-		return "Pizza [p_id=" + p_id + ", o_id=" + o_id + ", t_id=" + t_id + ", p_size=" + p_size + ", crust=" + crust
+		return "Pizza [p_id=" + p_id + ", o_id=" + o_id + ", t_id=" + ", p_size=" + p_size + ", crust=" + crust
 				+ ", sauce=" + sauce + "]";
 	}
 	

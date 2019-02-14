@@ -25,7 +25,6 @@ public class PizzaDAO implements IPizza {
 				pizzas.add(new Pizza(
 						rs.getInt("P_ID"),
 						rs.getInt("O_ID"),
-						rs.getInt("T_ID"),
 						rs.getString("P_SIZE"),
 						rs.getString("CRUST"),
 						rs.getString("SAUCE"))
@@ -41,14 +40,13 @@ public class PizzaDAO implements IPizza {
 
 	@Override
 	public boolean addPizza(Pizza p) {
-		String sql = "call add_pizza(?,?,?,?,?)";
+		String sql = "call add_pizza(?,?,?,?)";
 		try {
 			CallableStatement cs = JDBCConnection.getConnection().prepareCall(sql);
 			cs.setString(1, Integer.toString(p.getO_id()));
-			cs.setString(2, Integer.toString(p.getT_id()));
-			cs.setString(3, p.getP_size());
-			cs.setString(4, p.getCrust());
-			cs.setString(5, p.getSauce());
+			cs.setString(2, p.getP_size());
+			cs.setString(3, p.getCrust());
+			cs.setString(4, p.getSauce());
 			return cs.execute();
 			
 		} catch (SQLException e) {

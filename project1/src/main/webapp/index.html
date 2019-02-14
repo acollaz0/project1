@@ -17,6 +17,10 @@
 
 </body>
 <script>
+    let puser;
+    pizzas = [];
+    let custmenu;
+    
 
     function getPizzaUser() {
         let xhttp = new XMLHttpRequest();
@@ -24,9 +28,9 @@
         let password = document.getElementById("password").value;
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                let puser = JSON.parse(this.responseText);
-
+                puser = JSON.parse(this.responseText);
                 console.log(puser);
+
 
                 if ((puser.username == username) && (puser.password == password)) {
                     getSession();
@@ -37,27 +41,91 @@
         xhttp.send();
     }
 
+    
+    function addDeluxe(){
+        document.getElementById("main").innerHTML =
+        `<h3>Deluxe</h3>
+    <div>
+        Size:
+        <select id="size">
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+            <option value="Extra Large">Extra Large</option>
+        </select>
+    </div>
+    <div>
+        Crust:
+        <select id="crust">
+            <option value="Hand Tossed">Hand Tossed</option>
+            <option value="Crunchy Thin Crust">Crunchy Thin Crust</option>
+            <option value="Brooklyn Style">Brooklyn Style</option>
+        </select>
+    </div>
+    <div>
+        Sauce:
+        <select id = "sauce">
+            <option value="Robust Inspired Tomato Sauce">Robust Inspired Tomato Sauce</option>
+            <option value="Hearty Marinara Sauce">Hearty Marinara Sauce</option>
+            <option value="BBQ Sauce">BBQ Sauce</option>
+            <option value="Alfredo Sauce">Alfredo Sauce</option>
+        </select>
+    </div>
+    <Button onclick="addToOrder()">Add To Order</Button>
+    <Button onclick="menu()">Back To Menu</Button>`
+    }
     function addToOrder(){
-        
+            let size = document.getElementById("size").value;
+            let crust = document.getElementById("crust").value;
+            let sauce = document.getElementById("sauce").value;
+            let toppings = ["pepperoni","i_sausage","g_peppers","mushrooms","onions"]
+            let pizza = {
+                toppings: toppings,
+                size: size,
+                crust: crust,
+                sauce: sauce
+            };
+            console.log(pizza);
+            pizzas.push(pizza);
+            console.log(pizzas)
+            menu();
+    }
+
+    function menu(){
+        console.log(puser);
+        custmenu = `welcome ${puser.username} rewards: ${puser.rewards}
+                            <h3>Deluxe</h3>
+                            <button onclick="addDeluxe()">Order</button>
+                            <h3>Ultimate Pepperoni</h3>
+                            <button>Order</button>
+                            <h3>Buffalo Chicken</h3>
+                            <button>Order</button>
+                            <h3>Spinach & Feta</h3>
+                            <button>Order</button>
+                            <button onclick="checkout()">Checkout</button>`
+        document.getElementById("main").innerHTML = custmenu;
+    }
+    function checkout(){
+        for (pizza in pizzas){
+            console.log(pizzas[pizza]);
+            let full = `${pizzas[pizza].size},
+                        ${pizzas[pizza].crust},
+                        ${pizzas[pizza].sauce}`
+            let p = document.createElement("P");
+            let node = document.createTextNode(full);
+            p.appendChild(node);
+            document.getElementById("main").appendChild(p);
+        }
     }
 
     function getSession() {
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                let puser = JSON.parse(this.responseText);
+                puser = JSON.parse(this.responseText);
 
                 console.log(puser);
-                let header = `welcome ${puser.username} rewards: ${puser.rewards}
-                            <h3>Deluxe</h3>
-                            <button>Order</button>
-                            <h3>Ultimate Pepperoni</h3>
-                            <button>Order</button>
-                            <h3>Buffalo Chicken</h3>
-                            <button>Order</button>
-                            <h3>Spinach & Feta</h3>
-                            <button>Order</button>`
-                document.getElementById("main").innerHTML = header
+                menu();
 
             }
         }

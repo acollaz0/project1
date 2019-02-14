@@ -67,14 +67,14 @@ public class PizzaUserWebService {
 		PizzaUser p = new PizzaUser(0, username, password, 0, 0);
 		if(PizzaUserService.addPizzaUser(p)) {
 			try {
-				response.getWriter().append("1");
+				response.getWriter().append("1").close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 		else {
 			try {
-				response.getWriter().append("0");
+				response.getWriter().append("0").close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
