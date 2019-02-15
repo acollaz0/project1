@@ -1,9 +1,12 @@
 select * from pizza_user;
-
+select * from pizza_order;
+select * from pizza;
+delete from pizza_order where o_id = 72;
+commit;
 create table pizza_user(
 u_id number(10) primary key,
-username varchar2(200),
-password varchar2(200),
+username varchar2(200) not null,
+password varchar2(200) not null,
 rewards number(10),
 employee number(10)
 );
@@ -20,7 +23,6 @@ saved number(10)
 create table pizza(
 p_id number(10) primary key,
 o_id number(10),
-t_id number(10),
 p_size varchar2(200),
 crust varchar2(200),
 sauce varchar2(200)
@@ -28,6 +30,7 @@ sauce varchar2(200)
 
 create table toppings(
 t_id number(10) primary key,
+p_id number(10),
 pepperoni number(10),
 i_sausage number(10),
 bacon number(10),
@@ -49,8 +52,8 @@ alter table pizza_order add constraint fk_order_user foreign key
 alter table pizza add constraint fk_pizza_order foreign key
 (o_id) references pizza_order(o_id) on delete cascade;
 
-alter table pizza add constraint fk_pizza_toppings foreign key
-(t_id) references toppings(t_id) on delete cascade;
+alter table toppings add constraint fk_toppings_pizza foreign key
+(p_id) references pizza(p_id) on delete cascade;
 
 alter table pizza_user add constraint puser_unique unique (username);
 
@@ -78,4 +81,19 @@ insert into pizza_order values(pid_maker.nextval, u_id, total, status, datetime,
 
 end;
 
-update pizza_order set saved = 1 where u_id = 1 and o_id = 1;
+create or replace procedure add_pizza(o_id number, p_size varchar2, crust varchar2, sauce varchar2)
+is
+begin
+
+insert into pizza values(pid_maker.nextval, o_id, p_size, crust, sauce);
+
+end;
+
+create or replace procedure add_toppings(p_id number, pepperoni number, i_sausage number, bacon number, ham number, salami number, mushrooms number, b_olives number, b_peppers number, pineapple number, onions number, g_peppers number, feta number, spinach number)
+is
+begin
+
+insert into toppings values(pid_maker.nextval, p_id, pepperoni, i_sausage, bacon, ham, salami, mushrooms, b_olives, b_peppers, pineapple, onions, g_peppers, feta, spinach);
+
+end;
+

@@ -22,6 +22,8 @@
     let custmenu;
     let type;
     let total;
+    let order;
+    let custpizza;
     
 
     function getPizzaUser() {
@@ -161,8 +163,9 @@
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function(){
             if(this.readyState == 4 && this.status == 200){
-
-                addPizzaToDB();
+                
+                getCustOrder();
+                
             }
         }
 
@@ -175,12 +178,12 @@
     }
 
     function addPizzaToDB(){
-        let order = getCustOrder();
+        
         console.log(order);
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function(){
             if(this.readyState == 4 && this.status == 200){
-                addToppingsToDB(0);
+                addToppingsToDB();
 
             }
         }
@@ -194,19 +197,17 @@
     }
     
     function addToppingsToDB(){
-        let pizza = getCustPizza();
-        console.log(pizza)
+        
+        console.log(custpizza)
 
 
     }
 
     function getCustPizza(){
-
-        let order = getCustOrder();
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function(){
             if(this.readyState == 4 && this.status == 200){
-                return JSON.parse(this.responseText);
+                custpizza =  JSON.parse(this.responseText);
             }
         }
         xhttp.open("GET", "http://localhost:8080/project1/getPizzas.do?o_id=" + order.o_id, true);
@@ -218,9 +219,9 @@
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function(){
             if(this.readyState == 4 && this.status == 200){
-                console.log(JSON.parse(this.responseText))
-                let order = JSON.parse(this.responseText);
-                return order;
+                order = JSON.parse(this.responseText);
+                console.log(order);
+                addPizzaToDB();
             }
 
         }
