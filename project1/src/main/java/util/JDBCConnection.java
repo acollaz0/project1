@@ -18,7 +18,7 @@ public static Connection con = null;
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 				
 				Properties props = new Properties();
-				FileInputStream input = new FileInputStream("D:\\1901SDET\\aaron\\project1\\project1\\src\\main\\resources/connection.properties");
+				FileInputStream input = new FileInputStream("C:\\Users\\Aaron\\Desktop\\SDETgitlab\\aaron1901sdet\\project1\\project1\\src\\main\\resources/connection.properties");
 				props.load(input);
 				
 				String endpoint = props.getProperty("url");

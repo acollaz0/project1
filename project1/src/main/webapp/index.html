@@ -1,19 +1,53 @@
 <!DOCTYPE html>
 <html>
+<style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: #111;
+    }
+</style>
 
 <head>
     <title>Pizza app</title>
+
 </head>
 
-<body id="main">
+<body>
+    <ul>
+        <li><a onclick="menu()">Menu</a></li>
+        <li><a onclick="checkout()">Cart</a></li>
+        <li><a>Order</a></li>
+        <li><a>Logout</a></li>
+    </ul>
 
-    <h2>Login</h2>
-    <h3>Username</h3>
-    <input id="username" type="text">
-    <h3>Password</h3>
-    <input id="password" type="text">
-    <button onclick="getPizzaUser()">Login</button>
-    <button onclick="registerPizzaUser()">Register</button>
+    <div id="main">
+        <h2>Login</h2>
+        <h3>Username</h3>
+        <input id="username" type="text">
+        <h3>Password</h3>
+        <input id="password" type="text">
+        <button onclick="getPizzaUser()">Login</button>
+        <button onclick="registerPizzaUser()">Register</button>
+    </div>
 
 </body>
 <script>
@@ -24,7 +58,7 @@
     let total;
     let order;
     let custpizza;
-    
+
 
     function getPizzaUser() {
         let xhttp = new XMLHttpRequest();
@@ -45,10 +79,10 @@
         xhttp.send();
     }
 
-    
-    function addPizza(){
+
+    function addPizza() {
         document.getElementById("main").innerHTML =
-        `<h3 id="pizza">${type}</h3>
+            `<h3 id="pizza">${type}</h3>
     <div>
         Size:
         <select id="size">
@@ -78,94 +112,111 @@
     <Button onclick="addToppings()">Add To Order</Button>
     <Button onclick="menu()">Back To Menu</Button>`
     }
-    function addToppings(){
-            let size = document.getElementById("size").value;
-            let crust = document.getElementById("crust").value;
-            let sauce = document.getElementById("sauce").value;
-            let toppings = [];
+    function addToppings() {
+        let size = document.getElementById("size").value;
+        let crust = document.getElementById("crust").value;
+        let sauce = document.getElementById("sauce").value;
+        let toppings = [];
 
-            switch(type){
-                case "Deluxe":
-                toppings = ["pepperoni","i_sausage","g_peppers","mushrooms","onions"];
+        switch (type) {
+            case "Deluxe":
+                toppings = ["pepperoni", "i_sausage", "g_peppers", "mushrooms", "onions"];
+                break;
+            case "Ultimate Pepperoni":
+                toppings = ["pepperoni", "bacon", "mushrooms", "b_olives"];
+                break;
+            case "Hawaiian":
+                toppings = ["pineapple", "bacon", "b_peppers", "mushrooms"];
+                break;
+            case "Spinach & Feta":
+                toppings = ["Spinach", "Feta"];
                 break;
 
-            }
-            let pizza = {
-                toppings: toppings,
-                size: size,
-                crust: crust,
-                sauce: sauce
-            };
-            console.log(pizza);
-            pizzas.push(pizza);
-            console.log(pizzas)
-            menu();
+        }
+        let pizza = {
+            type: type,
+            toppings: toppings,
+            size: size,
+            crust: crust,
+            sauce: sauce
+        };
+        console.log(pizza);
+        pizzas.push(pizza);
+        console.log(pizzas)
+        menu();
     }
 
-    function menu(){
+    function menu() {
         console.log(puser);
         custmenu = `welcome ${puser.username} rewards: ${puser.rewards}
-                            <h3 id="deluxe">Deluxe</h3>
-                            <button onclick="setDeluxeType()">Order</button>
-                            <h3 id="ultimatepep">Ultimate Pepperoni</h3>
-                            <button>Order</button>
-                            <h3 id="buffalochick">Buffalo Chicken</h3>
-                            <button>Order</button>
-                            <h3 id="spinachfeta">Spinach & Feta</h3>
-                            <button>Order</button>
+                            <h3>Deluxe</h3>
+                            <button onclick="setType('Deluxe')">Order</button>
+                            <h3>Ultimate Pepperoni</h3>
+                            <button onclick="setType('Ultimate Pepperoni')">Order</button>
+                            <h3>Hawaiian</h3>
+                            <button onclick="setType('Hawaiian')">Order</button>
+                            <h3>Spinach & Feta</h3>
+                            <button onclick="setType('Spinach & Feta')">Order</button>
                             <button onclick="checkout()">Checkout</button>`
 
         document.getElementById("main").innerHTML = custmenu;
     }
-    function setDeluxeType(){
-        type = document.getElementById("deluxe").innerHTML;
+    function setType(ptype){
+        type = ptype;
         addPizza();
-        
+
     }
 
-    function checkout(){
+    function checkout() {
         total = 0;
-        for (pizza in pizzas){
+
+        document.getElementById("main").innerHTML =
+            `<h3 id="order">Order</h3>
+            <button onclick="placeOrder()">Place Order</button>
+            <button onclick="menu()">Back to Menu</button>
+            `
+        for (pizza in pizzas) {
             console.log(pizzas[pizza].size);
-            switch(pizzas[pizza].size){
+            switch (pizzas[pizza].size) {
                 case "Small":
-                total = total+8;
-                break;
+                    total = total + 8;
+                    break;
 
                 case "Medium":
-                total = total+10;
-                break;
+                    total = total + 10;
+                    break;
 
                 case "Large":
-                total = total+12;
-                break;
+                    total = total + 12;
+                    break;
 
                 case "Extra Large":
-                total = total+14;
-                break;
+                    total = total + 14;
+                    break;
             }
-            let full = `${pizzas[pizza].size},
-                        ${pizzas[pizza].crust},
-                        ${pizzas[pizza].sauce}, `
-            for(i = 0; i < pizzas[pizza].toppings.length; i++){
+            let full = `${pizzas[pizza].type}, `
+            for (i = 0; i < pizzas[pizza].toppings.length; i++) {
                 full = full.concat(`${pizzas[pizza].toppings[i]}, `)
             }
+            full = full.concat(`${pizzas[pizza].size},
+                        ${pizzas[pizza].crust},
+                        ${pizzas[pizza].sauce}`);
+
             let p = document.createElement("P");
             let node = document.createTextNode(full);
             p.appendChild(node);
             document.getElementById("main").appendChild(p);
-            placeOrder();
-
         }
+        document.getElementById("order").innerHTML = `Order Total: $${total}`;
     }
 
-    function placeOrder(){
+    function placeOrder() {
         let xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200){
-                
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+
                 getCustOrder();
-                
+
             }
         }
 
@@ -174,40 +225,86 @@
             true);
         xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhttp.send("u_id=" + puser.u_id + "&total=" + total );
+        xhttp.send("u_id=" + puser.u_id + "&total=" + total);
     }
 
-    function addPizzaToDB(){
-        
+    function addPizzaToDB() {
+
         console.log(order);
         let xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200){
-                addToppingsToDB();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                getCustPizza();
 
             }
         }
-        for (pizza in pizzas){
+        for (pizza in pizzas) {
             xhttp.open("POST", "http://localhost:8080/project1/addPizza.do?", true);
             xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
             xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhttp.send("o_id=" + order.o_id + "&p_size=" +pizzas[pizza].size+ "&crust=" + pizzas[pizza].crust + "&sauce=" + pizzas[pizza].sauce);
+            xhttp.send("o_id=" + order.o_id + "&p_size=" + pizzas[pizza].size + "&crust=" + pizzas[pizza].crust + "&sauce=" + pizzas[pizza].sauce);
         }
 
     }
-    
-    function addToppingsToDB(){
-        
-        console.log(custpizza)
+
+    function addToppingsToDB() {
+        console.log(custpizza);
+        let toppings = {
+            p_id: 0,
+            pepperoni: 0,
+            i_sausage: 0,
+            bacon: 0,
+            ham: 0,
+            salami: 0,
+            mushrooms: 0,
+            b_olives: 0,
+            b_peppers: 0,
+            pineapple: 0,
+            onions: 0,
+            g_peppers: 0,
+            feta: 0,
+            spinach: 0
+        }
+
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+
+            }
+        }
+
+        for (i = 0; i < custpizza.length; i++) {
+            toppings.p_id = custpizza[i].p_id;
+            console.log(pizzas[i]);
+            for (j = 0; j < pizzas[i].toppings.length; j++) {
+                prop = pizzas[i].toppings[j];
+                console.log(prop);
+                toppings[prop] = 1;
+            }
+
+            xhttp.open("POST",
+                "http://localhost:8080/project1/addToppings.do?",
+                true);
+            xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+            xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhttp.send("p_id=" + toppings.p_id + "&pepperoni=" + toppings.pepperoni + "&i_sausage=" + toppings.i_sausage + "&bacon=" +
+                toppings.bacon + "&ham=" + toppings.ham + "&salami=" + toppings.salami + "&mushrooms=" + toppings.mushrooms + "&b_olives=" +
+                toppings.b_olives + "&b_peppers=" + toppings.b_peppers + "&pineapple=" + toppings.pineapple + "&onions=" + toppings.onions +
+                "&g_peppers=" + toppings.g_peppers + "&feta=" + toppings.feta + "&spinach=" + toppings.spinach);
+
+        }
+
 
 
     }
 
-    function getCustPizza(){
+    function getCustPizza() {
         let xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200){
-                custpizza =  JSON.parse(this.responseText);
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                custpizza = JSON.parse(this.responseText);
+                console.log(custpizza);
+                addToppingsToDB();
             }
         }
         xhttp.open("GET", "http://localhost:8080/project1/getPizzas.do?o_id=" + order.o_id, true);
@@ -215,10 +312,10 @@
 
     }
 
-    function getCustOrder(){
+    function getCustOrder() {
         let xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200){
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
                 order = JSON.parse(this.responseText);
                 console.log(order);
                 addPizzaToDB();

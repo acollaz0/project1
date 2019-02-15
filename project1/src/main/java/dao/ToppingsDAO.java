@@ -45,7 +45,7 @@ public class ToppingsDAO implements IToppings {
 
 	@Override
 	public boolean addToppings(Toppings t) {
-		String sql = "call procedure(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "call add_toppings(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			CallableStatement cs = JDBCConnection.getConnection().prepareCall(sql);
 			cs.setString(1, Integer.toString(t.getP_id()));

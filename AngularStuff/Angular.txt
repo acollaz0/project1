@@ -5,7 +5,7 @@ NPM node package manager- This is our dependency manager similar to maven except
 instead of Java it is javascript on node.js
 
 package.json - it is a list of dependencies for our node project
-listed in a json format
+listed in a json format similar to the POM.xml
 
 we can install the dependencies by calling npm install
 
@@ -44,7 +44,7 @@ protected - Function like Java
 read only - Value cannot be changed and must be initialized when
 created
 
-types 
+Typescript types 
 boolean, number, string, void, array, undefined, null, enum, any
 you can also create your own types 
 never
@@ -109,7 +109,11 @@ Observable
  - The subscribe method takes in callback functions that handle if the call is successful
  vs unsuccessful
 
-creating an http
+creating an http call
+1.Import HttpClientModule
+2. import HttpClient in the class you are going to use it
+3. You put the client in the constructor
+4. http.get("URL") returns an observable
 
 Data binding
 
@@ -142,11 +146,30 @@ constructor(private service:SomeService)
 
 How to set up Routing
 1. import RouterModule
-2. RouterModule.forRoutes(routes)
+2. RouterModule.forRoot(routes)
 3. const routes: Route = [
     {path:"url" component:componentA}
 ]
 4. <router-outlet></router-outlet>
+
+Library vs Framework
+
+Library you write your code and use resources available in the Library to complete
+and run YOUR application
+you make a program your way
+you made your own application
+
+A framework has the Inversion of control
+A framework is a skeleton that you flesh out
+The framework is the application and it calls your code
+you make a program the frameworks way
+you made an angular application(you put your code into an Angular Application)
+
+Linter
+
+analyzes your code for bad coding practices
+redunant or poorly used variables
+Does not actually change your code
 
 
  
