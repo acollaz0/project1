@@ -83,5 +83,27 @@ public class PizzaUserWebService {
 		
 		
 	}
+	
+	public static void updateRewards(HttpServletRequest request, HttpServletResponse response) {
+		int u_id = Integer.parseInt(request.getParameter("u_id"));
+		int rewards = Integer.parseInt(request.getParameter("rewards"));
+		
+		if(PizzaUserService.updateRewards(u_id, rewards)) {
+			try {
+				response.getWriter().append("1").close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		else {
+			try {
+				response.getWriter().append("0").close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
 
 }

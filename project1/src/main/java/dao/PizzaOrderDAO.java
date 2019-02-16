@@ -13,8 +13,9 @@ import util.JDBCConnection;
 public class PizzaOrderDAO implements IPizzaOrder {
 
 	@Override
-	public PizzaOrder getOrder(int u_id) {
+	public List<PizzaOrder> getOrder(int u_id) {
 		String sql = "select * from pizza_order where u_id = ?";
+		List<PizzaOrder> orders = new ArrayList<>();
 
 		try {
 			PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
@@ -23,14 +24,15 @@ public class PizzaOrderDAO implements IPizzaOrder {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				return new PizzaOrder(
+				orders.add(new PizzaOrder(
 						rs.getInt("O_ID"),
 						rs.getInt("U_ID"),
 						rs.getInt("TOTAL"),
 						rs.getString("STATUS"),
 						rs.getString("DATETIME"),
-						rs.getInt("SAVED"));
+						rs.getInt("SAVED")));
 			}
+			return orders;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

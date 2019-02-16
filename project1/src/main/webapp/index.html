@@ -7,6 +7,7 @@
         padding: 0;
         overflow: hidden;
         background-color: #333;
+        display: none;
     }
 
     li {
@@ -32,11 +33,11 @@
 </head>
 
 <body>
-    <ul>
+    <ul id="navbar">
         <li><a onclick="menu()">Menu</a></li>
         <li><a onclick="checkout()">Cart</a></li>
         <li><a>Order</a></li>
-        <li><a>Logout</a></li>
+        <li><a onclick="loginMenu()">Logout</a></li>
     </ul>
 
     <div id="main">
@@ -57,8 +58,23 @@
     let type;
     let total;
     let order;
+    let orders;
     let custpizza;
+    let hasPizza;
+    let rewardtotal;
 
+
+    function loginMenu(){
+        document.getElementById("navbar").style.display="none";
+        document.getElementById("main").innerHTML = 
+        `<h2>Login</h2>
+        <h3>Username</h3>
+        <input id="username" type="text">
+        <h3>Password</h3>
+        <input id="password" type="text">
+        <button onclick="getPizzaUser()">Login</button>
+        <button onclick="registerPizzaUser()">Register</button>`
+    }
 
     function getPizzaUser() {
         let xhttp = new XMLHttpRequest();
@@ -67,7 +83,6 @@
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 puser = JSON.parse(this.responseText);
-                console.log(puser);
 
 
                 if ((puser.username == username) && (puser.password == password)) {
@@ -140,14 +155,12 @@
             crust: crust,
             sauce: sauce
         };
-        console.log(pizza);
         pizzas.push(pizza);
-        console.log(pizzas)
         menu();
     }
 
     function menu() {
-        console.log(puser);
+        document.getElementById("navbar").style.display="block";
         custmenu = `welcome ${puser.username} rewards: ${puser.rewards}
                             <h3>Deluxe</h3>
                             <button onclick="setType('Deluxe')">Order</button>
@@ -169,6 +182,7 @@
 
     function checkout() {
         total = 0;
+        rewardtotal = 0;
 
         document.getElementById("main").innerHTML =
             `<h3 id="order">Order</h3>
@@ -176,22 +190,25 @@
             <button onclick="menu()">Back to Menu</button>
             `
         for (pizza in pizzas) {
-            console.log(pizzas[pizza].size);
             switch (pizzas[pizza].size) {
                 case "Small":
                     total = total + 8;
+                    rewardtotal = rewardtotal + 32;
                     break;
 
                 case "Medium":
                     total = total + 10;
+                    rewardtotal = rewardtotal + 40;
                     break;
 
                 case "Large":
                     total = total + 12;
+                    rewardtotal = rewardtotal + 48;
                     break;
 
                 case "Extra Large":
                     total = total + 14;
+                    rewardtotal = rewardtotal + 56;
                     break;
             }
             let full = `${pizzas[pizza].type}, `
@@ -207,7 +224,7 @@
             p.appendChild(node);
             document.getElementById("main").appendChild(p);
         }
-        document.getElementById("order").innerHTML = `Order Total: $${total}`;
+        document.getElementById("order").innerHTML = `Order Total: $${total} Reward Points: ${rewardtotal}`;
     }
 
     function placeOrder() {
@@ -230,25 +247,23 @@
 
     function addPizzaToDB() {
 
-        console.log(order);
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                getCustPizza();
-
+                
             }
         }
         for (pizza in pizzas) {
-            xhttp.open("POST", "http://localhost:8080/project1/addPizza.do?", true);
+            xhttp.open("POST", "http://localhost:8080/project1/addPizza.do?", false);
             xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
             xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhttp.send("o_id=" + order.o_id + "&p_size=" + pizzas[pizza].size + "&crust=" + pizzas[pizza].crust + "&sauce=" + pizzas[pizza].sauce);
         }
+        getCustPizza();
 
     }
 
     function addToppingsToDB() {
-        console.log(custpizza);
         let toppings = {
             p_id: 0,
             pepperoni: 0,
@@ -269,33 +284,45 @@
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
+                for(top in toppings){
+                    toppings[top] = 0;
+                }
 
             }
         }
-
         for (i = 0; i < custpizza.length; i++) {
             toppings.p_id = custpizza[i].p_id;
-            console.log(pizzas[i]);
             for (j = 0; j < pizzas[i].toppings.length; j++) {
                 prop = pizzas[i].toppings[j];
-                console.log(prop);
                 toppings[prop] = 1;
             }
 
             xhttp.open("POST",
                 "http://localhost:8080/project1/addToppings.do?",
-                true);
+                false);
             xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
             xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhttp.send("p_id=" + toppings.p_id + "&pepperoni=" + toppings.pepperoni + "&i_sausage=" + toppings.i_sausage + "&bacon=" +
                 toppings.bacon + "&ham=" + toppings.ham + "&salami=" + toppings.salami + "&mushrooms=" + toppings.mushrooms + "&b_olives=" +
                 toppings.b_olives + "&b_peppers=" + toppings.b_peppers + "&pineapple=" + toppings.pineapple + "&onions=" + toppings.onions +
                 "&g_peppers=" + toppings.g_peppers + "&feta=" + toppings.feta + "&spinach=" + toppings.spinach);
+        }
+        let rewards = total;
+        updateRewards(rewards);
+        pizzas.length = 0;
+        menu();
+    }
+
+    function updateRewards(rewards){
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            
 
         }
-
-
-
+        xhttp.open("POST", "http://localhost:8080/project1/updateRewards.do?", true);
+        xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhttp.send("u_id="+puser.u_id+"&rewards="+rewards);
     }
 
     function getCustPizza() {
@@ -303,7 +330,6 @@
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 custpizza = JSON.parse(this.responseText);
-                console.log(custpizza);
                 addToppingsToDB();
             }
         }
@@ -311,14 +337,44 @@
         xhttp.send();
 
     }
+    
+    function checkOrder(){
+        
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState ==4 && this.status == 200){
+                hasPizza = 0;
+                pizzalist = JSON.parse(this.responseText);
+                console.log(pizzalist.length);
+                if(pizzalist.length == 0){
+                    hasPizza = 1;
+                }
+                console.log(hasPizza);
+                if(hasPizza == 1){
+                    addPizzaToDB();
+                }
+            }
+
+        }
+        order = orders[0];
+        for(x=0;x<orders.length;x++){
+            if(orders[x].o_id > order.o_id){
+                order = orders[x];
+            }
+        }
+        console.log(order);
+        xhttp.open("GET", "http://localhost:8080/project1/getPizzas.do?o_id=" + order.o_id, true);
+        xhttp.send();
+        
+    }
 
     function getCustOrder() {
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                order = JSON.parse(this.responseText);
-                console.log(order);
-                addPizzaToDB();
+                orders = JSON.parse(this.responseText);
+                console.log(orders);
+                checkOrder();
             }
 
         }
@@ -332,8 +388,6 @@
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 puser = JSON.parse(this.responseText);
-
-                console.log(puser);
                 menu();
 
             }
@@ -349,7 +403,8 @@
         <input id="username" type="text">
         <h3>Password</h3>
         <input id="password" type="text">
-        <button onclick="addPizzaUser()">add PizzaUser</button>`
+        <button onclick="addPizzaUser()">add PizzaUser</button>
+        <button onclick="loginMenu()">Back to Login</button>`
     }
 
     function addPizzaUser() {

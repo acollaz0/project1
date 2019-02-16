@@ -69,6 +69,7 @@ public class PizzaUserDAO implements IPizzaUser{
 			return true;
 			
 		} catch (SQLException e) {
+			e.printStackTrace();
 			System.out.println("Insufficient Funds");
 		}
 		return false;

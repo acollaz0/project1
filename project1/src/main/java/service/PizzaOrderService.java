@@ -9,7 +9,7 @@ public class PizzaOrderService {
 	
 	public static PizzaOrderDAO pod = new PizzaOrderDAO();
 	
-	public static PizzaOrder getOrder(int u_id) {
+	public static List<PizzaOrder> getOrder(int u_id) {
 		return pod.getOrder(u_id);
 	}
 	
