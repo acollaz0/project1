@@ -4,6 +4,8 @@ import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Toppings;
 import util.JDBCConnection;
@@ -12,13 +14,14 @@ public class ToppingsDAO implements IToppings {
 
 	@Override
 	public Toppings getToppings(int p_id) {
-		String sql = "select all from toppings where p_id = ?";
+		String sql = "select * from toppings where p_id = ?";
 		try {
 			PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
 			ps.setString(1, Integer.toString(p_id));
 			ResultSet rs = ps.executeQuery();
+			Toppings t = null;
 			while(rs.next()) {
-				return new Toppings(
+						t =  new Toppings(
 						rs.getInt("T_ID"),
 						rs.getInt("P_ID"),
 						rs.getInt("PEPPERONI"),
@@ -36,6 +39,8 @@ public class ToppingsDAO implements IToppings {
 						rs.getInt("SPINACH")
 						);
 			}
+			rs.close();
+			return t;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -68,6 +73,42 @@ public class ToppingsDAO implements IToppings {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	@Override
+	public List<Toppings> allToppings() {
+		String sql = "select * from toppings";
+		List<Toppings> toppings = new ArrayList<>();
+		
+		try {
+			PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				toppings.add(new Toppings(
+						rs.getInt("T_ID"),
+						rs.getInt("P_ID"),
+						rs.getInt("PEPPERONI"),
+						rs.getInt("I_SAUSAGE"),
+						rs.getInt("BACON"),
+						rs.getInt("HAM"),
+						rs.getInt("SALAMI"),
+						rs.getInt("MUSHROOMS"),
+						rs.getInt("B_OLIVES"),
+						rs.getInt("B_PEPPERS"),
+						rs.getInt("PINEAPPLE"),
+						rs.getInt("ONIONS"),
+						rs.getInt("G_PEPPERS"),
+						rs.getInt("FETA"),
+						rs.getInt("SPINACH")
+						));	
+			}
+			rs.close();
+			return toppings;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	

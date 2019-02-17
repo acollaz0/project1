@@ -31,6 +31,19 @@ public class PizzaOrderWebService {
 		}
 	}
 	
+	public static void activeOrders(HttpServletRequest request, HttpServletResponse response) {
+		List<PizzaOrder> orders = new ArrayList<>();
+		orders = PizzaOrderService.activeOrders();
+		ObjectMapper om = new ObjectMapper();
+		
+		
+		try {
+			String json = om.writeValueAsString(orders);
+			response.getWriter().append(json).close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	public static void allOrders(HttpServletRequest request, HttpServletResponse response) {
 		List<PizzaOrder> orders = new ArrayList<>();
 		orders = PizzaOrderService.allOrders();
@@ -96,7 +109,6 @@ public class PizzaOrderWebService {
 			try {
 				response.getWriter().append("1").close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

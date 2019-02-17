@@ -18,15 +18,17 @@ public class PizzaUserDAO implements IPizzaUser{
 			ps.setString(1, username);
 			
 			ResultSet rs = ps.executeQuery();
-			
+			PizzaUser p = null;
 			while(rs.next()) {
-				return new PizzaUser(
+						p = new PizzaUser(
 						rs.getInt("U_ID"),
 						rs.getString("USERNAME"),
 						rs.getString("PASSWORD"),
 						rs.getInt("REWARDS"),
 						rs.getInt("EMPLOYEE"));
 			}
+			rs.close();
+			return p;
 			
 		}catch(SQLException e){
 			System.out.println("User does not exist");

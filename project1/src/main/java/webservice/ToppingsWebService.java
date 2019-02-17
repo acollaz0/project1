@@ -1,6 +1,8 @@
 package webservice;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +22,19 @@ public class ToppingsWebService {
 		
 		try {
 			String json = om.writeValueAsString(t);
+			response.getWriter().append(json).close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void allToppings(HttpServletRequest request, HttpServletResponse response) {
+		List<Toppings> toppings = new ArrayList<>();
+		toppings = ToppingsService.allToppings();
+		ObjectMapper om = new ObjectMapper();
+		
+		try {
+			String json = om.writeValueAsString(toppings);
 			response.getWriter().append(json).close();
 		} catch (IOException e) {
 			e.printStackTrace();

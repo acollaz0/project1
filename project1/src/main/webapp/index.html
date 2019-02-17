@@ -12,11 +12,12 @@
 
     li {
         float: left;
+        color: rgb(12, 201, 12);
     }
 
     li a {
         display: block;
-        color: white;
+        color: rgb(12, 201, 12);
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
@@ -25,6 +26,7 @@
     li a:hover {
         background-color: #111;
     }
+
 </style>
 
 <head>
@@ -36,8 +38,16 @@
     <ul id="navbar">
         <li><a onclick="menu()">Menu</a></li>
         <li><a onclick="checkout()">Cart</a></li>
-        <li><a>Order</a></li>
-        <li><a onclick="loginMenu()">Logout</a></li>
+        <li><a onclick="viewOrderStatus()">Order</a></li>
+        <li><a onclick="viewOrderHistory()">Order History</a></li>
+        <li><a onclick="viewSavedOrders()">Saved Orders</a></li>
+        <li><a id="info"></a></li>
+        <li style="float:right"><a onclick="loginMenu()">Logout</a></li>
+    </ul>
+    <ul id="enavbar">
+        <li><a onclick="employeeMenu()">Active Orders</a></li>
+        <li><a onclick="showStats()">Statistics</a></li>
+        <li style="float:right"><a onclick="loginMenu()">Logout</a></li>
     </ul>
 
     <div id="main">
@@ -62,12 +72,16 @@
     let custpizza;
     let hasPizza;
     let rewardtotal;
+    let activeorders;
 
 
-    function loginMenu(){
-        document.getElementById("navbar").style.display="none";
-        document.getElementById("main").innerHTML = 
-        `<h2>Login</h2>
+
+    function loginMenu() {
+        pizzas.length = 0;
+        document.getElementById("navbar").style.display = "none";
+        document.getElementById("enavbar").style.display = "none";
+        document.getElementById("main").innerHTML =
+            `<h2>Login</h2>
         <h3>Username</h3>
         <input id="username" type="text">
         <h3>Password</h3>
@@ -75,6 +89,321 @@
         <button onclick="getPizzaUser()">Login</button>
         <button onclick="registerPizzaUser()">Register</button>`
     }
+    function showStats() {
+        document.getElementById("main").innerHTML = `<h2>Toppings Used</h2>`;
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let toplist = JSON.parse(this.responseText);
+                let toppingcount = {
+                    pepperoni: 0,
+                    i_sausage: 0,
+                    bacon: 0,
+                    ham: 0,
+                    salami: 0,
+                    mushrooms: 0,
+                    b_olives: 0,
+                    b_peppers: 0,
+                    pineapple: 0,
+                    onions: 0,
+                    g_peppers: 0,
+                    feta: 0,
+                    spinach: 0
+                }
+                for (x = 0; x < toplist.length; x++) {
+                    for (topping in toppingcount) {
+                        if (toplist[x][topping] == 1) {
+                            toppingcount[topping] += 1;
+                        }
+                    }
+                }
+                for (topping in toppingcount) {
+                    let p = document.createElement("P");
+                    p.innerHTML = `${topping}:${toppingcount[topping]}`;
+                    document.getElementById("main").appendChild(p);
+                }
+
+
+            }
+        }
+        xhttp.open("GET", "http://localhost:8080/project1/allToppings.do", true);
+        xhttp.send();
+
+    }
+    function viewSavedOrders() {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let orderstats = JSON.parse(this.responseText);
+                document.getElementById("main").innerHTML = "<h2>Saved Order(s)</h2>";
+                for (x = 0; x < orderstats.length; x++) {
+                    if (orderstats[x].saved == 1) {
+                        let d = document.createElement("DIV");
+                        d.setAttribute("id", `${orderstats[x].o_id}`)
+                        d.innerHTML = `<hr>Status: ${orderstats[x].status} Total: $${orderstats[x].total} Order Placed on ${orderstats[x].datetime}  <button id="${orderstats[x].o_id}" onclick="addToCart(this.id)">Add to Cart</button>`
+                        document.getElementById("main").appendChild(d);
+                        viewPizzaStatus(`${orderstats[x].o_id}`)
+                    }
+                }
+
+            }
+        }
+
+        xhttp.open("GET", "http://localhost:8080/project1/getPizzaOrder.do?u_id=" + puser.u_id, true);
+        xhttp.send();
+
+    }
+    function addToCart(id) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let pizzs = JSON.parse(this.responseText)
+                for (x = 0; x < pizzs.length; x++) {
+                    addPizzaToCart(`${pizzs[x].p_id}`, `${pizzs[x].p_size}`, `${pizzs[x].crust}`, `${pizzs[x].sauce}`)
+
+                }
+            }
+        }
+
+        xhttp.open("GET", "http://localhost:8080/project1/getPizzas.do?o_id=" + id, true);
+        xhttp.send();
+
+
+    }
+    function addPizzaToCart(id, size, crust, sauce) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let topps = JSON.parse(this.responseText);
+                let toppings = [];
+                for (topping in topps) {
+                    if (topps[topping] == 1) {
+                        toppings.push(topping);
+                    }
+                }
+                let pizza = {
+                    toppings: toppings,
+                    size: size,
+                    crust: crust,
+                    sauce: sauce
+                };
+                pizzas.push(pizza);
+                checkout();
+
+
+
+            }
+        }
+        xhttp.open("GET", "http://localhost:8080/project1/getToppings.do?p_id=" + id, true);
+        xhttp.send();
+
+    }
+    function viewOrderStatus() {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let orderstats = JSON.parse(this.responseText);
+                document.getElementById("main").innerHTML = "<h2>Order(s)</h2>";
+                for (x = 0; x < orderstats.length; x++) {
+                    if (orderstats[x].status != 'Complete') {
+                        let d = document.createElement("DIV");
+                        d.setAttribute("id", `${orderstats[x].o_id}`)
+                        d.innerHTML = `<hr>Status: ${orderstats[x].status} Total: $${orderstats[x].total} Order Placed on ${orderstats[x].datetime}`
+                        document.getElementById("main").appendChild(d);
+                        viewPizzaStatus(`${orderstats[x].o_id}`)
+                    }
+                }
+
+            }
+        }
+
+        xhttp.open("GET", "http://localhost:8080/project1/getPizzaOrder.do?u_id=" + puser.u_id, true);
+        xhttp.send();
+
+    }
+    function viewOrderHistory() {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let orderstats = JSON.parse(this.responseText);
+                document.getElementById("main").innerHTML = "<h2>Order History</h2>";
+                for (x = 0; x < orderstats.length; x++) {
+                    if (orderstats[x].status == 'Complete') {
+                        let d = document.createElement("DIV");
+                        d.setAttribute("id", `${orderstats[x].o_id}`)
+                        d.innerHTML = `<hr>Status: ${orderstats[x].status} Total: $${orderstats[x].total} Order Placed on ${orderstats[x].datetime}  <button id="${orderstats[x].o_id}" onclick="saveOrder(this.id)">Save Order</button>`
+                        document.getElementById("main").appendChild(d);
+                        viewPizzaStatus(`${orderstats[x].o_id}`)
+                    }
+                }
+
+            }
+        }
+
+        xhttp.open("GET", "http://localhost:8080/project1/getPizzaOrder.do?u_id=" + puser.u_id, true);
+        xhttp.send();
+
+    }
+    function saveOrder(id) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                alert("Order Saved");
+            }
+        }
+        xhttp.open("POST", "http://localhost:8080/project1/saveOrder.do?", true);
+        xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhttp.send("o_id=" + id);
+
+    }
+    function viewPizzaStatus(id) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let pizzs = JSON.parse(this.responseText)
+                for (x = 0; x < pizzs.length; x++) {
+                    let p = document.createElement("P");
+                    p.setAttribute("id", `${pizzs[x].p_id}`)
+                    let pizinfo = `Size: ${pizzs[x].p_size} Crust: ${pizzs[x].crust} Sauce: ${pizzs[x].sauce}`;
+                    p.innerHTML = pizinfo;
+                    document.getElementById(id).appendChild(p);
+                    viewToppingStatus(`${pizzs[x].p_id}`)
+
+                }
+            }
+        }
+
+        xhttp.open("GET", "http://localhost:8080/project1/getPizzas.do?o_id=" + id, true);
+        xhttp.send();
+
+    }
+    function viewToppingStatus(id) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let tops = JSON.parse(this.responseText);
+                let p = document.createElement("P");
+                let topinfo = "";
+
+                for (topset in tops) {
+                    if (tops[topset] == 1) {
+                        topinfo = topinfo.concat(topset + " ");
+                    }
+                }
+                p.innerHTML = topinfo;
+                document.getElementById(`${id}`).appendChild(p);
+
+            }
+        }
+        xhttp.open("GET", "http://localhost:8080/project1/getToppings.do?p_id=" + id, true);
+        xhttp.send();
+
+    }
+    function employeeMenu() {
+        document.getElementById("enavbar").style.display = "block";
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("main").innerHTML =
+                    `<h2>Active Orders</h2>`;
+                activeorders = JSON.parse(this.responseText);
+                for (x = 0; x < activeorders.length; x++) {
+                    let d = document.createElement("DIV");
+                    d.setAttribute("id", `id${x}`);
+                    let sel = document.createElement("SELECT")
+                    let but = document.createElement("BUTTON")
+                    but.innerHTML = "Update Status"
+                    but.setAttribute("id", `${activeorders[x].o_id}`);
+                    but.setAttribute("onclick", `updateStatus(this.id,document.getElementById("${x}").value)`);
+
+                    sel.setAttribute("id", `${x}`);
+                    sel.innerHTML = `<option value="Pending">Pending</option>
+                                    <option value="Out For Delivery">Out For Delivery</option>
+                                    <option value="Ready For Pickup">Ready For Pickup</option>
+                                    <option value="Complete">Complete</option>`;
+                    let ord = `Order ID: ${activeorders[x].o_id} Customer ID: ${activeorders[x].u_id} Total: $${activeorders[x].total} Status: ${activeorders[x].status} Date/Time: ${activeorders[x].datetime}`
+                    let node = document.createTextNode(ord);
+                    d.appendChild(node);
+                    document.getElementById("main").appendChild(document.createElement("HR"))
+                    document.getElementById("main").appendChild(d).appendChild(sel);
+                    document.getElementById(`id${x}`).appendChild(but);
+                    displayPizzas(activeorders[x].o_id, `id${x}`);
+
+
+                }
+            }
+
+
+        }
+        xhttp.open("GET", "http://localhost:8080/project1/activeOrders.do", true);
+        xhttp.send();
+    }
+    function displayPizzas(id, div) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let pizs = JSON.parse(this.responseText);
+                for (x = 0; x < pizs.length; x++) {
+                    let p = document.createElement("P");
+                    p.setAttribute("id", `${pizs[x].p_id}`)
+                    let pizinfo = `Size: ${pizs[x].p_size} Crust: ${pizs[x].crust} Sauce: ${pizs[x].sauce}`;
+                    p.innerHTML = pizinfo;
+                    document.getElementById(div).appendChild(p);
+                    displayToppings(pizs[x].p_id);
+
+                }
+            }
+        }
+        xhttp.open("GET", "http://localhost:8080/project1/getPizzas.do?o_id=" + id, true);
+        xhttp.send();
+
+
+    }
+
+    function displayToppings(id) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let tops = JSON.parse(this.responseText);
+                let p = document.createElement("P");
+                let topinfo = "";
+
+                for (topset in tops) {
+                    if (tops[topset] == 1) {
+                        topinfo = topinfo.concat(topset + " ");
+                    }
+                }
+                p.innerHTML = topinfo;
+                document.getElementById(`${id}`).appendChild(p);
+
+            }
+        }
+        xhttp.open("GET", "http://localhost:8080/project1/getToppings.do?p_id=" + id, true);
+        xhttp.send();
+    }
+
+
+    function updateStatus(id, status) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                employeeMenu();
+
+            }
+        }
+
+        xhttp.open("POST",
+            "http://localhost:8080/project1/updateStatus.do?",
+            true);
+        xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhttp.send("o_id=" + id + "&status=" + status);
+
+    }
+
+
+
 
     function getPizzaUser() {
         let xhttp = new XMLHttpRequest();
@@ -86,7 +415,13 @@
 
 
                 if ((puser.username == username) && (puser.password == password)) {
-                    getSession();
+                    if (puser.employee == 1) {
+                        employeeMenu();
+
+                    }
+                    else {
+                        getSession();
+                    }
                 }
             }
         }
@@ -98,34 +433,60 @@
     function addPizza() {
         document.getElementById("main").innerHTML =
             `<h3 id="pizza">${type}</h3>
-    <div>
-        Size:
-        <select id="size">
-            <option value="Small">Small</option>
-            <option value="Medium">Medium</option>
-            <option value="Large">Large</option>
-            <option value="Extra Large">Extra Large</option>
-        </select>
-    </div>
-    <div>
-        Crust:
-        <select id="crust">
-            <option value="Hand Tossed">Hand Tossed</option>
-            <option value="Crunchy Thin Crust">Crunchy Thin Crust</option>
-            <option value="Brooklyn Style">Brooklyn Style</option>
-        </select>
-    </div>
-    <div>
-        Sauce:
-        <select id = "sauce">
-            <option value="Robust Inspired Tomato Sauce">Robust Inspired Tomato Sauce</option>
-            <option value="Hearty Marinara Sauce">Hearty Marinara Sauce</option>
-            <option value="BBQ Sauce">BBQ Sauce</option>
-            <option value="Alfredo Sauce">Alfredo Sauce</option>
-        </select>
-    </div>
-    <Button onclick="addToppings()">Add To Order</Button>
-    <Button onclick="menu()">Back To Menu</Button>`
+        <div>
+            Size:
+            <select id="size">
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
+                <option value="Extra Large">Extra Large</option>
+            </select>
+        </div>
+        <div>
+            Crust:
+            <select id="crust">
+                <option value="Hand Tossed">Hand Tossed</option>
+                <option value="Crunchy Thin Crust">Crunchy Thin Crust</option>
+                <option value="Brooklyn Style">Brooklyn Style</option>
+            </select>
+        </div>
+        <div>
+            Sauce:
+            <select id = "sauce">
+                <option value="Robust Inspired Tomato Sauce">Robust Inspired Tomato Sauce</option>
+                <option value="Hearty Marinara Sauce">Hearty Marinara Sauce</option>
+                <option value="BBQ Sauce">BBQ Sauce</option>
+                <option value="Alfredo Sauce">Alfredo Sauce</option>
+            </select>
+        </div>
+                <ul id="byo">
+                    <li><input id="1" type="checkbox" name="text1" value="pepperoni" /><label for="text1">Pepperoni</label></li>
+                    <li><input id="2" type="checkbox" name="text2" value="i_sausage" /><label for="text2">Italian Sausage</label></li>
+                    <li><input id="3" type="checkbox" name="text3" value="bacon" /><label for="text3">Bacon</label></li>
+                    <li><input id="4" type="checkbox" name="text4" value="ham" /><label for="text4">Ham</label></li>
+                    <li><input id="5" type="checkbox" name="text5" value="salami" /><label for="text5">Salami</label></li>
+                    <li><input id="6" type="checkbox" name="text6" value="mushrooms" /><label for="text6">Mushrooms</label></li>
+                    <li><input id="7" type="checkbox" name="text7" value="b_olives" /><label for="text7">Black Olives</label></li>
+                    <li><input id="8" type="checkbox" name="text8" value="b_peppers" /><label for="text8">Banana Peppers</label></li>
+                    <li><input id="9" type="checkbox" name="text9" value="pineapple" /><label for="text9">Pineapple</label></li>
+                    <li><input id="10" type="checkbox" name="text10" value="onions" /><label for="text10">Onions</label></li>
+                    <li><input id="11" type="checkbox" name="text11" value="g_peppers" /><label for="text11">Green Peppers</label></li>
+                    <li><input id="12" type="checkbox" name="text12" value="feta" /><label for="text12">Feta</label></li>
+                    <li><input id="13" type="checkbox" name="text13" value="spinach" /><label for="text13">Spinach</label></li>
+                </ul>`;
+        if (type == 'Build Your Own') {
+            document.getElementById("byo").style.display = "block";
+
+        }
+        else{
+            document.getElementById("byo").style.display = "none";
+        }
+
+
+        let d = document.createElement("DIV");
+        d.innerHTML = `<Button onclick="addToppings()">Add To Order</Button>
+                        <Button onclick="menu()">Back To Menu</Button>`;
+        document.getElementById("main").appendChild(d);
     }
     function addToppings() {
         let size = document.getElementById("size").value;
@@ -144,12 +505,18 @@
                 toppings = ["pineapple", "bacon", "b_peppers", "mushrooms"];
                 break;
             case "Spinach & Feta":
-                toppings = ["Spinach", "Feta"];
+                toppings = ["spinach", "feta"];
+                break;
+            case "Build Your Own":
+                for(x=1;x<14;x++){
+                    if(document.getElementById(`${x}`).checked){
+                        toppings.push(document.getElementById(`${x}`).value)
+                    }
+                }
                 break;
 
         }
         let pizza = {
-            type: type,
             toppings: toppings,
             size: size,
             crust: crust,
@@ -160,8 +527,9 @@
     }
 
     function menu() {
-        document.getElementById("navbar").style.display="block";
-        custmenu = `welcome ${puser.username} rewards: ${puser.rewards}
+        document.getElementById("navbar").style.display = "block";
+        document.getElementById("info").innerHTML = `Welcome ${puser.username} Rewards: ${puser.rewards}`;
+        custmenu = `
                             <h3>Deluxe</h3>
                             <button onclick="setType('Deluxe')">Order</button>
                             <h3>Ultimate Pepperoni</h3>
@@ -170,11 +538,13 @@
                             <button onclick="setType('Hawaiian')">Order</button>
                             <h3>Spinach & Feta</h3>
                             <button onclick="setType('Spinach & Feta')">Order</button>
+                            <h3>Build Your Own</h3>
+                            <button onclick="setType('Build Your Own')">Order</button>
                             <button onclick="checkout()">Checkout</button>`
 
         document.getElementById("main").innerHTML = custmenu;
     }
-    function setType(ptype){
+    function setType(ptype) {
         type = ptype;
         addPizza();
 
@@ -183,48 +553,77 @@
     function checkout() {
         total = 0;
         rewardtotal = 0;
-
-        document.getElementById("main").innerHTML =
-            `<h3 id="order">Order</h3>
+        if (pizzas.length != 0) {
+            document.getElementById("main").innerHTML =
+                `<h3 id="order">Order</h3>
+            <p id="alert"></p>
             <button onclick="placeOrder()">Place Order</button>
+            <button onclick="useRewards()">Place Order using Reward points</button>
             <button onclick="menu()">Back to Menu</button>
             `
-        for (pizza in pizzas) {
-            switch (pizzas[pizza].size) {
-                case "Small":
-                    total = total + 8;
-                    rewardtotal = rewardtotal + 32;
-                    break;
+            for (pizza in pizzas) {
+                switch (pizzas[pizza].size) {
+                    case "Small":
+                        total = total + 8;
+                        rewardtotal = rewardtotal + 32;
+                        break;
 
-                case "Medium":
-                    total = total + 10;
-                    rewardtotal = rewardtotal + 40;
-                    break;
+                    case "Medium":
+                        total = total + 10;
+                        rewardtotal = rewardtotal + 40;
+                        break;
 
-                case "Large":
-                    total = total + 12;
-                    rewardtotal = rewardtotal + 48;
-                    break;
+                    case "Large":
+                        total = total + 12;
+                        rewardtotal = rewardtotal + 48;
+                        break;
 
-                case "Extra Large":
-                    total = total + 14;
-                    rewardtotal = rewardtotal + 56;
-                    break;
-            }
-            let full = `${pizzas[pizza].type}, `
-            for (i = 0; i < pizzas[pizza].toppings.length; i++) {
-                full = full.concat(`${pizzas[pizza].toppings[i]}, `)
-            }
-            full = full.concat(`${pizzas[pizza].size},
+                    case "Extra Large":
+                        total = total + 14;
+                        rewardtotal = rewardtotal + 56;
+                        break;
+                }
+                let full = ``;
+                for (i = 0; i < pizzas[pizza].toppings.length; i++) {
+                    full = full.concat(`${pizzas[pizza].toppings[i]}, `)
+                }
+                full = full.concat(`${pizzas[pizza].size},
                         ${pizzas[pizza].crust},
                         ${pizzas[pizza].sauce}`);
 
-            let p = document.createElement("P");
-            let node = document.createTextNode(full);
-            p.appendChild(node);
-            document.getElementById("main").appendChild(p);
+
+                let p = document.createElement("DIV");
+                let but = document.createElement("BUTTON")
+                but.setAttribute("id", `${pizza}`)
+                but.setAttribute("onclick", "remove(this.id)");
+                but.innerHTML = "Remove";
+                let node = document.createTextNode(full);
+                p.appendChild(node);
+                document.getElementById("main").appendChild(p).appendChild(but);
+            }
+            document.getElementById("order").innerHTML = `Order Total: $${total} Reward Points: ${rewardtotal}`;
         }
-        document.getElementById("order").innerHTML = `Order Total: $${total} Reward Points: ${rewardtotal}`;
+        else {
+            document.getElementById("main").innerHTML = "Cart is empty";
+        }
+    }
+
+    function remove(id) {
+        pizzas.splice(id, 1);
+        checkout();
+    }
+
+    function useRewards() {
+        if (puser.rewards >= rewardtotal) {
+            total = 0;
+            updateRewards(-rewardtotal);
+            puser.rewards = puser.rewards - rewardtotal;
+            placeOrder();
+        }
+        else {
+            document.getElementById("alert").innerHTML = `Insufficient Reward Points`;
+
+        }
     }
 
     function placeOrder() {
@@ -250,7 +649,7 @@
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                
+
             }
         }
         for (pizza in pizzas) {
@@ -264,33 +663,30 @@
     }
 
     function addToppingsToDB() {
-        let toppings = {
-            p_id: 0,
-            pepperoni: 0,
-            i_sausage: 0,
-            bacon: 0,
-            ham: 0,
-            salami: 0,
-            mushrooms: 0,
-            b_olives: 0,
-            b_peppers: 0,
-            pineapple: 0,
-            onions: 0,
-            g_peppers: 0,
-            feta: 0,
-            spinach: 0
-        }
-
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                for(top in toppings){
-                    toppings[top] = 0;
-                }
+
 
             }
         }
         for (i = 0; i < custpizza.length; i++) {
+            let toppings = {
+                p_id: 0,
+                pepperoni: 0,
+                i_sausage: 0,
+                bacon: 0,
+                ham: 0,
+                salami: 0,
+                mushrooms: 0,
+                b_olives: 0,
+                b_peppers: 0,
+                pineapple: 0,
+                onions: 0,
+                g_peppers: 0,
+                feta: 0,
+                spinach: 0
+            }
             toppings.p_id = custpizza[i].p_id;
             for (j = 0; j < pizzas[i].toppings.length; j++) {
                 prop = pizzas[i].toppings[j];
@@ -313,16 +709,16 @@
         menu();
     }
 
-    function updateRewards(rewards){
+    function updateRewards(rewards) {
         let xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function(){
-            
+        xhttp.onreadystatechange = function () {
+
 
         }
         xhttp.open("POST", "http://localhost:8080/project1/updateRewards.do?", true);
         xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhttp.send("u_id="+puser.u_id+"&rewards="+rewards);
+        xhttp.send("u_id=" + puser.u_id + "&rewards=" + rewards);
     }
 
     function getCustPizza() {
@@ -337,35 +733,35 @@
         xhttp.send();
 
     }
-    
-    function checkOrder(){
-        
+
+    function checkOrder() {
+
         let xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function(){
-            if(this.readyState ==4 && this.status == 200){
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
                 hasPizza = 0;
                 pizzalist = JSON.parse(this.responseText);
                 console.log(pizzalist.length);
-                if(pizzalist.length == 0){
+                if (pizzalist.length == 0) {
                     hasPizza = 1;
                 }
                 console.log(hasPizza);
-                if(hasPizza == 1){
+                if (hasPizza == 1) {
                     addPizzaToDB();
                 }
             }
 
         }
         order = orders[0];
-        for(x=0;x<orders.length;x++){
-            if(orders[x].o_id > order.o_id){
+        for (x = 0; x < orders.length; x++) {
+            if (orders[x].o_id > order.o_id) {
                 order = orders[x];
             }
         }
         console.log(order);
         xhttp.open("GET", "http://localhost:8080/project1/getPizzas.do?o_id=" + order.o_id, true);
         xhttp.send();
-        
+
     }
 
     function getCustOrder() {
@@ -373,7 +769,6 @@
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 orders = JSON.parse(this.responseText);
-                console.log(orders);
                 checkOrder();
             }
 

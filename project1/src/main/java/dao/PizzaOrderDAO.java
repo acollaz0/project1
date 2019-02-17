@@ -32,6 +32,7 @@ public class PizzaOrderDAO implements IPizzaOrder {
 						rs.getString("DATETIME"),
 						rs.getInt("SAVED")));
 			}
+			rs.close();
 			return orders;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -58,6 +59,7 @@ public class PizzaOrderDAO implements IPizzaOrder {
 						rs.getString("DATETIME"),
 						rs.getInt("SAVED")));
 			}
+			rs.close();
 			return orders;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -112,6 +114,32 @@ public class PizzaOrderDAO implements IPizzaOrder {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	@Override
+	public List<PizzaOrder> activeOrders() {
+		String sql = "select * from pizza_order where status not in 'Complete'";
+		List<PizzaOrder> orders = new ArrayList<>();
+		
+		try {
+			PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				orders.add(new PizzaOrder(
+						rs.getInt("O_ID"),
+						rs.getInt("U_ID"),
+						rs.getInt("TOTAL"),
+						rs.getString("STATUS"),
+						rs.getString("DATETIME"),
+						rs.getInt("SAVED")));
+			}
+			rs.close();
+			return orders;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 

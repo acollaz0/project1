@@ -30,6 +30,7 @@ public class PizzaDAO implements IPizza {
 						rs.getString("SAUCE"))
 						);
 			}
+			rs.close();
 			return pizzas;
 			
 		} catch (SQLException e) {
