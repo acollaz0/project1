@@ -30,8 +30,10 @@ public class PizzaOrderDAO implements IPizzaOrder {
 						rs.getInt("TOTAL"),
 						rs.getString("STATUS"),
 						rs.getString("DATETIME"),
-						rs.getInt("SAVED")));
+						rs.getInt("SAVED"),
+						rs.getString("O_TYPE")));
 			}
+			ps.close();
 			rs.close();
 			return orders;
 		} catch (SQLException e) {
@@ -57,8 +59,10 @@ public class PizzaOrderDAO implements IPizzaOrder {
 						rs.getInt("TOTAL"),
 						rs.getString("STATUS"),
 						rs.getString("DATETIME"),
-						rs.getInt("SAVED")));
+						rs.getInt("SAVED"),
+						rs.getString("O_TYPE")));
 			}
+			ps.close();
 			rs.close();
 			return orders;
 		} catch (SQLException e) {
@@ -70,7 +74,7 @@ public class PizzaOrderDAO implements IPizzaOrder {
 
 	@Override
 	public boolean addOrder(PizzaOrder p) {
-		String sql = "call add_order(?,?,?,?,?)";
+		String sql = "call add_order(?,?,?,?,?,?)";
 		try {
 			CallableStatement cs = JDBCConnection.getConnection().prepareCall(sql);
 			cs.setString(1, Integer.toString(p.getU_id()));
@@ -78,7 +82,9 @@ public class PizzaOrderDAO implements IPizzaOrder {
 			cs.setString(3, p.getStatus());
 			cs.setString(4, p.getDatetime());
 			cs.setString(5, Integer.toString(p.getSaved()));
+			cs.setString(6, p.getO_type());
 			cs.execute();
+			cs.close();
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -94,6 +100,7 @@ public class PizzaOrderDAO implements IPizzaOrder {
 			PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
 			ps.setString(1, Integer.toString(o_id));
 			ps.executeQuery();
+			ps.close();
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -109,6 +116,7 @@ public class PizzaOrderDAO implements IPizzaOrder {
 			ps.setString(1, status);
 			ps.setString(2, Integer.toString(o_id));
 			ps.executeQuery();
+			ps.close();
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -132,8 +140,10 @@ public class PizzaOrderDAO implements IPizzaOrder {
 						rs.getInt("TOTAL"),
 						rs.getString("STATUS"),
 						rs.getString("DATETIME"),
-						rs.getInt("SAVED")));
+						rs.getInt("SAVED"),
+						rs.getString("O_TYPE")));
 			}
+			ps.close();
 			rs.close();
 			return orders;
 		} catch (SQLException e) {

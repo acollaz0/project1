@@ -39,6 +39,7 @@ public class ToppingsDAO implements IToppings {
 						rs.getInt("SPINACH")
 						);
 			}
+			ps.close();
 			rs.close();
 			return t;
 
@@ -67,7 +68,9 @@ public class ToppingsDAO implements IToppings {
 			cs.setString(12, Integer.toString(t.getG_peppers()));
 			cs.setString(13, Integer.toString(t.getFeta()));
 			cs.setString(14, Integer.toString(t.getSpinach()));
-			return cs.execute();
+			cs.execute();
+			cs.close();
+			return true;
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
@@ -103,6 +106,7 @@ public class ToppingsDAO implements IToppings {
 						rs.getInt("SPINACH")
 						));	
 			}
+			ps.close();
 			rs.close();
 			return toppings;
 		} catch (SQLException e) {

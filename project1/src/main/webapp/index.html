@@ -1,6 +1,32 @@
 <!DOCTYPE html>
 <html>
 <style>
+    body {
+        background-color: #111;
+        color: rgb(12, 201, 12);
+        text-align: center;
+    }
+
+    input[type=text],
+    [type=password] {
+        border: none;
+        background-color: #333;
+        color: rgb(12, 201, 12);
+    }
+
+    button {
+        background-color: rgb(12, 201, 12);
+        border: none;
+        color: #111;
+        padding: 7px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        margin: 2px 1px;
+        cursor: pointer;
+    }
+
     ul {
         list-style-type: none;
         margin: 0;
@@ -26,7 +52,6 @@
     li a:hover {
         background-color: #111;
     }
-
 </style>
 
 <head>
@@ -51,13 +76,15 @@
     </ul>
 
     <div id="main">
+        <h1>HACKERMAN'S PIZZA</h1>
         <h2>Login</h2>
-        <h3>Username</h3>
-        <input id="username" type="text">
-        <h3>Password</h3>
-        <input id="password" type="text">
-        <button onclick="getPizzaUser()">Login</button>
-        <button onclick="registerPizzaUser()">Register</button>
+        <input id="username" type="text" placeholder="Username">
+        <p></p>
+        <input id="password" type="password" placeholder="Password">
+        <div>
+            <button onclick="getPizzaUser()">Login</button>
+            <button onclick="registerPizzaUser()">Register</button>
+        </div>
     </div>
 
 </body>
@@ -81,13 +108,16 @@
         document.getElementById("navbar").style.display = "none";
         document.getElementById("enavbar").style.display = "none";
         document.getElementById("main").innerHTML =
-            `<h2>Login</h2>
+            `<h1>HACKERMAN'S PIZZA</h1>
+        <h2>Login</h2>
         <h3>Username</h3>
-        <input id="username" type="text">
+        <input id="username" type="text" placeholder="Username">
         <h3>Password</h3>
-        <input id="password" type="text">
-        <button onclick="getPizzaUser()">Login</button>
-        <button onclick="registerPizzaUser()">Register</button>`
+        <input id="password" type="password" placeholder="Password">
+        <div>
+            <button onclick="getPizzaUser()">Login</button>
+            <button onclick="registerPizzaUser()">Register</button>
+        </div>`
     }
     function showStats() {
         document.getElementById("main").innerHTML = `<h2>Toppings Used</h2>`;
@@ -208,7 +238,7 @@
                     if (orderstats[x].status != 'Complete') {
                         let d = document.createElement("DIV");
                         d.setAttribute("id", `${orderstats[x].o_id}`)
-                        d.innerHTML = `<hr>Status: ${orderstats[x].status} Total: $${orderstats[x].total} Order Placed on ${orderstats[x].datetime}`
+                        d.innerHTML = `<hr>Status: ${orderstats[x].status} Total: $${orderstats[x].total} Order Placed on ${orderstats[x].datetime} Carry Out/Delivery: ${orderstats[x].o_type}`
                         document.getElementById("main").appendChild(d);
                         viewPizzaStatus(`${orderstats[x].o_id}`)
                     }
@@ -231,7 +261,7 @@
                     if (orderstats[x].status == 'Complete') {
                         let d = document.createElement("DIV");
                         d.setAttribute("id", `${orderstats[x].o_id}`)
-                        d.innerHTML = `<hr>Status: ${orderstats[x].status} Total: $${orderstats[x].total} Order Placed on ${orderstats[x].datetime}  <button id="${orderstats[x].o_id}" onclick="saveOrder(this.id)">Save Order</button>`
+                        d.innerHTML = `<hr>Status: ${orderstats[x].status} Total: $${orderstats[x].total} Order Placed on ${orderstats[x].datetime} Carry Out/Delivery: ${orderstats[x].o_type}  <button id="${orderstats[x].o_id}" onclick="saveOrder(this.id)">Save Order</button>`
                         document.getElementById("main").appendChild(d);
                         viewPizzaStatus(`${orderstats[x].o_id}`)
                     }
@@ -322,7 +352,7 @@
                                     <option value="Out For Delivery">Out For Delivery</option>
                                     <option value="Ready For Pickup">Ready For Pickup</option>
                                     <option value="Complete">Complete</option>`;
-                    let ord = `Order ID: ${activeorders[x].o_id} Customer ID: ${activeorders[x].u_id} Total: $${activeorders[x].total} Status: ${activeorders[x].status} Date/Time: ${activeorders[x].datetime}`
+                    let ord = `Order ID: ${activeorders[x].o_id} Customer ID: ${activeorders[x].u_id} Total: $${activeorders[x].total} Status: ${activeorders[x].status} Date/Time: ${activeorders[x].datetime} Carry Out/Delivery: ${activeorders[x].o_type}`
                     let node = document.createTextNode(ord);
                     d.appendChild(node);
                     document.getElementById("main").appendChild(document.createElement("HR"))
@@ -478,7 +508,7 @@
             document.getElementById("byo").style.display = "block";
 
         }
-        else{
+        else {
             document.getElementById("byo").style.display = "none";
         }
 
@@ -508,8 +538,8 @@
                 toppings = ["spinach", "feta"];
                 break;
             case "Build Your Own":
-                for(x=1;x<14;x++){
-                    if(document.getElementById(`${x}`).checked){
+                for (x = 1; x < 14; x++) {
+                    if (document.getElementById(`${x}`).checked) {
                         toppings.push(document.getElementById(`${x}`).value)
                     }
                 }
@@ -557,6 +587,10 @@
             document.getElementById("main").innerHTML =
                 `<h3 id="order">Order</h3>
             <p id="alert"></p>
+            <select id="o_type">
+                <option value="Carry Out">Carry Out</option>
+                <option value="Delivery">Delivery</option>
+            </select>
             <button onclick="placeOrder()">Place Order</button>
             <button onclick="useRewards()">Place Order using Reward points</button>
             <button onclick="menu()">Back to Menu</button>
@@ -617,7 +651,6 @@
         if (puser.rewards >= rewardtotal) {
             total = 0;
             updateRewards(-rewardtotal);
-            puser.rewards = puser.rewards - rewardtotal;
             placeOrder();
         }
         else {
@@ -641,7 +674,7 @@
             true);
         xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhttp.send("u_id=" + puser.u_id + "&total=" + total);
+        xhttp.send("u_id=" + puser.u_id + "&total=" + total + "&o_type=" + document.getElementById("o_type").value);
     }
 
     function addPizzaToDB() {
@@ -712,7 +745,12 @@
     function updateRewards(rewards) {
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
-
+            if(this.readyState == 4 && this.status == 200){
+                console.log(puser.rewards)
+                puser.rewards = puser.rewards + rewards;
+                console.log(puser.rewards)
+            }
+            
 
         }
         xhttp.open("POST", "http://localhost:8080/project1/updateRewards.do?", true);

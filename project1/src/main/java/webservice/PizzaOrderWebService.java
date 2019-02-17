@@ -60,11 +60,12 @@ public class PizzaOrderWebService {
 	public static void addOrder(HttpServletRequest request, HttpServletResponse response) {
 		int u_id = Integer.parseInt(request.getParameter("u_id"));
 		int total = Integer.parseInt(request.getParameter("total"));
+		String o_type = request.getParameter("o_type");
 		long time = System.currentTimeMillis();
 		Date date = new Date(time);
-		DateFormat df = new SimpleDateFormat("dd:MM:yy:HH:mm:ss");
+		DateFormat df = new SimpleDateFormat("dd-MMMM-yyyy HH:mm:ss");
 		String datetime = df.format(date);
-		PizzaOrder o = new PizzaOrder(0,u_id,total,"Pending",datetime,0);
+		PizzaOrder o = new PizzaOrder(0,u_id,total,"Pending",datetime,0,o_type);
 		
 		if(PizzaOrderService.addOrder(o)) {
 			try {

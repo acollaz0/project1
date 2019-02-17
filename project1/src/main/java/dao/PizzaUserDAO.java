@@ -27,6 +27,7 @@ public class PizzaUserDAO implements IPizzaUser{
 						rs.getInt("REWARDS"),
 						rs.getInt("EMPLOYEE"));
 			}
+			ps.close();
 			rs.close();
 			return p;
 			
@@ -48,6 +49,7 @@ public class PizzaUserDAO implements IPizzaUser{
 			cs.setString(4, Integer.toString(u.getEmployee()));
 			
 			cs.execute();
+			cs.close();
 			return true;
 			
 		} catch (SQLException e) {
@@ -68,6 +70,7 @@ public class PizzaUserDAO implements IPizzaUser{
 			ps.setString(1, Integer.toString(rewards));
 			ps.setString(2, Integer.toString(u_id));
 			ps.executeQuery();
+			ps.close();
 			return true;
 			
 		} catch (SQLException e) {

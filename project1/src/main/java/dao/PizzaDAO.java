@@ -30,6 +30,7 @@ public class PizzaDAO implements IPizza {
 						rs.getString("SAUCE"))
 						);
 			}
+			ps.close();
 			rs.close();
 			return pizzas;
 			
@@ -48,7 +49,9 @@ public class PizzaDAO implements IPizza {
 			cs.setString(2, p.getP_size());
 			cs.setString(3, p.getCrust());
 			cs.setString(4, p.getSauce());
-			return cs.execute();
+			cs.execute();
+			cs.close();
+			return true;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

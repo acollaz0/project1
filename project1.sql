@@ -1,8 +1,11 @@
 select * from pizza_user;
 select * from pizza_order;
 select * from pizza;
-delete from pizza_order where o_id = 72;
+select * from toppings;
+delete from pizza_order where o_id = 285;
 commit;
+select * from pizza_order where status not in 'Pendin';
+
 create table pizza_user(
 u_id number(10) primary key,
 username varchar2(200) not null,
@@ -59,12 +62,13 @@ alter table pizza_user add constraint puser_unique unique (username);
 
 alter table pizza_user add constraint puser_nnull check (username is not null);
 alter table pizza_user add constraint ppassword_nnull check (password is not null);
+alter table pizza_order add o_type varchar2(200);
 
 create sequence pid_maker
     minvalue 0
     increment by 1
     ;
-
+call add_pizzauser('admin','admin',0,1);
 create or replace procedure add_pizzauser(username varchar2, password varchar2, rewards number, employee number)
 is 
 begin
@@ -73,11 +77,11 @@ insert into pizza_user values(pid_maker.nextval, username, password, rewards, em
 
 end;
 
-create or replace procedure add_order(u_id number, total number, status varchar2, datetime varchar2, saved number)
+create or replace procedure add_order(u_id number, total number, status varchar2, datetime varchar2, saved number, o_type varchar)
 is
 begin
 
-insert into pizza_order values(pid_maker.nextval, u_id, total, status, datetime, saved);
+insert into pizza_order values(pid_maker.nextval, u_id, total, status, datetime, saved, o_type);
 
 end;
 
