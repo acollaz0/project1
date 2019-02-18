@@ -13,6 +13,10 @@
         background-color: #333;
         color: rgb(12, 201, 12);
     }
+    select{
+        background-color: #333;
+        color: rgb(12, 201, 12);
+    }
 
     button {
         background-color: rgb(12, 201, 12);
@@ -25,6 +29,10 @@
         font-size: 15px;
         margin: 2px 1px;
         cursor: pointer;
+    }
+    hr{
+        color: rgb(12, 201, 12);
+        border-color:rgb(12, 201, 12); 
     }
 
     ul {
@@ -77,7 +85,6 @@
 
     <div id="main">
         <h1>HACKERMAN'S PIZZA</h1>
-        <h2>Login</h2>
         <input id="username" type="text" placeholder="Username">
         <p></p>
         <input id="password" type="password" placeholder="Password">
@@ -108,8 +115,7 @@
         document.getElementById("navbar").style.display = "none";
         document.getElementById("enavbar").style.display = "none";
         document.getElementById("main").innerHTML =
-            `<h1>HACKERMAN'S PIZZA</h1>
-        <h2>Login</h2>
+        `<h1>HACKERMAN'S PIZZA</h1>
         <h3>Username</h3>
         <input id="username" type="text" placeholder="Username">
         <h3>Password</h3>
@@ -120,7 +126,9 @@
         </div>`
     }
     function showStats() {
-        document.getElementById("main").innerHTML = `<h2>Toppings Used</h2>`;
+        document.getElementById("main").innerHTML = `<h2 style="float:left" id="toppings">Toppings Used</h2>
+                                                    <h2 id="pizzas">Pizza Base</h2>`;
+        displayAllPizzas();
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -150,13 +158,57 @@
                 for (topping in toppingcount) {
                     let p = document.createElement("P");
                     p.innerHTML = `${topping}:${toppingcount[topping]}`;
-                    document.getElementById("main").appendChild(p);
+                    document.getElementById("toppings").appendChild(p);
                 }
 
 
             }
         }
         xhttp.open("GET", "http://localhost:8080/project1/allToppings.do", true);
+        xhttp.send();
+
+    }
+    function displayAllPizzas(){
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let allPizzas = JSON.parse(this.responseText);
+                let pizzacount = {
+                    Small: 0,
+                    Medium: 0,
+                    Large: 0,
+                    "Extra Large": 0,
+                    "Hand Tossed": 0,
+                    "Crunchy Thin Crust": 0,
+                    "Brooklyn Style": 0,
+                    "Robust Inspired Tomato Sauce": 0,
+                    "Hearty Marinara Sauce": 0,
+                    "BBQ Sauce": 0,
+                    "Alfredo Sauce": 0
+                }
+
+                for(x=0;x<allPizzas.length;x++){
+                    for(prop in pizzacount){
+                        if(allPizzas[x].p_size == prop){
+                            pizzacount[prop] +=1;
+                        }
+                        if(allPizzas[x].crust == prop){
+                            pizzacount[prop] +=1;
+                        }
+                        if(allPizzas[x].sauce == prop){
+                            pizzacount[prop] +=1;
+                        }
+                    }
+                }
+                for (prop in pizzacount) {
+                    let p = document.createElement("P");
+                    p.innerHTML = `${prop}:${pizzacount[prop]}`;
+                    document.getElementById("pizzas").appendChild(p);
+                }
+
+            }
+        }
+        xhttp.open("GET", "http://localhost:8080/project1/allPizzas.do", true);
         xhttp.send();
 
     }

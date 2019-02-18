@@ -3,6 +3,7 @@ package serf;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.PizzaService;
 import webservice.PizzaOrderWebService;
 import webservice.PizzaUserWebService;
 import webservice.PizzaWebService;
@@ -30,6 +31,7 @@ public static void Process(HttpServletRequest request, HttpServletResponse respo
 		case "/project1/updateStatus.do":{PizzaOrderWebService.updateStatus(request, response); break;}
 		case "/project1/addPizza.do":{PizzaWebService.addPizza(request, response); break;}
 		case "/project1/getPizzas.do":{PizzaWebService.getPizzas(request, response); break;}
+		case "/project1/allPizzas.do":{PizzaWebService.allPizzas(request, response); break;}
 		case "/project1/getToppings.do":{ToppingsWebService.getToppings(request, response); break;}
 		case "/project1/addToppings.do":{ToppingsWebService.addToppings(request, response); break;}
 		case "/project1/allToppings.do":{ToppingsWebService.allToppings(request, response); break;}

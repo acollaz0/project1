@@ -26,6 +26,18 @@ public class PizzaWebService {
 		}
 	}
 	
+	public static void allPizzas(HttpServletRequest request, HttpServletResponse response) {
+		List<Pizza> pizzas = PizzaService.allPizzas();
+		ObjectMapper om = new ObjectMapper();
+		try {
+			String json = om.writeValueAsString(pizzas);
+			response.getWriter().append(json).close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public static void addPizza(HttpServletRequest request, HttpServletResponse response) {
 		int o_id = Integer.parseInt(request.getParameter("o_id"));
 		String p_size = request.getParameter("p_size");

@@ -16,5 +16,8 @@ public class PizzaService {
 	public static boolean addPizza(Pizza p) {
 		return pd.addPizza(p);
 	}
+	public static List<Pizza> allPizzas(){
+		return pd.allPizzas();
+	}
 
 }

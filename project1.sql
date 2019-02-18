@@ -2,7 +2,7 @@ select * from pizza_user;
 select * from pizza_order;
 select * from pizza;
 select * from toppings;
-delete from pizza_order where o_id = 285;
+delete from pizza_order where o_id = 350;
 commit;
 select * from pizza_order where status not in 'Pendin';
 

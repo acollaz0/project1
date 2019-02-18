@@ -59,4 +59,33 @@ public class PizzaDAO implements IPizza {
 		return false;
 	}
 
+	@Override
+	public List<Pizza> allPizzas() {
+		String sql = "select * from pizza";
+		List<Pizza> pizzas = new ArrayList<>();
+		
+		try {
+			PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				pizzas.add(new Pizza(
+						rs.getInt("P_ID"),
+						rs.getInt("O_ID"),
+						rs.getString("P_SIZE"),
+						rs.getString("CRUST"),
+						rs.getString("SAUCE"))
+						);
+			}
+			ps.close();
+			rs.close();
+			return pizzas;
+		} 
+			catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
 }
