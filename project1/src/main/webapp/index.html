@@ -885,11 +885,13 @@
         document.getElementById("main").innerHTML =
             `<p id="invalid"></p>
         <h3>Username</h3>
-        <input id="username" type="text">
+        <input id="username" type="text" placeholder="Username">
         <h3>Password</h3>
-        <input id="password" type="text">
-        <button onclick="addPizzaUser()">add PizzaUser</button>
-        <button onclick="loginMenu()">Back to Login</button>`
+        <input id="password" type="password" placeholder="Password">
+        <div>
+        <button onclick="addPizzaUser()">Register</button>
+        <button onclick="loginMenu()">Back to Login</button>
+        </div>`
     }
 
     function addPizzaUser() {
@@ -903,14 +905,7 @@
             if (this.readyState == 4 && this.status == 200) {
 
                 if (this.responseText == 1) {
-                    document.getElementById("main").innerHTML =
-                        `<h2>Login</h2>
-                        <h3>Username</h3>
-                        <input id="username" type="text">
-                        <h3>Password</h3>
-                        <input id="password" type="text">
-                        <button onclick="getPizzaUser()">Login</button>
-                        <button onclick="registerPizzaUser()">Register</button>`
+                    loginMenu();
                 }
                 else {
                     document.getElementById("invalid").innerHTML = "Invalid username/password"
